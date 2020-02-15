@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Npc Manager</string>
+    <string name="title_activity_add_person">addPersonActivity</string>
+
+    <string name="title_activity_add_person_actiity">addPersonActiity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="deceased">Deceased</string>
+    <string name="description">Description</string>
+    <string name="gender">Gender</string>
+    <string name="home">Home</string>
+    <string name="load">Load</string>
+    <string name="location">Location</string>
+    <string name="name">Name</string>
+    <string name="person">Person</string>
+    <string name="occupation">Occupation</string>
+    <string name="organization">Organization</string>
+    <string name="quest">Quest</string>
+    <string name="race">Race</string>
+    <string name="save">Save</string>
+
+</resources>
