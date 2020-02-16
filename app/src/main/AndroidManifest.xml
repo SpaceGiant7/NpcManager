@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.FindByNameActivity"></activity>
+        <activity android:name=".Activities.ViewPersonActivity"></activity>
+        <activity android:name=".Activities.FindByNameActivity" />
         <activity android:name=".Activities.FindByRaceActivity" />
         <activity android:name=".Activities.FindByLocationActivity" />
         <activity android:name=".Activities.FindByOrganizationActivity" />
