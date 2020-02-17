@@ -1,6 +1,7 @@
 package com.example.npcmanager.Models;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -20,14 +21,22 @@ public class PersonModel extends BaseModel<Person> {
         addItem( newPerson );
     }
 
+    public void removePersonIfExists(String name) {
+        findFirstPersonMaybe(name).ifPresent(p -> list.remove(p));
+    }
+
     public int getNumberOfPeople(){
         return getNumberOfItems();
     }
 
     public Person findFirstPerson( String name ) {
-        return findPeople( name ).stream().findFirst()
+        return findFirstPersonMaybe(name)
                 .orElseThrow( () -> new IllegalArgumentException(
                         String.format( "Person with name: %s does not exist", name ) ) );
+    }
+
+    private Optional<Person> findFirstPersonMaybe(String name) {
+        return findPeople(name).stream().findFirst();
     }
 
     public Set<Person> findPeople( String name ) {

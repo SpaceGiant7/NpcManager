@@ -7,9 +7,14 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class CampaignReaderWriter {
 
@@ -54,6 +59,15 @@ public class CampaignReaderWriter {
             return false;
         }
         return true;
+    }
+
+    public static List<String> getExistingCampaigns(Context context) {
+        List<File> fileList = Arrays.asList(context.getFilesDir().listFiles());
+        return fileList.stream()
+                .map(File::getName)
+                .filter(n -> n.contains(".json"))
+                .map(n -> n.split(".json")[0])
+                .collect(Collectors.toList());
     }
 
     private static String createJsonString() {

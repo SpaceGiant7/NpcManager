@@ -14,25 +14,22 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/campaignNameTextField"
+        app:layout_constraintEnd_toStartOf="@+id/mainCampaignSpinner"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/mainHorizontalGuideline10"
         app:srcCompat="@android:drawable/ic_menu_save" />
 
-    <EditText
-        android:id="@+id/campaignNameTextField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <Spinner
+        android:id="@+id/mainCampaignSpinner"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_gravity="center"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:hint="Campaign Name"
-        android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/addButton"
         app:layout_constraintStart_toEndOf="@+id/fileButton"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/mainHorizontalGuideline10" />
+
 
     <ImageButton
         android:id="@+id/addButton"
@@ -43,7 +40,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/campaignNameTextField"
+        app:layout_constraintStart_toEndOf="@+id/mainCampaignSpinner"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/mainHorizontalGuideline10"
         app:srcCompat="@android:drawable/ic_menu_add" />

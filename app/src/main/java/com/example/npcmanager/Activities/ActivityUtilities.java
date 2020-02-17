@@ -1,12 +1,16 @@
 package com.example.npcmanager.Activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.npcmanager.DataStructures.Person;
+import com.example.npcmanager.DataStructures.Quest;
 import com.example.npcmanager.Models.ApplicationModels;
 
 import java.util.ArrayList;
@@ -50,8 +54,42 @@ class PersonListSelectorListener<T> implements AdapterView.OnItemSelectedListene
                 ApplicationModels.getPersonModel().getAllPeople());
         personList.setAdapter(occupationAdaptor);
     }
-
-
-
 }
 
+class PersonSelectorListener implements AdapterView.OnItemClickListener {
+    private AppCompatActivity currentActivity;
+    private Class<?> activityClassToOpen;
+
+    public PersonSelectorListener(AppCompatActivity currentActivity, Class<?> activityClassToOpen) {
+        this.currentActivity = currentActivity;
+        this.activityClassToOpen = activityClassToOpen;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Person person = (Person) adapterView.getAdapter().getItem(i);
+        Intent intent = new Intent( currentActivity, activityClassToOpen);
+        intent.putExtra("name", person.getName());
+        currentActivity.startActivity(intent);
+    }
+}
+
+class QuestSelectorListener implements AdapterView.OnItemClickListener {
+
+    private AppCompatActivity currentActivity;
+    private Class<?> activityClassToOpen;
+
+    public QuestSelectorListener(AppCompatActivity currentActivity, Class<?> activityClassToOpen) {
+        this.currentActivity = currentActivity;
+        this.activityClassToOpen = activityClassToOpen;
+    }
+
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Quest quest = (Quest) adapterView.getAdapter().getItem(i);
+        Intent intent = new Intent( currentActivity, activityClassToOpen);
+        intent.putExtra("name", quest.getQuestName());
+        currentActivity.startActivity(intent);
+    }
+}

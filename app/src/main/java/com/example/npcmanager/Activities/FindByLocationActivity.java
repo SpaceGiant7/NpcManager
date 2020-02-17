@@ -38,17 +38,8 @@ public class FindByLocationActivity extends AppCompatActivity {
                         this,
                         personList,
                         item -> new ArrayList<>(ApplicationModels.getPersonModel().findPeople(item))));
-        personList.setOnItemClickListener(new PersonSelectorListener());
-    }
-
-    class PersonSelectorListener implements AdapterView.OnItemClickListener {
-        @Override
-        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            Person person = (Person) adapterView.getAdapter().getItem(i);
-            Intent intent = new Intent( FindByLocationActivity.this, ViewPersonActivity.class);
-            intent.putExtra("name", person.getName());
-            startActivity(intent);
-        }
+        personList.setOnItemClickListener(
+                new PersonSelectorListener(this, ViewPersonActivity.class));
     }
 
 }

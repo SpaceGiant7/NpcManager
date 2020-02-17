@@ -3,15 +3,11 @@ package com.example.npcmanager.Activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.example.npcmanager.DataStructures.Location;
 import com.example.npcmanager.DataStructures.Person;
 import com.example.npcmanager.Models.ApplicationModels;
 import com.example.npcmanager.R;
@@ -30,8 +26,9 @@ public class FindByNameActivity extends AppCompatActivity {
         nameInput = findViewById(R.id.findByNameNameInput);
         searchButton = findViewById(R.id.findByNameSearchButton);
         personList = findViewById(R.id.findByNamePersonList);
-
         searchButton.setOnClickListener(l -> fillPersonList());
+        personList.setOnItemClickListener(
+                new PersonSelectorListener(this, ViewPersonActivity.class));
     }
 
     private void fillPersonList() {
@@ -40,6 +37,7 @@ public class FindByNameActivity extends AppCompatActivity {
                 new ArrayList<>(ApplicationModels.getPersonModel()
                         .findPeople(nameInput.getText().toString())));
         personList.setAdapter(nameAdapter);
-
     }
+
+
 }

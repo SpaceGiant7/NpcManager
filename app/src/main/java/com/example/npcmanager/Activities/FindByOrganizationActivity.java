@@ -32,5 +32,6 @@ public class FindByOrganizationActivity extends AppCompatActivity {
                         this,
                         personList,
                         item -> new ArrayList<>(ApplicationModels.getPersonModel().findPeople(item))));
+        personList.setOnItemClickListener(new PersonSelectorListener(this, ViewPersonActivity.class));
     }
 }

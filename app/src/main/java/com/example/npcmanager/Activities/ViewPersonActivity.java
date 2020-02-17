@@ -2,7 +2,11 @@ package com.example.npcmanager.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
@@ -20,6 +24,7 @@ public class ViewPersonActivity extends AppCompatActivity {
     private TextView organizationTextInput;
     private CheckBox deceasedCheckbox;
     private TextView descriptionTextInput;
+    private Button editButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +38,11 @@ public class ViewPersonActivity extends AppCompatActivity {
         organizationTextInput = findViewById(R.id.viewPersonOrganizationText);
         deceasedCheckbox = findViewById(R.id.viewPersonDeceasedCheckbox);
         descriptionTextInput = findViewById(R.id.viewPersonDescriptionText);
+        editButton = findViewById(R.id.viewPersonEditButton);
         String name = (String)getIntent().getExtras().get("name");
         setPerson(ApplicationModels.getPersonModel().findFirstPerson(name));
+
+        editButton.setOnClickListener(new EditPersonOnClickListener());
     }
 
     public void setPerson(Person person) {
@@ -46,5 +54,14 @@ public class ViewPersonActivity extends AppCompatActivity {
         organizationTextInput.setText(person.getOrganization().getOrganizationName());
         deceasedCheckbox.setChecked(person.getIsDeceased());
         descriptionTextInput.setText(person.getDescription());
+    }
+
+    class EditPersonOnClickListener implements AdapterView.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(ViewPersonActivity.this, AddPersonActivity.class);
+            intent.putExtra("name", nameTextInput.getText());
+            startActivity(intent);
+        }
     }
 }

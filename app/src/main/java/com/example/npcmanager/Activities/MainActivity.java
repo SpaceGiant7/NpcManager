@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 import com.example.npcmanager.DataStorage.CampaignReaderWriter;
 import com.example.npcmanager.DataStructures.Quest;
@@ -23,13 +24,15 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     ListView questList;
+    Spinner campiagnList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        EditText campaingNameField = findViewById(R.id.campaignNameTextField);
+        campiagnList = findViewById(R.id.mainCampaignSpinner);
+        fillCampaignList();
         ImageButton addButton = findViewById(R.id.addButton);
         ImageButton fileButton = findViewById(R.id.fileButton);
         Button saveButton = findViewById(R.id.saveButton);
@@ -51,10 +54,10 @@ public class MainActivity extends AppCompatActivity {
         addButton.setOnClickListener(getDisableMenuListener(addMenu));
 
         saveButton.setOnClickListener(
-                v -> CampaignReaderWriter.save(campaingNameField.getText().toString(), this));
+                v -> CampaignReaderWriter.save((String)campiagnList.getSelectedItem(), this));
         loadButton.setOnClickListener(
                 v -> {
-                    CampaignReaderWriter.load(campaingNameField.getText().toString(), this);
+                    CampaignReaderWriter.load((String)campiagnList.getSelectedItem(), this);
                     refreshActivity();
                 });
 
@@ -69,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         findByOrganizationButton.setOnClickListener(v -> setActivityChange(FindByOrganizationActivity.class));
         findByRaceButton.setOnClickListener(v -> setActivityChange(FindByRaceActivity.class));
 
-        questList.setOnItemClickListener(new QuestSelectorListener());
+        questList.setOnItemClickListener(new QuestSelectorListener(this, ViewQuestActivity.class));
     }
 
     @Override
@@ -90,6 +93,14 @@ public class MainActivity extends AppCompatActivity {
         questList.setAdapter(nameAdapter);
     }
 
+    private void fillCampaignList() {
+        ArrayAdapter<String> nameAdapter = new ArrayAdapter<>(
+                this, android.R.layout.simple_list_item_1,
+                new ArrayList<>(CampaignReaderWriter.INSTANCE.getExistingCampaigns(this)));
+        campiagnList.setAdapter(nameAdapter);
+
+    }
+
     private View.OnClickListener getDisableMenuListener(final LinearLayout menu){
         return view -> {
             if (menu.getVisibility() == View.VISIBLE){
@@ -102,17 +113,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void setActivityChange(Class newActivityClass) {
         startActivity(new Intent( MainActivity.this, newActivityClass));
-    }
-
-
-    class QuestSelectorListener implements AdapterView.OnItemClickListener {
-        @Override
-        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            Quest quest = (Quest) adapterView.getAdapter().getItem(i);
-            Intent intent = new Intent( MainActivity.this, ViewQuestActivity.class);
-            intent.putExtra("name", quest.getQuestName());
-            startActivity(intent);
-        }
     }
 
 }
