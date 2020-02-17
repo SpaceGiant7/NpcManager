@@ -8,29 +8,33 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@id/viewPersonGuideline75"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/viewPersonGuideline25">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
-            <EditText
+            <TextView
                 android:id="@+id/editText2"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:gravity="center"
-                android:inputType="textPersonName"
                 android:text="Name" />
 
-            <EditText
+            <TextView
                 android:id="@+id/viewPersonNameText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
@@ -39,10 +43,11 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
-            <EditText
+            <TextView
                 android:id="@+id/editText2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -52,7 +57,7 @@
                 android:inputType="textPersonName"
                 android:text="Race" />
 
-            <EditText
+            <TextView
                 android:id="@+id/viewPersonRaceText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -64,10 +69,11 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
-            <EditText
+            <TextView
                 android:id="@+id/editText2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -77,7 +83,7 @@
                 android:inputType="textPersonName"
                 android:text="Gender" />
 
-            <EditText
+            <TextView
                 android:id="@+id/viewPersonGenderText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -89,10 +95,11 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
-            <EditText
+            <TextView
                 android:id="@+id/editText2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -102,7 +109,7 @@
                 android:inputType="textPersonName"
                 android:text="Location" />
 
-            <EditText
+            <TextView
                 android:id="@+id/viewPersonLocationText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -114,10 +121,11 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
-            <EditText
+            <TextView
                 android:id="@+id/editText2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -127,7 +135,7 @@
                 android:inputType="textPersonName"
                 android:text="Occupation" />
 
-            <EditText
+            <TextView
                 android:id="@+id/viewPersonOccupationText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -139,10 +147,11 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
-            <EditText
+            <TextView
                 android:id="@+id/editText2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -152,7 +161,7 @@
                 android:inputType="textPersonName"
                 android:text="Organization" />
 
-            <EditText
+            <TextView
                 android:id="@+id/viewPersonOrganizationText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -164,10 +173,11 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
-            <EditText
+            <TextView
                 android:id="@+id/editText2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -187,10 +197,11 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
-            <EditText
+            <TextView
                 android:id="@+id/editText2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -200,7 +211,7 @@
                 android:inputType="textPersonName"
                 android:text="Description" />
 
-            <EditText
+            <TextView
                 android:id="@+id/viewPersonDescriptionText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -210,4 +221,26 @@
                 android:text="Name" />
         </LinearLayout>
     </LinearLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/viewPersonGuideline75"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/viewPersonGuideline25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25171" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/viewPersonGuideline50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
