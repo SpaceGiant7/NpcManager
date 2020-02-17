@@ -6,226 +6,198 @@
     android:layout_height="match_parent"
     tools:context=".Activities.ViewPersonActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+
+    <TextView
+        android:id="@+id/viewPersonNameTextLabel"
+        android:ems="10"
         android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@id/viewPersonGuideline75"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/viewPersonGuideline25">
+        app:layout_constraintEnd_toEndOf="@id/viewPersonGuideline50"
+        app:layout_constraintTop_toBottomOf="@id/viewPersonGuideline25"
+        app:layout_constraintBottom_toTopOf="@id/viewPersonRaceTextLabel"
+        android:text="Name" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+    <TextView
+        android:id="@+id/viewPersonNameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/viewPersonGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewPersonGuideline25"
+        app:layout_constraintBottom_toTopOf="@id/viewPersonRaceText"
+        android:ems="10"
+        android:text="Name" />
 
-            <TextView
-                android:id="@+id/editText2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:gravity="center"
-                android:text="Name" />
+    <TextView
+        android:id="@+id/viewPersonRaceTextLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/viewPersonGuideline50"
+        app:layout_constraintTop_toBottomOf="@id/viewPersonNameTextLabel"
+        app:layout_constraintBottom_toTopOf="@id/viewPersonGenderTextLabel"
+        android:ems="10"
+        android:gravity="center"
+        android:text="Race" />
 
-            <TextView
-                android:id="@+id/viewPersonNameText"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name" />
-        </LinearLayout>
+    <TextView
+        android:id="@+id/viewPersonRaceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/viewPersonGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewPersonNameText"
+        app:layout_constraintBottom_toTopOf="@id/viewPersonGenderText"
+        android:ems="10"
+        android:text="Name" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+    <TextView
+        android:id="@+id/viewPersonGenderTextLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/viewPersonGuideline50"
+        app:layout_constraintTop_toBottomOf="@id/viewPersonRaceTextLabel"
+        app:layout_constraintBottom_toTopOf="@id/viewPersonLocationTextLabel"
+        android:ems="10"
+        android:gravity="center"
+        android:text="Gender" />
 
-            <TextView
-                android:id="@+id/editText2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:gravity="center"
-                android:inputType="textPersonName"
-                android:text="Race" />
+    <TextView
+        android:id="@+id/viewPersonGenderText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/viewPersonGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewPersonRaceText"
+        app:layout_constraintBottom_toTopOf="@id/viewPersonLocationText"
+        android:ems="10"
+        android:text="Name" />
 
-            <TextView
-                android:id="@+id/viewPersonRaceText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name" />
-        </LinearLayout>
+    <TextView
+        android:id="@+id/viewPersonLocationTextLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/viewPersonGuideline50"
+        app:layout_constraintTop_toBottomOf="@id/viewPersonGenderTextLabel"
+        app:layout_constraintBottom_toTopOf="@id/viewPersonOccupationTextLabel"
+        android:ems="10"
+        android:gravity="center"
+        android:text="Location" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+    <TextView
+        android:id="@+id/viewPersonLocationText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/viewPersonGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewPersonGenderText"
+        app:layout_constraintBottom_toTopOf="@id/viewPersonOccupationText"
+        android:ems="10"
+        android:text="Name" />
 
-            <TextView
-                android:id="@+id/editText2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:gravity="center"
-                android:inputType="textPersonName"
-                android:text="Gender" />
+    <TextView
+        android:id="@+id/viewPersonOccupationTextLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/viewPersonGuideline50"
+        app:layout_constraintTop_toBottomOf="@id/viewPersonLocationTextLabel"
+        app:layout_constraintBottom_toTopOf="@id/viewPersonOrganizationTextLabel"
+        android:ems="10"
+        android:gravity="center"
+        android:text="Occupation" />
 
-            <TextView
-                android:id="@+id/viewPersonGenderText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name" />
-        </LinearLayout>
+    <TextView
+        android:id="@+id/viewPersonOccupationText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/viewPersonGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewPersonLocationText"
+        app:layout_constraintBottom_toTopOf="@id/viewPersonOrganizationText"
+        android:ems="10"
+        android:text="Name" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+    <TextView
+        android:id="@+id/viewPersonOrganizationTextLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/viewPersonGuideline50"
+        app:layout_constraintTop_toBottomOf="@id/viewPersonOccupationTextLabel"
+        app:layout_constraintBottom_toTopOf="@id/viewPersonDeceasedTextLabel"
+        android:ems="10"
+        android:gravity="center"
+        android:text="Organization" />
 
-            <TextView
-                android:id="@+id/editText2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:gravity="center"
-                android:inputType="textPersonName"
-                android:text="Location" />
+    <TextView
+        android:id="@+id/viewPersonOrganizationText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/viewPersonGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewPersonOccupationText"
+        app:layout_constraintBottom_toTopOf="@id/viewPersonDeceasedCheckbox"
+        android:ems="10"
+        android:text="Name" />
 
-            <TextView
-                android:id="@+id/viewPersonLocationText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name" />
-        </LinearLayout>
+    <TextView
+        android:id="@+id/viewPersonDeceasedTextLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/viewPersonGuideline50"
+        app:layout_constraintTop_toBottomOf="@id/viewPersonOrganizationTextLabel"
+        app:layout_constraintBottom_toTopOf="@id/viewPersonDescriptionTextLabel"
+        android:ems="10"
+        android:gravity="center"
+        android:text="Deceased" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+    <CheckBox
+        android:id="@+id/viewPersonDeceasedCheckbox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/viewPersonGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewPersonOrganizationText"
+        app:layout_constraintBottom_toTopOf="@id/viewPersonDescriptionText" />
 
-            <TextView
-                android:id="@+id/editText2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:gravity="center"
-                android:inputType="textPersonName"
-                android:text="Occupation" />
 
-            <TextView
-                android:id="@+id/viewPersonOccupationText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name" />
-        </LinearLayout>
+    <TextView
+        android:id="@+id/viewPersonDescriptionTextLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/viewPersonGuideline50"
+        app:layout_constraintTop_toBottomOf="@id/viewPersonDeceasedTextLabel"
+        app:layout_constraintBottom_toTopOf="@id/viewPersonGuideline75"
+        android:ems="10"
+        android:gravity="center"
+        android:text="Description" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/editText2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:gravity="center"
-                android:inputType="textPersonName"
-                android:text="Organization" />
-
-            <TextView
-                android:id="@+id/viewPersonOrganizationText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/editText2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:gravity="center"
-                android:inputType="textPersonName"
-                android:text="Deceased" />
-
-            <CheckBox
-                android:id="@+id/viewPersonDeceasedCheckbox"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/editText2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:gravity="center"
-                android:inputType="textPersonName"
-                android:text="Description" />
-
-            <TextView
-                android:id="@+id/viewPersonDescriptionText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name" />
-        </LinearLayout>
-    </LinearLayout>
+    <TextView
+        android:id="@+id/viewPersonDescriptionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/viewPersonGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewPersonDeceasedCheckbox"
+        app:layout_constraintBottom_toTopOf="@id/viewPersonGuideline75"
+        android:ems="10"
+        android:text="Name" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/viewPersonGuideline75"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/viewPersonGuideline50"
+        app:layout_constraintTop_toBottomOf="@id/viewPersonGuideline25"
+        app:layout_constraintBottom_toTopOf="@id/viewPersonRaceText"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.75" />
 
@@ -233,6 +205,10 @@
         android:id="@+id/viewPersonGuideline25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/viewPersonGuideline50"
+        app:layout_constraintTop_toBottomOf="@id/viewPersonGuideline25"
+        app:layout_constraintBottom_toTopOf="@id/viewPersonRaceText"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.25171" />
 
@@ -240,6 +216,10 @@
         android:id="@+id/viewPersonGuideline50"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/viewPersonGuideline50"
+        app:layout_constraintTop_toBottomOf="@id/viewPersonGuideline25"
+        app:layout_constraintBottom_toTopOf="@id/viewPersonRaceText"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5" />
 

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.ViewQuestActivity">
+
+    <TextView
+        android:id="@+id/viewQuestNameTextLabel"
+        android:ems="10"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/viewQuestGuideline50"
+        app:layout_constraintTop_toBottomOf="@id/viewQuestGuideline25"
+        app:layout_constraintBottom_toTopOf="@id/viewQuestPersonTextLabel"
+        android:text="Name" />
+
+    <TextView
+        android:id="@+id/viewQuestNameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/viewQuestGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewQuestGuideline25"
+        app:layout_constraintBottom_toTopOf="@id/viewQuestPersonText"
+        android:ems="10"
+        android:text="Name" />
+
+    <TextView
+        android:id="@+id/viewQuestPersonTextLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/viewQuestGuideline50"
+        app:layout_constraintTop_toBottomOf="@id/viewQuestNameTextLabel"
+        app:layout_constraintBottom_toTopOf="@id/viewQuestLocationTextLabel"
+        android:ems="10"
+        android:gravity="center"
+        android:text="Quest Giver" />
+
+    <TextView
+        android:id="@+id/viewQuestPersonText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/viewQuestGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewQuestNameText"
+        app:layout_constraintBottom_toTopOf="@id/viewQuestLocationText"
+        android:ems="10"
+        android:text="Name" />
+
+    <TextView
+        android:id="@+id/viewQuestLocationTextLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/viewQuestGuideline50"
+        app:layout_constraintTop_toBottomOf="@id/viewQuestPersonTextLabel"
+        app:layout_constraintBottom_toTopOf="@id/viewQuestDescriptionTextLabel"
+        android:ems="10"
+        android:gravity="center"
+        android:text="Return Location" />
+
+    <TextView
+        android:id="@+id/viewQuestLocationText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/viewQuestGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewQuestPersonText"
+        app:layout_constraintBottom_toTopOf="@id/viewQuestDetailsText"
+        android:ems="10"
+        android:text="Name" />
+
+    <TextView
+        android:id="@+id/viewQuestDescriptionTextLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/viewQuestGuideline50"
+        app:layout_constraintTop_toBottomOf="@id/viewQuestLocationTextLabel"
+        app:layout_constraintBottom_toTopOf="@id/viewQuestGuideline75"
+        android:ems="10"
+        android:gravity="center"
+        android:text="Details" />
+
+    <TextView
+        android:id="@+id/viewQuestDetailsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/viewQuestGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewQuestLocationText"
+        app:layout_constraintBottom_toTopOf="@id/viewQuestGuideline75"
+        android:ems="10"
+        android:text="Name" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/viewQuestGuideline75"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/viewQuestGuideline50"
+        app:layout_constraintTop_toBottomOf="@id/viewQuestGuideline25"
+        app:layout_constraintBottom_toTopOf="@id/viewQuestPersonText"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/viewQuestGuideline25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/viewQuestGuideline50"
+        app:layout_constraintTop_toBottomOf="@id/viewQuestGuideline25"
+        app:layout_constraintBottom_toTopOf="@id/viewQuestPersonText"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25171" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/viewQuestGuideline50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/viewQuestGuideline50"
+        app:layout_constraintTop_toBottomOf="@id/viewQuestGuideline25"
+        app:layout_constraintBottom_toTopOf="@id/viewQuestPersonText"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,18 +3,26 @@ package com.example.npcmanager.Activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.opengl.Visibility;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 
 import com.example.npcmanager.DataStorage.CampaignReaderWriter;
+import com.example.npcmanager.DataStructures.Quest;
+import com.example.npcmanager.Models.ApplicationModels;
 import com.example.npcmanager.R;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
+
+    ListView questList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,25 +34,29 @@ public class MainActivity extends AppCompatActivity {
         ImageButton fileButton = findViewById(R.id.fileButton);
         Button saveButton = findViewById(R.id.saveButton);
         Button loadButton = findViewById(R.id.loadButton);
-        Button findByNameButton = findViewById(R.id.findByNameButton);
-        Button findByLocationButton = findViewById(R.id.findByLocationButton);
-        Button findByOccupationButton = findViewById(R.id.findByOccupationButton);
-        Button findByOrganizationButton = findViewById(R.id.findByOrganizationButton);
-        Button findByRaceButton = findViewById(R.id.findByRaceButton);
+        Button findByNameButton = findViewById(R.id.mainFindByNameButton);
+        Button findByLocationButton = findViewById(R.id.mainFindByLocationButton);
+        Button findByOccupationButton = findViewById(R.id.mainFindByOccupationButton);
+        Button findByOrganizationButton = findViewById(R.id.mainFindByOrganizationButton);
+        Button findByRaceButton = findViewById(R.id.mainFindByRaceButton);
         Button addPersonButton = findViewById(R.id.addPersonButton);
         Button addLocationButton = findViewById(R.id.addLocationButton);
         Button addOrganizationButton = findViewById(R.id.addOrganizationButton);
         Button addQuestButton = findViewById(R.id.addQuestButton);
+        questList = findViewById(R.id.mainQuestListView);
         final LinearLayout fileMenu = findViewById(R.id.fileMenu);
         final LinearLayout addMenu = findViewById(R.id.addMenu);
 
-        fileButton.setOnClickListener(getDiableMenuListener(fileMenu));
-        addButton.setOnClickListener(getDiableMenuListener(addMenu));
+        fileButton.setOnClickListener(getDisableMenuListener(fileMenu));
+        addButton.setOnClickListener(getDisableMenuListener(addMenu));
 
         saveButton.setOnClickListener(
                 v -> CampaignReaderWriter.save(campaingNameField.getText().toString(), this));
         loadButton.setOnClickListener(
-                v -> CampaignReaderWriter.load(campaingNameField.getText().toString(), this));
+                v -> {
+                    CampaignReaderWriter.load(campaingNameField.getText().toString(), this);
+                    refreshActivity();
+                });
 
         addPersonButton.setOnClickListener(v -> setActivityChange(AddPersonActivity.class));
         addLocationButton.setOnClickListener(v -> setActivityChange(AddLocationActivity.class));
@@ -56,9 +68,29 @@ public class MainActivity extends AppCompatActivity {
         findByOccupationButton.setOnClickListener(v -> setActivityChange(FindByOccupationActivity.class));
         findByOrganizationButton.setOnClickListener(v -> setActivityChange(FindByOrganizationActivity.class));
         findByRaceButton.setOnClickListener(v -> setActivityChange(FindByRaceActivity.class));
+
+        questList.setOnItemClickListener(new QuestSelectorListener());
     }
 
-    private View.OnClickListener getDiableMenuListener(final LinearLayout menu){
+    @Override
+    protected void onResume() {
+        super.onResume();
+        refreshActivity();
+
+    }
+
+    private void refreshActivity() {
+        fillQuestList();
+    }
+
+    private void fillQuestList() {
+        ArrayAdapter<Quest> nameAdapter = new ArrayAdapter<>(
+                this, android.R.layout.simple_list_item_1,
+                new ArrayList<>(ApplicationModels.getQuestModel().getAllQuests()));
+        questList.setAdapter(nameAdapter);
+    }
+
+    private View.OnClickListener getDisableMenuListener(final LinearLayout menu){
         return view -> {
             if (menu.getVisibility() == View.VISIBLE){
                 menu.setVisibility(View.INVISIBLE);
@@ -72,5 +104,15 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent( MainActivity.this, newActivityClass));
     }
 
+
+    class QuestSelectorListener implements AdapterView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            Quest quest = (Quest) adapterView.getAdapter().getItem(i);
+            Intent intent = new Intent( MainActivity.this, ViewQuestActivity.class);
+            intent.putExtra("name", quest.getQuestName());
+            startActivity(intent);
+        }
+    }
 
 }
