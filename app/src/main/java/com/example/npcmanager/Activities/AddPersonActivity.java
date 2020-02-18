@@ -39,7 +39,6 @@ public class AddPersonActivity extends AppCompatActivity {
     private Spinner organizationSelector;
     private CheckBox deceasedCheckBox;
     private TextView descriptionTextInput;
-    private Button saveButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,13 +52,13 @@ public class AddPersonActivity extends AppCompatActivity {
         organizationSelector = findViewById(R.id.addPersonOrganizationSelector);
         deceasedCheckBox = findViewById(R.id.addPersonDeceasedCheckBox);
         descriptionTextInput = findViewById(R.id.addPersonDescriptionTextInput);
-        saveButton = findViewById(R.id.addPersonCreateButton);
-
+        Button saveButton = findViewById(R.id.addPersonCreateButton);
+        Button deleteButton = findViewById(R.id.addPersonDeleteButton);
         existingPersonName = getPersonNameMaybe();
         populateInputs(existingPersonName);
 
         saveButton.setOnClickListener(v -> saveButtonClicked());
-
+        deleteButton.setOnClickListener(v -> deleteButtonClicked());
     }
 
     private void populateInputs(Optional<String> personNameMaybe) {
@@ -146,6 +145,16 @@ public class AddPersonActivity extends AppCompatActivity {
 
     private void saveButtonClicked() {
         createPerson();
+        loadMainActivity();
+    }
+
+    private void deleteButtonClicked() {
+        existingPersonName.ifPresent(
+                name -> ApplicationModels.getPersonModel().removePersonIfExists(name));
+        loadMainActivity();
+    }
+
+    private void loadMainActivity() {
         Intent intent = new Intent(AddPersonActivity.this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);

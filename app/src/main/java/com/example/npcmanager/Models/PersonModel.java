@@ -18,7 +18,9 @@ public class PersonModel extends BaseModel<Person> {
     }
 
     public void addPerson( Person newPerson ){
-        addItem( newPerson );
+        if (newPerson.getName().length() > 0) {
+            addItem(newPerson);
+        }
     }
 
     public void removePersonIfExists(String name) {

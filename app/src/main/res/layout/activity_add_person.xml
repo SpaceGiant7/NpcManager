@@ -1,307 +1,216 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:id="@+id/Layout"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	tools:context=".Activities.AddPersonActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.AddPersonActivity">
 
-    <ScrollView
-        android:layout_width="match_parent"
+
+
+    <TextView
+        android:id="@+id/addPersonNameTextField"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/addPersonCreateButton"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addPersonHorizontalGuideline10"
+        app:layout_constraintBottom_toTopOf="@id/addPersonRaceTextField"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toStartOf="@id/addPersonVerticalGuideline50"
+        android:gravity="center"
+        android:text="Name" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+    <EditText
+        android:id="@+id/addPersonNameTextInput"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/addPersonHorizontalGuideline10"
+        app:layout_constraintBottom_toTopOf="@id/addPersonRaceSelector"
+        app:layout_constraintStart_toStartOf="@id/addPersonVerticalGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textPersonName" />
 
-            <LinearLayout
-                android:id="@+id/addPersonNameLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:orientation="horizontal">
+    <TextView
+        android:id="@+id/addPersonRaceTextField"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/addPersonNameTextField"
+        app:layout_constraintBottom_toTopOf="@id/addPersonGenderTextField"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/addPersonVerticalGuideline50"
+        android:gravity="center"
+        android:text="Race" />
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
+    <Spinner
+        android:id="@+id/addPersonRaceSelector"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/addPersonNameTextInput"
+        app:layout_constraintBottom_toTopOf="@id/addPersonGenderSelector"
+        app:layout_constraintStart_toStartOf="@id/addPersonVerticalGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center" />
 
-                    <TextView
-                        android:id="@+id/addPersonNameTextField"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="Name" />
-                </LinearLayout>
+    <TextView
+        android:id="@+id/addPersonGenderTextField"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/addPersonRaceTextField"
+        app:layout_constraintBottom_toTopOf="@id/addPersonHomeTextField"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/addPersonVerticalGuideline50"
+        android:gravity="center"
+        android:text="Gender" />
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
+    <Spinner
+        android:id="@+id/addPersonGenderSelector"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/addPersonRaceSelector"
+        app:layout_constraintBottom_toTopOf="@id/addPersonHomeSelector"
+        app:layout_constraintStart_toStartOf="@id/addPersonVerticalGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center" />
 
-                    <EditText
-                        android:id="@+id/addPersonNameTextInput"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:ems="10"
-                        android:hint="Name"
-                        android:inputType="textPersonName" />
-                </LinearLayout>
-            </LinearLayout>
+    <TextView
+        android:id="@+id/addPersonHomeTextField"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/addPersonGenderTextField"
+        app:layout_constraintBottom_toTopOf="@id/addPersonOccupationTextField"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/addPersonVerticalGuideline50"
+        android:gravity="center"
+        android:text="Home" />
 
-            <LinearLayout
-                android:id="@+id/addPersonRaceLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:orientation="horizontal">
+    <Spinner
+        android:id="@+id/addPersonHomeSelector"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/addPersonGenderSelector"
+        app:layout_constraintBottom_toTopOf="@id/addPersonOccupationSelector"
+        app:layout_constraintStart_toStartOf="@id/addPersonVerticalGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center" />
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
+    <TextView
+        android:id="@+id/addPersonOccupationTextField"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/addPersonHomeTextField"
+        app:layout_constraintBottom_toTopOf="@id/addPersonOrganizationTextField"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/addPersonVerticalGuideline50"
+        android:gravity="center"
+        android:text="Occupation" />
 
-                    <TextView
-                        android:id="@+id/addPersonRaceTextField"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="Race" />
-                </LinearLayout>
+    <Spinner
+        android:id="@+id/addPersonOccupationSelector"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/addPersonHomeSelector"
+        app:layout_constraintBottom_toTopOf="@id/addPersonOrganizationSelector"
+        app:layout_constraintStart_toStartOf="@id/addPersonVerticalGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center" />
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
+    <TextView
+        android:id="@+id/addPersonOrganizationTextField"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/addPersonOccupationTextField"
+        app:layout_constraintBottom_toTopOf="@id/addPersonDeceasedCheckBox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/addPersonVerticalGuideline50"
+        android:gravity="center"
+        android:text="Organization" />
 
-                    <Spinner
-                        android:id="@+id/addPersonRaceSelector"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-            </LinearLayout>
+    <Spinner
+        android:id="@+id/addPersonOrganizationSelector"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/addPersonOccupationSelector"
+        app:layout_constraintBottom_toTopOf="@id/addPersonDeceasedCheckBox"
+        app:layout_constraintStart_toStartOf="@id/addPersonVerticalGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center" />
 
-            <LinearLayout
-                android:id="@+id/addPersonGenderLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:orientation="horizontal">
+    <CheckBox
+        android:id="@+id/addPersonDeceasedCheckBox"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/addPersonOrganizationSelector"
+        app:layout_constraintBottom_toTopOf="@id/addPersonDescriptionTextInput"
+        app:layout_constraintStart_toStartOf="@id/addPersonVerticalGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        android:text="Deceased" />
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
+    <TextView
+        android:id="@+id/addPersonDescriptionTextField"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/addPersonDeceasedCheckBox"
+        app:layout_constraintBottom_toTopOf="@id/addPersonHorizontalGuideline80"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/addPersonVerticalGuideline50"
+        android:gravity="center"
+        android:text="Description" />
 
-                    <TextView
-                        android:id="@+id/addPersonGenderTextField"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="Gender" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <Spinner
-                        android:id="@+id/addPersonGenderSelector"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/addPersonHomeLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/addPersonHomeTextField"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="Home" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <Spinner
-                        android:id="@+id/addPersonHomeSelector"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/addPersonOccupationLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/addPersonOccupationTextField"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="Occupation" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <Spinner
-                        android:id="@+id/addPersonOccupationSelector"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/addPersonOrganizationLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/addPersonOrganizationTextField"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="Organization" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <Spinner
-                        android:id="@+id/addPersonOrganizationSelector"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/addPersonDeceasedLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="horizontal"></LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <CheckBox
-                        android:id="@+id/addPersonDeceasedCheckBox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Deceased" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/addPersonDescriptionLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/addPersonDescriptionTextField"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="Description" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/addPersonDescriptionTextInput"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="Description"
-                        android:inputType="textPersonName" />
-                </LinearLayout>
-            </LinearLayout>
-
-        </LinearLayout>
-    </ScrollView>
+    <EditText
+        android:id="@+id/addPersonDescriptionTextInput"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/addPersonDeceasedCheckBox"
+        app:layout_constraintBottom_toTopOf="@id/addPersonHorizontalGuideline80"
+        app:layout_constraintStart_toStartOf="@id/addPersonVerticalGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        android:hint="Description"
+        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/addPersonCreateButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
         android:text="Create"
+        app:layout_constraintTop_toBottomOf="@id/addPersonHorizontalGuideline80"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/addPersonDeleteButton" />
+
+    <Button
+        android:id="@+id/addPersonDeleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        app:layout_constraintTop_toBottomOf="@id/addPersonHorizontalGuideline80"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/addPersonCreateButton"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/addPersonVerticalGuideline50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/addPersonHorizontalGuideline10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/addPersonHorizontalGuideline80"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

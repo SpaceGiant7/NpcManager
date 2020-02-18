@@ -18,8 +18,12 @@
         <activity android:name=".Activities.AddOrganizationActivity" />
         <activity android:name=".Activities.AddLocationActivity" />
         <activity android:name=".Activities.FindByOccupationActivity" />
-        <activity android:name=".Activities.AddPersonActivity" />
-        <activity android:name=".Activities.AddQuestActivity" />
+        <activity
+            android:name=".Activities.AddPersonActivity"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".Activities.AddQuestActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
