@@ -7,6 +7,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+import com.example.npcmanager.Activities.Utilities.PersonListSelectorListener;
+import com.example.npcmanager.Activities.Utilities.PersonSelectorListener;
 import com.example.npcmanager.DataStructures.Organization;
 import com.example.npcmanager.Models.ApplicationModels;
 import com.example.npcmanager.R;

@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.DataStructures.Person;
 import com.example.npcmanager.Models.ApplicationModels;
 import com.example.npcmanager.R;
@@ -24,7 +25,6 @@ public class ViewPersonActivity extends AppCompatActivity {
     private TextView organizationTextInput;
     private CheckBox deceasedCheckbox;
     private TextView descriptionTextInput;
-    private Button editButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +38,14 @@ public class ViewPersonActivity extends AppCompatActivity {
         organizationTextInput = findViewById(R.id.viewPersonOrganizationText);
         deceasedCheckbox = findViewById(R.id.viewPersonDeceasedCheckbox);
         descriptionTextInput = findViewById(R.id.viewPersonDescriptionText);
-        editButton = findViewById(R.id.viewPersonEditButton);
-        String name = (String)getIntent().getExtras().get("name");
+        Button editButton = findViewById(R.id.viewPersonEditButton);
+
+        String name = ActivityUtilities.getNameExtra(getIntent());
         setPerson(ApplicationModels.getPersonModel().findFirstPerson(name));
 
-        editButton.setOnClickListener(new EditPersonOnClickListener());
+        editButton.setOnClickListener(
+                v -> ActivityUtilities.loadActivityWithNameExtra(
+                        this, AddPersonActivity.class, nameTextInput.getText()));
     }
 
     public void setPerson(Person person) {
@@ -54,14 +57,5 @@ public class ViewPersonActivity extends AppCompatActivity {
         organizationTextInput.setText(person.getOrganization().getOrganizationName());
         deceasedCheckbox.setChecked(person.getIsDeceased());
         descriptionTextInput.setText(person.getDescription());
-    }
-
-    class EditPersonOnClickListener implements AdapterView.OnClickListener {
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(ViewPersonActivity.this, AddPersonActivity.class);
-            intent.putExtra("name", nameTextInput.getText());
-            startActivity(intent);
-        }
     }
 }

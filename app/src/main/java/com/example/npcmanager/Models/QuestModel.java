@@ -15,19 +15,21 @@ public class QuestModel extends BaseModel<Quest> {
         addItem(newQuest);
     }
 
-    public Optional<Quest> getQuest(String questName) {
-        return list.stream()
-                .filter(t -> t.getQuestName()
-                        .equals(questName))
-                .findFirst();
+    public void removeQuestIfExists(String name) {
+        findFirstQuestMaybe(name).ifPresent(q -> list.remove(q));
     }
 
     public Quest findFirstQuest(String name) {
-        String regex = String.format( ".*%s.*", name);
-        return getAllQuests().stream()
-                .filter(q -> q.getQuestName().matches(regex))
-                .findFirst().orElseThrow(() -> new IllegalArgumentException(
+        return findFirstQuestMaybe(name)
+                .orElseThrow(() -> new IllegalArgumentException(
                         String.format("Quest with name: %s does not exist", name)));
+    }
+
+    private Optional<Quest> findFirstQuestMaybe(String name) {
+        return getAllQuests().stream()
+                .filter(t -> t.getQuestName()
+                        .equals(name))
+                .findFirst();
     }
 
     public List<Quest> getAllQuests() {

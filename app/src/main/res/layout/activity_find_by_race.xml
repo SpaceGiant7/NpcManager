@@ -6,22 +6,52 @@
     android:layout_height="match_parent"
     tools:context=".Activities.FindByRaceActivity">
 
-    <ListView
-        android:id="@+id/findByRacePersonList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="100dp"
-        app:layout_constraintBottom_toTopOf="@+id/findByRaceRaceSelector"
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@id/findByRaceHorizontalGuideline20"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Find By Race" />
 
     <Spinner
         android:id="@+id/findByRaceRaceSelector"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        app:layout_constraintTop_toTopOf="@id/findByRaceHorizontalGuideline20"
+        app:layout_constraintEnd_toEndOf="@id/findByRaceVerticalGuideline80"
+        app:layout_constraintStart_toStartOf="@id/findByRaceVerticalGuideline20" />
+
+    <ListView
+        android:id="@+id/findByRacePersonList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@id/findByRaceVerticalGuideline80"
+        app:layout_constraintStart_toStartOf="@id/findByRaceVerticalGuideline20"
+        app:layout_constraintTop_toBottomOf="@id/findByRaceRaceSelector" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/findByRaceVerticalGuideline20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/findByRaceVerticalGuideline80"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/findByRaceHorizontalGuideline20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

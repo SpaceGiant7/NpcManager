@@ -6,40 +6,65 @@
     android:layout_height="match_parent"
     tools:context=".Activities.FindByNameActivity">
 
-    <ListView
-        android:id="@+id/findByNamePersonList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="100dp"
-        app:layout_constraintBottom_toTopOf="@+id/findByNameNameLayout"
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@id/findByNameHorizontalGuideline20"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Find By Name" />
 
-    <LinearLayout
-        android:id="@+id/findByNameNameLayout"
-        android:layout_width="match_parent"
+    <EditText
+        android:id="@+id/findByNameNameInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toStartOf="@id/findByNameSearchButton"
+        app:layout_constraintStart_toStartOf="@id/findByNameVerticalGuideline20"
+        app:layout_constraintTop_toTopOf="@id/findByNameHorizontalGuideline20" />
+
+    <Button
+        android:id="@+id/findByNameSearchButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search"
+        app:layout_constraintEnd_toEndOf="@id/findByNameVerticalGuideline80"
+        app:layout_constraintStart_toEndOf="@id/findByNameNameInput"
+        app:layout_constraintTop_toTopOf="@id/findByNameHorizontalGuideline20" />
+
+    <ListView
+        android:id="@+id/findByNamePersonList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/findByNameVerticalGuideline80"
+        app:layout_constraintStart_toStartOf="@id/findByNameVerticalGuideline20"
+        app:layout_constraintTop_toBottomOf="@id/findByNameNameInput" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/findByNameVerticalGuideline20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/findByNameVerticalGuideline80"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/findByNameHorizontalGuideline20"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <EditText
-            android:id="@+id/findByNameNameInput"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:hint="Name"
-            android:inputType="textPersonName" />
-
-        <Button
-            android:id="@+id/findByNameSearchButton"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Search" />
-
-    </LinearLayout>
+        app:layout_constraintGuide_percent="0.2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

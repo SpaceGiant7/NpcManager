@@ -6,23 +6,53 @@
     android:layout_height="match_parent"
     tools:context=".Activities.FindByLocationActivity">
 
-    <ListView
-        android:id="@+id/findByLocationPersonList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/findByLocationLocationSelector"
+    <TextView
+        android:id="@+id/findByLocationTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Find By Location"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@id/findByLocationHorizontalGuideline20"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
         android:id="@+id/findByLocationLocationSelector"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        app:layout_constraintEnd_toEndOf="@id/findByLocationVerticalGuideline80"
+        app:layout_constraintStart_toStartOf="@id/findByLocationVerticalGuideline20"
+        app:layout_constraintTop_toTopOf="@id/findByLocationHorizontalGuideline20" />
+
+    <ListView
+        android:id="@+id/findByLocationPersonList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@id/findByLocationVerticalGuideline80"
+        app:layout_constraintStart_toStartOf="@id/findByLocationVerticalGuideline20"
+        app:layout_constraintTop_toBottomOf="@id/findByLocationLocationSelector" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/findByLocationHorizontalGuideline20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/findByLocationVerticalGuideline20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/findByLocationVerticalGuideline80"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,16 +2,14 @@ package com.example.npcmanager.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.DataStructures.Gender;
 import com.example.npcmanager.DataStructures.Location;
 import com.example.npcmanager.DataStructures.Occupation;
@@ -54,16 +52,17 @@ public class AddPersonActivity extends AppCompatActivity {
         descriptionTextInput = findViewById(R.id.addPersonDescriptionTextInput);
         Button saveButton = findViewById(R.id.addPersonCreateButton);
         Button deleteButton = findViewById(R.id.addPersonDeleteButton);
+
         existingPersonName = getPersonNameMaybe();
-        populateInputs(existingPersonName);
+        populateInputs();
 
         saveButton.setOnClickListener(v -> saveButtonClicked());
         deleteButton.setOnClickListener(v -> deleteButtonClicked());
     }
 
-    private void populateInputs(Optional<String> personNameMaybe) {
-        if (personNameMaybe.isPresent()) {
-            Person person = ApplicationModels.getPersonModel().findFirstPerson(personNameMaybe.get());
+    private void populateInputs() {
+        if (existingPersonName.isPresent()) {
+            Person person = ApplicationModels.getPersonModel().findFirstPerson(existingPersonName.get());
             populateInputs(
                     person.getName(),
                     person.getRace(),
@@ -145,18 +144,12 @@ public class AddPersonActivity extends AppCompatActivity {
 
     private void saveButtonClicked() {
         createPerson();
-        loadMainActivity();
+        ActivityUtilities.loadMainActivity(this);
     }
 
     private void deleteButtonClicked() {
         existingPersonName.ifPresent(
                 name -> ApplicationModels.getPersonModel().removePersonIfExists(name));
-        loadMainActivity();
-    }
-
-    private void loadMainActivity() {
-        Intent intent = new Intent(AddPersonActivity.this, MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
+        ActivityUtilities.loadMainActivity(this);
     }
 }

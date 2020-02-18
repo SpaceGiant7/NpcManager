@@ -2,22 +2,18 @@ package com.example.npcmanager.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+import com.example.npcmanager.Activities.Utilities.PersonListSelectorListener;
+import com.example.npcmanager.Activities.Utilities.PersonSelectorListener;
 import com.example.npcmanager.DataStructures.Location;
-import com.example.npcmanager.DataStructures.Person;
 import com.example.npcmanager.Models.ApplicationModels;
 import com.example.npcmanager.R;
 
 import java.util.ArrayList;
-
-import static androidx.core.content.ContextCompat.startActivity;
 
 public class FindByLocationActivity extends AppCompatActivity {
 

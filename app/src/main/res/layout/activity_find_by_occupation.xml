@@ -6,20 +6,53 @@
     android:layout_height="match_parent"
     tools:context=".Activities.FindByOccupationActivity">
 
+    <TextView
+        android:id="@+id/findByOccupationTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Find By Occupation"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@id/findByOccupationHorizontalGuideline20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Spinner
         android:id="@+id/findByOccupationOccupationSelector"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/findByOccupationHorizontalGuideline20"
+        app:layout_constraintStart_toStartOf="@id/findByOccupationVerticalGuideline20"
+        app:layout_constraintEnd_toEndOf="@id/findByOccupationVerticalGuideline80" />
 
     <ListView
         android:id="@+id/findByOccupationPersonList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="100dp"
-        app:layout_constraintBottom_toTopOf="@+id/findByOccupationOccupationSelector"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/findByOccupationOccupationSelector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/findByOccupationVerticalGuideline80"
+        app:layout_constraintStart_toStartOf="@id/findByOccupationVerticalGuideline20" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/findByOccupationVerticalGuideline20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/findByOccupationVerticalGuideline80"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/findByOccupationHorizontalGuideline20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,11 +3,13 @@ package com.example.npcmanager.Activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.provider.SyncStateContract;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.DataStructures.Location;
 import com.example.npcmanager.DataStructures.Person;
 import com.example.npcmanager.DataStructures.Quest;
@@ -16,12 +18,16 @@ import com.example.npcmanager.Models.LocationModel;
 import com.example.npcmanager.Models.PersonModel;
 import com.example.npcmanager.R;
 
+import java.util.Optional;
+
 public class AddQuestActivity extends AppCompatActivity {
+
+    private Optional<String> existingQuestName;
 
     EditText nameTextInput;
     Spinner personSpinner;
     Spinner locationSpinner;
-    EditText descriptionTextInput;
+    EditText detailsTextInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,25 +36,64 @@ public class AddQuestActivity extends AppCompatActivity {
         nameTextInput = findViewById(R.id.addQuestNameInput);
         personSpinner = findViewById(R.id.addQuestPersonSelector);
         locationSpinner = findViewById(R.id.addQuestLocationSelector);
-        descriptionTextInput = findViewById(R.id.addQuestDescriptionInput);
-        Button createButton = findViewById(R.id.addQuestCreate);
+        detailsTextInput = findViewById(R.id.addQuestDetailsInput);
+        Button createButton = findViewById(R.id.addQuestCreateButton);
+        Button deleteButton = findViewById(R.id.addQuestDeleteButton);
 
-        LocationModel locationModel = ApplicationModels.getLocationModel();
+        existingQuestName = getQuestNameMaybe();
+        populateInputs();
+
+        createButton.setOnClickListener(v -> saveButtonClicked());
+        deleteButton.setOnClickListener(v -> deleteButtonClicked());
+    }
+
+    private void populateInputs() {
+        if (existingQuestName.isPresent()) {
+            Quest quest = ApplicationModels.getQuestModel().findFirstQuest(existingQuestName.get());
+            populateInputs(
+                    quest.getQuestName(),
+                    Optional.of(quest.getQuestGiver()),
+                    quest.getReturnLocation(),
+                    quest.getDetails());
+        } else {
+            populateInputs(
+                    "",
+                    Optional.empty(),
+                    ApplicationModels.getLocationModel()
+                            .getLocation(Constants.NpcConstants.NONE).get(),
+                    ""
+            );
+        }
+    }
+
+    private void populateInputs(
+            String name,
+            Optional<Person> questGiverMaybe,
+            Location returnLocation,
+            String details) {
+
+        nameTextInput.setText(name);
         ArrayAdapter<Location> locationAdaptor = new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_item, locationModel.getAllLocations());
+                this, android.R.layout.simple_spinner_item,
+                ApplicationModels.getLocationModel().getAllLocations());
         locationSpinner.setAdapter(locationAdaptor);
         locationSpinner.setSelection(locationAdaptor.getPosition(
-                locationModel.getLocation(Constants.NpcConstants.NONE).get()));
+                returnLocation));
 
         PersonModel personModel = ApplicationModels.getPersonModel();
         ArrayAdapter<Person> personAdaptor = new ArrayAdapter<>(
                 this, android.R.layout.simple_spinner_item, personModel.getAllPeople());
         personSpinner.setAdapter(personAdaptor);
-//        personSpinner.setSelection(personAdaptor.getPosition(
-//                personModel.findFirstPerson(Constants.NpcConstants.NONE)));
+        questGiverMaybe.ifPresent(
+                person -> personSpinner.setSelection(personAdaptor.getPosition(person)));
+        detailsTextInput.setText(details);
 
+    }
 
-        createButton.setOnClickListener(v -> createQuest());
+    private Optional<String> getQuestNameMaybe() {
+        return Optional.ofNullable(getIntent().getExtras())
+                .flatMap(extras -> Optional.ofNullable(extras.get("name")))
+                .map(name -> (String) name);
     }
 
     private void createQuest() {
@@ -57,6 +102,17 @@ public class AddQuestActivity extends AppCompatActivity {
                         nameTextInput.getText().toString(),
                         (Person)personSpinner.getSelectedItem(),
                         (Location)locationSpinner.getSelectedItem(),
-                        descriptionTextInput.getText().toString()));
+                        detailsTextInput.getText().toString()));
+    }
+
+    private void saveButtonClicked() {
+        createQuest();
+        ActivityUtilities.loadMainActivity(this);
+    }
+
+    private void deleteButtonClicked() {
+        existingQuestName.ifPresent(
+                name -> ApplicationModels.getQuestModel().removeQuestIfExists(name));
+        ActivityUtilities.loadMainActivity(this);
     }
 }
