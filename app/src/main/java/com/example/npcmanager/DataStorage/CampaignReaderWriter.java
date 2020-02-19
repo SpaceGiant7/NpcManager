@@ -11,24 +11,34 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class CampaignReaderWriter {
 
-    public static CampaignReaderWriter INSTANCE = new CampaignReaderWriter();
-
     public static void save(String campaignName, Context context) {
-        INSTANCE.saveCampaign(campaignName, context);
+        saveCampaign(campaignName, context);
     }
 
     public static void load(String campaignName, Context context) {
-        INSTANCE.loadCampaign(campaignName, context);
+        loadCampaign(campaignName, context);
     }
 
-    private boolean saveCampaign(String campaignName, Context context) {
+    public static void delete(String campaignName, Context context) {
+        deleteCampaign(campaignName, context);
+    }
+
+    public static List<String> getExistingCampaigns(Context context) {
+        List<File> fileList = Arrays.asList(context.getFilesDir().listFiles());
+        return fileList.stream()
+                .map(File::getName)
+                .filter(n -> n.contains(".json"))
+                .map(n -> n.split(".json")[0])
+                .collect(Collectors.toList());
+    }
+
+    private static boolean saveCampaign(String campaignName, Context context) {
         String filename = campaignName + ".json";
         String jsonString = createJsonString();
         try {
@@ -41,7 +51,7 @@ public class CampaignReaderWriter {
         return true;
     }
 
-    private boolean loadCampaign(String campaignName, Context context) {
+    private static boolean loadCampaign(String campaignName, Context context) {
         String filename = campaignName + ".json";
 
         try {
@@ -61,14 +71,16 @@ public class CampaignReaderWriter {
         return true;
     }
 
-    public static List<String> getExistingCampaigns(Context context) {
-        List<File> fileList = Arrays.asList(context.getFilesDir().listFiles());
-        return fileList.stream()
-                .map(File::getName)
-                .filter(n -> n.contains(".json"))
-                .map(n -> n.split(".json")[0])
-                .collect(Collectors.toList());
+    private static void deleteCampaign(String campaignName, Context context) {
+        String filename = campaignName + ".json";
+        File[] files = context.getFilesDir().listFiles((dir, name) -> name.equals(filename));
+        if (files.length > 0) {
+            files[0].delete();
+        }
+
     }
+
+
 
     private static String createJsonString() {
         String jString = "";

@@ -3,7 +3,6 @@ package com.example.npcmanager.Activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.provider.SyncStateContract;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,7 +13,6 @@ import com.example.npcmanager.DataStructures.Location;
 import com.example.npcmanager.DataStructures.Person;
 import com.example.npcmanager.DataStructures.Quest;
 import com.example.npcmanager.Models.ApplicationModels;
-import com.example.npcmanager.Models.LocationModel;
 import com.example.npcmanager.Models.PersonModel;
 import com.example.npcmanager.R;
 
@@ -37,13 +35,13 @@ public class AddQuestActivity extends AppCompatActivity {
         personSpinner = findViewById(R.id.addQuestPersonSelector);
         locationSpinner = findViewById(R.id.addQuestLocationSelector);
         detailsTextInput = findViewById(R.id.addQuestDetailsInput);
-        Button createButton = findViewById(R.id.addQuestCreateButton);
+        Button saveButton = findViewById(R.id.addQuestSaveButton);
         Button deleteButton = findViewById(R.id.addQuestDeleteButton);
 
         existingQuestName = getQuestNameMaybe();
         populateInputs();
 
-        createButton.setOnClickListener(v -> saveButtonClicked());
+        saveButton.setOnClickListener(v -> saveButtonClicked());
         deleteButton.setOnClickListener(v -> deleteButtonClicked());
     }
 
@@ -97,6 +95,8 @@ public class AddQuestActivity extends AppCompatActivity {
     }
 
     private void createQuest() {
+        existingQuestName.ifPresent(
+                name -> ApplicationModels.getQuestModel().removeQuestIfExists(name));
         ApplicationModels.getQuestModel()
                 .addQuest( new Quest(
                         nameTextInput.getText().toString(),

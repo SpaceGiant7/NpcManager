@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.CreateCampaignActivity">
+
+    <TextView
+        android:id="@+id/createCampaignTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create New Campaign"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/createCampaignHorizontalGuideline20"
+        />
+
+    <EditText
+        android:id="@+id/createCampaignNameInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/createCampaignVerticalGuideline10"
+        app:layout_constraintEnd_toStartOf="@id/createCampaignEmbarkButton"
+        app:layout_constraintTop_toTopOf="@id/createCampaignHorizontalGuideline20"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Campaign Name" />
+
+    <Button
+        android:id="@+id/createCampaignEmbarkButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/createCampaignNameInput"
+        app:layout_constraintEnd_toEndOf="@id/createCampaignVerticalGuideline90"
+        app:layout_constraintTop_toTopOf="@id/createCampaignHorizontalGuideline20"
+        android:text="Embark!" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/createCampaignVerticalGuideline50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/createCampaignVerticalGuideline10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/createCampaignVerticalGuideline90"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/createCampaignHorizontalGuideline20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2" />
+</androidx.constraintlayout.widget.ConstraintLayout>

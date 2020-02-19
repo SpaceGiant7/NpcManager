@@ -59,7 +59,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="@id/viewQuestVerticalGuideline50"
         app:layout_constraintTop_toBottomOf="@id/viewQuestPersonTextLabel"
-        app:layout_constraintBottom_toTopOf="@id/viewQuestDescriptionTextLabel"
+        app:layout_constraintBottom_toTopOf="@id/viewQuestDetailsTextLabel"
         android:ems="10"
         android:gravity="center"
         android:text="Return Location" />
@@ -71,18 +71,18 @@
         app:layout_constraintStart_toStartOf="@id/viewQuestVerticalGuideline50"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/viewQuestPersonText"
-        app:layout_constraintBottom_toTopOf="@id/viewQuestDetailsText"
+        app:layout_constraintBottom_toTopOf="@id/viewQuestDetailsTextLabel"
         android:ems="10"
         android:text="Name" />
 
     <TextView
-        android:id="@+id/viewQuestDescriptionTextLabel"
+        android:id="@+id/viewQuestDetailsTextLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/viewQuestVerticalGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/viewQuestLocationTextLabel"
-        app:layout_constraintBottom_toTopOf="@id/viewQuestHorizontalGuideline75"
+        app:layout_constraintBottom_toTopOf="@id/viewQuestDetailsText"
         android:ems="10"
         android:gravity="center"
         android:text="Details" />
@@ -91,9 +91,9 @@
         android:id="@+id/viewQuestDetailsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/viewQuestVerticalGuideline50"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewQuestLocationText"
+        app:layout_constraintTop_toBottomOf="@id/viewQuestDetailsTextLabel"
         app:layout_constraintBottom_toTopOf="@id/viewQuestHorizontalGuideline75"
         android:ems="10"
         android:text="Name" />

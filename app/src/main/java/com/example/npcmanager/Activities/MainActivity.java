@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
     private void fillCampaignList() {
         ArrayAdapter<String> nameAdapter = new ArrayAdapter<>(
                 this, android.R.layout.simple_list_item_1,
-                new ArrayList<>(CampaignReaderWriter.INSTANCE.getExistingCampaigns(this)));
+                new ArrayList<>(CampaignReaderWriter.getExistingCampaigns(this)));
         campiagnList.setAdapter(nameAdapter);
 
     }
