@@ -16,7 +16,7 @@ public class LocationModel extends BaseModel<Location> {
         addItem(newLocation);
     }
 
-    public Optional<Location> getLocation(String locationName) {
+    public Optional<Location> getLocationMaybe(String locationName) {
         return list.stream()
                 .filter(t -> t.getName()
                     .equals(locationName))

@@ -17,6 +17,7 @@ public class ViewQuestActivity extends AppCompatActivity {
     private TextView questGiverTextView;
     private TextView locationTextView;
     private TextView detailsTextView;
+    private Button editButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,14 +27,24 @@ public class ViewQuestActivity extends AppCompatActivity {
         questGiverTextView = findViewById(R.id.viewQuestPersonText);
         locationTextView = findViewById(R.id.viewQuestLocationText);
         detailsTextView = findViewById(R.id.viewQuestDetailsText);
-        Button editButton = findViewById(R.id.viewQuestEditButton);
+        editButton = findViewById(R.id.viewQuestEditButton);
 
         String name = ActivityUtilities.getNameExtra(getIntent());
         setQuest(ApplicationModels.getQuestModel().findFirstQuest(name));
 
+        setOnClickListeners();
+    }
+
+    private void setOnClickListeners() {
         editButton.setOnClickListener(
                 v -> ActivityUtilities.loadActivityWithNameExtra(
                         this, AddQuestActivity.class, nameTextView.getText()));
+        questGiverTextView.setOnClickListener(
+                v -> ActivityUtilities.loadActivityWithNameExtra(
+                        this, ViewPersonActivity.class, questGiverTextView.getText()));
+        locationTextView.setOnClickListener(
+                v -> ActivityUtilities.loadActivityWithNameExtra(
+                        this, FindByLocationActivity.class, locationTextView.getText()));
     }
 
     public void setQuest(Quest quest) {

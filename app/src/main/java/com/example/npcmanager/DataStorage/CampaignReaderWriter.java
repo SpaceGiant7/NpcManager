@@ -80,8 +80,6 @@ public class CampaignReaderWriter {
 
     }
 
-
-
     private static String createJsonString() {
         String jString = "";
         Gson gson = new GsonBuilder().setPrettyPrinting().create();

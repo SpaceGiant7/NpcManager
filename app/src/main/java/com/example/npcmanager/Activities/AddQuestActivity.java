@@ -58,7 +58,7 @@ public class AddQuestActivity extends AppCompatActivity {
                     "",
                     Optional.empty(),
                     ApplicationModels.getLocationModel()
-                            .getLocation(Constants.NpcConstants.NONE).get(),
+                            .getLocationMaybe(Constants.NpcConstants.NONE).get(),
                     ""
             );
         }

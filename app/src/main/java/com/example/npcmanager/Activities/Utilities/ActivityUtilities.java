@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.npcmanager.Activities.MainActivity;
 
+import java.util.Optional;
+
 public class ActivityUtilities {
     private static String nameKey = "name";
 
@@ -24,6 +26,12 @@ public class ActivityUtilities {
 
     public static String getNameExtra(Intent intent) {
         return (String) intent.getExtras().get(nameKey);
+    }
+
+    public static Optional<String> getNameExtraMaybe(Intent intent) {
+        return Optional.ofNullable(intent.getExtras())
+                .flatMap(extras -> Optional.ofNullable(extras.get("name")))
+                .map(name -> (String) name);
     }
 }
 

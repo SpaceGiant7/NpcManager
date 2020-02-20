@@ -1,5 +1,8 @@
 package com.example.npcmanager.DataStructures;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public enum Occupation {
     BARBER( "Barber", "Cuts hair" ),
     BARTENDER( "Bartender", "Makes drinks at the local bar" ),
@@ -10,8 +13,16 @@ public enum Occupation {
     MERCHANT( "Merchant", "Sells general goods" ),
     MONK( "Monk", "Practices self deprecation, makes beer too" ),
     NONE( "None", "Doesn't work" ),
-    PREIST( "Preist", "Works in the church" ),
+    PRIEST( "Priest", "Works in the church" ),
     TANNER( "Tanner", "Works with leather" );
+
+    private static final Map<String, Occupation> BY_NAME = new HashMap<>();
+
+    static {
+        for (Occupation o : values()) {
+            BY_NAME.put(o.name, o);
+        }
+    }
 
     private final String name;
     private final String description;
@@ -24,5 +35,9 @@ public enum Occupation {
     @Override
     public String toString() {
         return name;
+    }
+
+    public static Occupation fromName(String name) {
+        return BY_NAME.get(name);
     }
 }

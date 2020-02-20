@@ -5,10 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -24,36 +22,80 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    ImageButton addButton;
+    ImageButton fileButton;
+    Button saveButton;
+    Button loadButton;
+    Button newCampaignButton;
+    Button deleteCampaignButton;
+    Button findByNameButton;
+    Button findByLocationButton;
+    Button findByOccupationButton;
+    Button findByOrganizationButton;
+    Button findByRaceButton;
+    Button addPersonButton;
+    Button addLocationButton;
+    Button addOrganizationButton;
+    Button addQuestButton;
     ListView questList;
     Spinner campiagnList;
+    LinearLayout fileMenu;
+    LinearLayout addMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        campiagnList = findViewById(R.id.mainCampaignSpinner);
+        getElementReferences();
         fillCampaignList();
-        ImageButton addButton = findViewById(R.id.addButton);
-        ImageButton fileButton = findViewById(R.id.fileButton);
-        Button saveButton = findViewById(R.id.saveButton);
-        Button loadButton = findViewById(R.id.loadButton);
-        Button findByNameButton = findViewById(R.id.mainFindByNameButton);
-        Button findByLocationButton = findViewById(R.id.mainFindByLocationButton);
-        Button findByOccupationButton = findViewById(R.id.mainFindByOccupationButton);
-        Button findByOrganizationButton = findViewById(R.id.mainFindByOrganizationButton);
-        Button findByRaceButton = findViewById(R.id.mainFindByRaceButton);
-        Button addPersonButton = findViewById(R.id.addPersonButton);
-        Button addLocationButton = findViewById(R.id.addLocationButton);
-        Button addOrganizationButton = findViewById(R.id.addOrganizationButton);
-        Button addQuestButton = findViewById(R.id.addQuestButton);
+        defineMenuListeners();
+        defineFileListeners();
+        defineAddObjectListeners();
+        defineSerachListeners();
+
+        questList.setOnItemClickListener(new QuestSelectorListener(this, ViewQuestActivity.class));
+    }
+
+    private void getElementReferences() {
+        campiagnList = findViewById(R.id.mainCampaignSpinner);
+        addButton = findViewById(R.id.addButton);
+        fileButton = findViewById(R.id.fileButton);
+        saveButton = findViewById(R.id.mainSaveButton);
+        loadButton = findViewById(R.id.mainLoadButton);
+        newCampaignButton = findViewById(R.id.mainNewCampaignButon);
+        deleteCampaignButton = findViewById(R.id.mainDeleteCampaignButton);
+        findByNameButton = findViewById(R.id.mainFindByNameButton);
+        findByLocationButton = findViewById(R.id.mainFindByLocationButton);
+        findByOccupationButton = findViewById(R.id.mainFindByOccupationButton);
+        findByOrganizationButton = findViewById(R.id.mainFindByOrganizationButton);
+        findByRaceButton = findViewById(R.id.mainFindByRaceButton);
+        addPersonButton = findViewById(R.id.mainAddPersonButton);
+        addLocationButton = findViewById(R.id.mainAddLocationButton);
+        addOrganizationButton = findViewById(R.id.mainAddOrganizationButton);
+        addQuestButton = findViewById(R.id.mainAddQuestButton);
         questList = findViewById(R.id.mainQuestListView);
-        final LinearLayout fileMenu = findViewById(R.id.fileMenu);
-        final LinearLayout addMenu = findViewById(R.id.addMenu);
+        fileMenu = findViewById(R.id.fileMenu);
+        addMenu = findViewById(R.id.addMenu);
+    }
 
-        fileButton.setOnClickListener(getDisableMenuListener(fileMenu));
-        addButton.setOnClickListener(getDisableMenuListener(addMenu));
+    private void defineSerachListeners() {
+        findByNameButton.setOnClickListener(v -> setActivityChange(FindByNameActivity.class));
+        findByLocationButton.setOnClickListener(v -> setActivityChange(FindByLocationActivity.class));
+        findByOccupationButton.setOnClickListener(v -> setActivityChange(FindByOccupationActivity.class));
+        findByOrganizationButton.setOnClickListener(v -> setActivityChange(FindByOrganizationActivity.class));
+        findByRaceButton.setOnClickListener(v -> setActivityChange(FindByRaceActivity.class));
+    }
 
+    private void defineAddObjectListeners() {
+        addPersonButton.setOnClickListener(v -> setActivityChange(AddPersonActivity.class));
+        addLocationButton.setOnClickListener(v -> setActivityChange(AddLocationActivity.class));
+        addOrganizationButton.setOnClickListener(v -> setActivityChange(AddOrganizationActivity.class));
+        addQuestButton.setOnClickListener(v -> setActivityChange(AddQuestActivity.class));
+    }
+
+    private void defineFileListeners() {
+        newCampaignButton.setOnClickListener(v -> setActivityChange(CreateCampaignActivity.class));
         saveButton.setOnClickListener(
                 v -> CampaignReaderWriter.save((String)campiagnList.getSelectedItem(), this));
         loadButton.setOnClickListener(
@@ -61,19 +103,14 @@ public class MainActivity extends AppCompatActivity {
                     CampaignReaderWriter.load((String)campiagnList.getSelectedItem(), this);
                     refreshActivity();
                 });
+        deleteCampaignButton.setOnClickListener(
+                v -> CampaignReaderWriter.delete(
+                        (String)campiagnList.getSelectedItem(), this));
+    }
 
-        addPersonButton.setOnClickListener(v -> setActivityChange(AddPersonActivity.class));
-        addLocationButton.setOnClickListener(v -> setActivityChange(AddLocationActivity.class));
-        addOrganizationButton.setOnClickListener(v -> setActivityChange(AddOrganizationActivity.class));
-        addQuestButton.setOnClickListener(v -> setActivityChange(AddQuestActivity.class));
-
-        findByNameButton.setOnClickListener(v -> setActivityChange(FindByNameActivity.class));
-        findByLocationButton.setOnClickListener(v -> setActivityChange(FindByLocationActivity.class));
-        findByOccupationButton.setOnClickListener(v -> setActivityChange(FindByOccupationActivity.class));
-        findByOrganizationButton.setOnClickListener(v -> setActivityChange(FindByOrganizationActivity.class));
-        findByRaceButton.setOnClickListener(v -> setActivityChange(FindByRaceActivity.class));
-
-        questList.setOnItemClickListener(new QuestSelectorListener(this, ViewQuestActivity.class));
+    private void defineMenuListeners() {
+        fileButton.setOnClickListener(getDisableMenuListener(fileMenu));
+        addButton.setOnClickListener(getDisableMenuListener(addMenu));
     }
 
     @Override

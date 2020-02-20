@@ -25,6 +25,7 @@ public class ViewPersonActivity extends AppCompatActivity {
     private TextView organizationTextInput;
     private CheckBox deceasedCheckbox;
     private TextView descriptionTextInput;
+    private Button editButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,14 +39,31 @@ public class ViewPersonActivity extends AppCompatActivity {
         organizationTextInput = findViewById(R.id.viewPersonOrganizationText);
         deceasedCheckbox = findViewById(R.id.viewPersonDeceasedCheckbox);
         descriptionTextInput = findViewById(R.id.viewPersonDescriptionText);
-        Button editButton = findViewById(R.id.viewPersonEditButton);
+        editButton = findViewById(R.id.viewPersonEditButton);
 
         String name = ActivityUtilities.getNameExtra(getIntent());
         setPerson(ApplicationModels.getPersonModel().findFirstPerson(name));
 
+        setOnClickListeners();
+    }
+
+    private void setOnClickListeners() {
         editButton.setOnClickListener(
                 v -> ActivityUtilities.loadActivityWithNameExtra(
                         this, AddPersonActivity.class, nameTextInput.getText()));
+        raceTextInput.setOnClickListener(
+                v -> ActivityUtilities.loadActivityWithNameExtra(
+                        this, FindByRaceActivity.class, raceTextInput.getText()));
+        locationTextInput.setOnClickListener(
+                v -> ActivityUtilities.loadActivityWithNameExtra(
+                        this, FindByLocationActivity.class, locationTextInput.getText()));
+        occupationTextInput.setOnClickListener(
+                v -> ActivityUtilities.loadActivityWithNameExtra(
+                        this, FindByOccupationActivity.class, occupationTextInput.getText()));
+        organizationTextInput.setOnClickListener(
+                v -> ActivityUtilities.loadActivityWithNameExtra(
+                        this, FindByOrganizationActivity.class, organizationTextInput.getText()));
+
     }
 
     public void setPerson(Person person) {

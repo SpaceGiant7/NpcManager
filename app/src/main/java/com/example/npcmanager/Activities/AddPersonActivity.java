@@ -50,10 +50,10 @@ public class AddPersonActivity extends AppCompatActivity {
         organizationSelector = findViewById(R.id.addPersonOrganizationSelector);
         deceasedCheckBox = findViewById(R.id.addPersonDeceasedCheckBox);
         descriptionTextInput = findViewById(R.id.addPersonDescriptionTextInput);
-        Button saveButton = findViewById(R.id.addPersonCreateButton);
+        Button saveButton = findViewById(R.id.addPersonSaveButton);
         Button deleteButton = findViewById(R.id.addPersonDeleteButton);
 
-        existingPersonName = getPersonNameMaybe();
+        existingPersonName = ActivityUtilities.getNameExtraMaybe(getIntent());
         populateInputs();
 
         saveButton.setOnClickListener(v -> saveButtonClicked());
@@ -70,15 +70,17 @@ public class AddPersonActivity extends AppCompatActivity {
                     person.getHome(),
                     person.getOccpation(),
                     person.getOrganization(),
+                    person.getIsDeceased(),
                     person.getDescription());
         } else {
             populateInputs(
                     "",
                     Race.UNKNOWN,
                     Gender.UNKNOWN,
-                    ApplicationModels.getLocationModel().getLocation(NpcConstants.NONE).get(),
+                    ApplicationModels.getLocationModel().getLocationMaybe(NpcConstants.NONE).get(),
                     Occupation.NONE,
-                    ApplicationModels.getOrganizationModel().getOrganization(NpcConstants.NONE).get(),
+                    ApplicationModels.getOrganizationModel().getOrganizationMaybe(NpcConstants.NONE).get(),
+                    false,
                     "");
         }
     }
@@ -90,6 +92,7 @@ public class AddPersonActivity extends AppCompatActivity {
             Location location,
             Occupation occupation,
             Organization organization,
+            boolean deceased,
             String description) {
         nameTextInput.setText(name);
         ArrayAdapter<Race> raceAdaptor = new ArrayAdapter<>(
@@ -118,14 +121,11 @@ public class AddPersonActivity extends AppCompatActivity {
                 this, android.R.layout.simple_spinner_item, organizationModel.getAllOrganizations());
         organizationSelector.setAdapter(organizationAdaptor);
         organizationSelector.setSelection(organizationAdaptor.getPosition(organization));
+        deceasedCheckBox.setChecked(deceased);
         descriptionTextInput.setText(description);
     }
 
-    private Optional<String> getPersonNameMaybe() {
-        return Optional.ofNullable(getIntent().getExtras())
-                .flatMap(extras -> Optional.ofNullable(extras.get("name")))
-                .map(name -> (String) name);
-    }
+
 
     private void createPerson() {
         existingPersonName.ifPresent(
@@ -138,7 +138,7 @@ public class AddPersonActivity extends AppCompatActivity {
                         (Location)homeSelector.getSelectedItem(),
                         (Occupation)occupationSelector.getSelectedItem(),
                         (Organization)organizationSelector.getSelectedItem(),
-                    deceasedCheckBox.isSelected(),
+                    deceasedCheckBox.isChecked(),
                     descriptionTextInput.getText().toString()));
     }
 

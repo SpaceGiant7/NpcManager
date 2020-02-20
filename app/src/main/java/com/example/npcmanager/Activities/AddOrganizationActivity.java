@@ -32,7 +32,7 @@ public class AddOrganizationActivity extends AppCompatActivity {
                 this, android.R.layout.simple_spinner_item, locationModel.getAllLocations());
         organizationLocationSelector.setAdapter(locationAdaptor);
         organizationLocationSelector.setSelection(locationAdaptor.getPosition(
-                locationModel.getLocation(Constants.NpcConstants.NONE).get()));
+                locationModel.getLocationMaybe(Constants.NpcConstants.NONE).get()));
 
         createButton.setOnClickListener(v -> addOrganization());
     }

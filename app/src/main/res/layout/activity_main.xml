@@ -57,25 +57,25 @@
         tools:visibility="invisible">
 
         <Button
-            android:id="@+id/addPersonButton"
+            android:id="@+id/mainAddPersonButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/person" />
 
         <Button
-            android:id="@+id/addQuestButton"
+            android:id="@+id/mainAddQuestButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/quest" />
 
         <Button
-            android:id="@+id/addLocationButton"
+            android:id="@+id/mainAddLocationButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/location" />
 
         <Button
-            android:id="@+id/addOrganizationButton"
+            android:id="@+id/mainAddOrganizationButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/organization" />
@@ -93,16 +93,28 @@
         tools:visibility="invisible">
 
         <Button
-            android:id="@+id/saveButton"
+            android:id="@+id/mainNewCampaignButon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/New" />
+
+        <Button
+            android:id="@+id/mainSaveButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/save" />
 
         <Button
-            android:id="@+id/loadButton"
+            android:id="@+id/mainLoadButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/load" />
+
+        <Button
+            android:id="@+id/mainDeleteCampaignButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/delete" />
     </LinearLayout>
 
     <TextView

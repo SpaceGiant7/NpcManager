@@ -26,7 +26,7 @@ public class OrganizationModel extends BaseModel<Organization> {
         return getNumberOfItems();
     }
 
-    public Optional<Organization> getOrganization( String organizationName ) {
+    public Optional<Organization> getOrganizationMaybe(String organizationName ) {
         return list.stream()
                 .filter( o -> o.getOrganizationName()
                     .equals( organizationName ) )
@@ -38,6 +38,6 @@ public class OrganizationModel extends BaseModel<Organization> {
     }
 
     public boolean organizationExists( String organizationName ) {
-        return getOrganization( organizationName ).isPresent();
+        return getOrganizationMaybe( organizationName ).isPresent();
     }
 }

@@ -161,10 +161,11 @@
         android:id="@+id/viewPersonDeceasedCheckbox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/viewPersonGuideline50"
+        android:clickable="false"
+        app:layout_constraintBottom_toTopOf="@id/viewPersonDescriptionText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewPersonOrganizationText"
-        app:layout_constraintBottom_toTopOf="@id/viewPersonDescriptionText" />
+        app:layout_constraintStart_toStartOf="@id/viewPersonGuideline50"
+        app:layout_constraintTop_toBottomOf="@id/viewPersonOrganizationText" />
 
 
     <TextView

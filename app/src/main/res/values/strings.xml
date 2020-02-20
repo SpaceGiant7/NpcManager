@@ -19,5 +19,7 @@
     <string name="quest">Quest</string>
     <string name="race">Race</string>
     <string name="save">Save</string>
+    <string name="New">New</string>
+    <string name="delete">Delete</string>
 
 </resources>

@@ -1,5 +1,8 @@
 package com.example.npcmanager.DataStructures;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public enum Race {
     DRAGONBORN( "Dragonborn", "Dragonborn look very much like dragons standing"
             + "erect in humanoid form, though they lack wings or a tail." ),
@@ -30,6 +33,15 @@ public enum Race {
             + "is the lot of the tiefling" ),
     UNKNOWN( "Unknown", "You just don't know" );
 
+
+    private static final Map<String, Race> BY_NAME = new HashMap<>();
+
+    static {
+        for (Race r : values()) {
+            BY_NAME.put(r.name, r);
+        }
+    }
+
     private final String name;
     private final String description;
 
@@ -50,4 +62,6 @@ public enum Race {
     public String toString() {
         return name;
     }
+
+    public static Race fromName(String name) { return BY_NAME.get(name); }
 }

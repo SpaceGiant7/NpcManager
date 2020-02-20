@@ -122,7 +122,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/addPersonOccupationTextField"
-        app:layout_constraintBottom_toTopOf="@id/addPersonDeceasedCheckBox"
+        app:layout_constraintBottom_toTopOf="@id/addPersonDeceasedTextField"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/addPersonVerticalGuideline50"
         android:gravity="center"
@@ -138,25 +138,35 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center" />
 
+    <TextView
+        android:id="@+id/addPersonDeceasedTextField"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/addPersonOrganizationTextField"
+        app:layout_constraintBottom_toTopOf="@id/addPersonDescriptionTextField"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/addPersonVerticalGuideline50"
+        android:gravity="center"
+        android:text="Deceased" />
+
     <CheckBox
         android:id="@+id/addPersonDeceasedCheckBox"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/addPersonOrganizationSelector"
-        app:layout_constraintBottom_toTopOf="@id/addPersonDescriptionTextInput"
+        app:layout_constraintBottom_toTopOf="@id/addPersonDescriptionTextField"
         app:layout_constraintStart_toStartOf="@id/addPersonVerticalGuideline50"
         app:layout_constraintEnd_toEndOf="parent"
-        android:gravity="center"
-        android:text="Deceased" />
+        android:gravity="center" />
 
     <TextView
         android:id="@+id/addPersonDescriptionTextField"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/addPersonDeceasedCheckBox"
-        app:layout_constraintBottom_toTopOf="@id/addPersonHorizontalGuideline80"
+        app:layout_constraintTop_toBottomOf="@id/addPersonDeceasedTextField"
+        app:layout_constraintBottom_toTopOf="@id/addPersonDescriptionTextInput"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/addPersonVerticalGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center"
         android:text="Description" />
 
@@ -164,19 +174,19 @@
         android:id="@+id/addPersonDescriptionTextInput"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/addPersonDeceasedCheckBox"
+        app:layout_constraintTop_toBottomOf="@id/addPersonDescriptionTextField"
         app:layout_constraintBottom_toTopOf="@id/addPersonHorizontalGuideline80"
-        app:layout_constraintStart_toStartOf="@id/addPersonVerticalGuideline50"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center"
         android:hint="Description"
         android:inputType="textPersonName" />
 
     <Button
-        android:id="@+id/addPersonCreateButton"
+        android:id="@+id/addPersonSaveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create"
+        android:text="Save"
         app:layout_constraintTop_toBottomOf="@id/addPersonHorizontalGuideline80"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -189,7 +199,7 @@
         android:text="Delete"
         app:layout_constraintTop_toBottomOf="@id/addPersonHorizontalGuideline80"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/addPersonCreateButton"
+        app:layout_constraintEnd_toStartOf="@id/addPersonSaveButton"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
