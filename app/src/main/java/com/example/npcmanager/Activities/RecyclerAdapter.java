@@ -10,16 +10,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.npcmanager.DataStructures.BaseItem;
-import com.example.npcmanager.Models.BaseModel;
 import com.example.npcmanager.R;
 
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.RecyclerViewHolder> {
-    private List<BaseItem> cardItems;
+    private List<? extends BaseItem> cardItems;
+    private Supplier<List<? extends BaseItem>> listSupplier;
     private Consumer<BaseItem> itemConsumer;
-    private BaseModel itemModel;
 
     public static class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
@@ -34,9 +34,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
         }
     }
 
-    public RecyclerAdapter(BaseModel model, Consumer<BaseItem> itemConsumer) {
-        this.itemModel = model;
-        this.cardItems = model.getList();
+    public RecyclerAdapter(Supplier<List<? extends BaseItem>> listSupplier, Consumer<BaseItem> itemConsumer) {
+        this.listSupplier = listSupplier;
+        this.cardItems = listSupplier.get();
         this.itemConsumer = itemConsumer;
     }
 
@@ -59,7 +59,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
     }
 
     public void reloadItems() {
-        cardItems = itemModel.getList();
+        cardItems = listSupplier.get();
         notifyDataSetChanged();
     }
 

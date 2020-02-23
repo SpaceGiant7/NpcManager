@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.npcmanager.Activities.Utilities.QuestSelectorListener;
 import com.example.npcmanager.DataStorage.CampaignReaderWriter;
+import com.example.npcmanager.DataStructures.Campaign;
 import com.example.npcmanager.DataStructures.Quest;
 import com.example.npcmanager.Models.ApplicationModels;
 import com.example.npcmanager.R;
@@ -132,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void fillCampaignList() {
-        ArrayAdapter<String> nameAdapter = new ArrayAdapter<>(
+        ArrayAdapter<Campaign> nameAdapter = new ArrayAdapter<>(
                 this, android.R.layout.simple_list_item_1,
                 new ArrayList<>(CampaignReaderWriter.getExistingCampaigns(this)));
         campiagnList.setAdapter(nameAdapter);

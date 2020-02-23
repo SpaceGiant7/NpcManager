@@ -41,7 +41,7 @@ public abstract class ViewItemActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true); // Maybe not needed
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new RecyclerAdapter(
-                getModel(),
+                () -> getModel().getList(),
                 item -> selectItem(item.getIdentifier()));
         recyclerView.setAdapter(adapter);
     }

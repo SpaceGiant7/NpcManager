@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.ViewCampaignsActivity">
+
+    <TextView
+        android:id="@+id/viewCampaignTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/viewCampaignHorizontalGuideline20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Campaigns"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/viewCampaignList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="@id/viewCampaignHorizontalGuideline20"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/viewCampaignVerticalGuideline50"
+        android:background="@color/colorCardBackground">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <EditText
+        android:id="@+id/viewCampaignName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        app:layout_constraintTop_toTopOf="@id/viewCampaignHorizontalGuideline20"
+        app:layout_constraintStart_toStartOf="@id/viewCampaignVerticalGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:inputType="textPersonName"/>
+
+    <Button
+        android:id="@+id/viewCampaignSaveButton"
+        style="@style/ButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/viewCampaignName"
+        app:layout_constraintStart_toStartOf="@id/viewCampaignVerticalGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Save" />
+
+    <Button
+        android:id="@+id/viewCampaignDeleteButton"
+        style="@style/ButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/viewCampaignSaveButton"
+        app:layout_constraintStart_toStartOf="@id/viewCampaignVerticalGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Delete" />
+
+    <Button
+        android:id="@+id/viewCampaignLoadButton"
+        style="@style/ButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/viewCampaignDeleteButton"
+        app:layout_constraintStart_toStartOf="@id/viewCampaignVerticalGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Load" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/viewCampaignVerticalGuideline50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/viewCampaignHorizontalGuideline20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

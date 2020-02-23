@@ -9,7 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.ViewLocationsActivity"></activity>
+        <activity android:name=".Activities.ViewCampaignsActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activities.ViewLocationsActivity" />
         <activity android:name=".Activities.CreateCampaignActivity" />
         <activity android:name=".Activities.ViewQuestActivity" />
         <activity android:name=".Activities.ViewPersonActivity" />
@@ -26,13 +32,7 @@
         <activity
             android:name=".Activities.AddQuestActivity"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".Activities.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".Activities.MainActivity" />
         <activity android:name=".Activities.ViewOrganizationsActivity" />
     </application>
 

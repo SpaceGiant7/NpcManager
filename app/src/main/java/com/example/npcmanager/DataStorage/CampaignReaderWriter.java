@@ -2,6 +2,7 @@ package com.example.npcmanager.DataStorage;
 
 import android.content.Context;
 
+import com.example.npcmanager.DataStructures.Campaign;
 import com.example.npcmanager.Models.ApplicationModels;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -26,15 +27,31 @@ public class CampaignReaderWriter {
     }
 
     public static void delete(String campaignName, Context context) {
-        deleteCampaign(campaignName, context);
+        String filename = campaignName + ".json";
+        File[] files = context.getFilesDir().listFiles((dir, name) -> name.equals(filename));
+        if (files.length > 0) {
+            files[0].delete();
+        }
     }
 
-    public static List<String> getExistingCampaigns(Context context) {
+    public static void rename(String oldCampaignName, String newCampaignName, Context context) {
+        String oldFileName = oldCampaignName + ".json";
+        String newFileName = newCampaignName + ".json";
+        File[] files = context.getFilesDir().listFiles(
+                (dir, name) -> name.equals(oldFileName));
+        if(files.length > 0) {
+            File newFile = new File(context.getFilesDir(), newFileName);
+            files[0].renameTo(newFile);
+        }
+    }
+
+    public static List<Campaign> getExistingCampaigns(Context context) {
         List<File> fileList = Arrays.asList(context.getFilesDir().listFiles());
         return fileList.stream()
                 .map(File::getName)
                 .filter(n -> n.contains(".json"))
                 .map(n -> n.split(".json")[0])
+                .map(n -> Campaign.of(n))
                 .collect(Collectors.toList());
     }
 
@@ -49,8 +66,6 @@ public class CampaignReaderWriter {
             return false;
         }
         return true;
-
-
     }
 
     private static boolean loadCampaign(String campaignName, Context context) {
@@ -69,14 +84,6 @@ public class CampaignReaderWriter {
             return false;
         }
         return true;
-    }
-
-    private static void deleteCampaign(String campaignName, Context context) {
-        String filename = campaignName + ".json";
-        File[] files = context.getFilesDir().listFiles((dir, name) -> name.equals(filename));
-        if (files.length > 0) {
-            files[0].delete();
-        }
     }
 
     private static String createJsonString() {
