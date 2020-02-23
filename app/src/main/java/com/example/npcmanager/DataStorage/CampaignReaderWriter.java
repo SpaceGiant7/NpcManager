@@ -50,9 +50,13 @@ public class CampaignReaderWriter {
         return fileList.stream()
                 .map(File::getName)
                 .filter(n -> n.contains(".json"))
-                .map(n -> n.split(".json")[0])
+                .map(CampaignReaderWriter::splitFileName)
                 .map(n -> Campaign.of(n))
                 .collect(Collectors.toList());
+    }
+
+    private static String splitFileName(String fileName) {
+        return fileName.replace(".json", "");
     }
 
     private static boolean saveCampaign(String campaignName, Context context) {

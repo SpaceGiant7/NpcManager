@@ -17,9 +17,9 @@ import java.util.Optional;
 public class ViewCampaignsActivity extends AppCompatActivity {
 
     protected Optional<String> selectedCampaign = Optional.empty();
+    RecyclerAdapter adapter;
     private TextView name;
     private RecyclerView recyclerView;
-    RecyclerAdapter adapter;
     private Button saveButton;
     private Button deleteButton;
     private Button loadButton;
@@ -65,11 +65,16 @@ public class ViewCampaignsActivity extends AppCompatActivity {
     }
 
     void clickSave() {
-       selectedCampaign.ifPresent(this::saveCampaign);
+        saveCampaign();
+        clearSelectedCampaign();
     }
 
-    private void saveCampaign(String oldCampaignName) {
-        CampaignReaderWriter.rename(oldCampaignName, name.getText().toString(), this);
+    private void saveCampaign() {
+        if (selectedCampaign.isPresent()) {
+            CampaignReaderWriter.rename(selectedCampaign.get(), name.getText().toString(), this);
+        } else {
+            CampaignReaderWriter.save(name.getText().toString(), this);
+        }
         adapter.reloadItems();
     }
 
@@ -85,6 +90,6 @@ public class ViewCampaignsActivity extends AppCompatActivity {
 
     private void loadCampaign(String name) {
         CampaignReaderWriter.load(name, this);
-        ActivityUtilities.loadMainActivity(this);
+        ActivityUtilities.loadMainActivityWithCampaignName(this, name);
     }
 }

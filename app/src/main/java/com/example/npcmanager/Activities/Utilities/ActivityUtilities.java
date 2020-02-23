@@ -17,6 +17,13 @@ public class ActivityUtilities {
         fromActivity.startActivity(intent);
     }
 
+    public static void loadMainActivityWithCampaignName(AppCompatActivity fromActivity, String name) {
+        Intent intent = new Intent(fromActivity, MainActivity.class);
+        intent.putExtra(nameKey, name);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        fromActivity.startActivity(intent);
+    }
+
     public static void loadActivityWithNameExtra(
             AppCompatActivity fromActivity, Class cls, CharSequence name) {
         Intent intent = new Intent(fromActivity, cls);
