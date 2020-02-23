@@ -58,24 +58,28 @@
 
         <Button
             android:id="@+id/mainAddPersonButton"
+            style="@style/ButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/person" />
 
         <Button
             android:id="@+id/mainAddQuestButton"
+            style="@style/ButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/quest" />
 
         <Button
             android:id="@+id/mainAddLocationButton"
+            style="@style/ButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/location" />
 
         <Button
             android:id="@+id/mainAddOrganizationButton"
+            style="@style/ButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/organization" />
@@ -94,24 +98,28 @@
 
         <Button
             android:id="@+id/mainNewCampaignButon"
+            style="@style/ButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/New" />
 
         <Button
             android:id="@+id/mainSaveButton"
+            style="@style/ButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/save" />
 
         <Button
             android:id="@+id/mainLoadButton"
+            style="@style/ButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/load" />
 
         <Button
             android:id="@+id/mainDeleteCampaignButton"
+            style="@style/ButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/delete" />
@@ -131,6 +139,7 @@
 
     <Button
         android:id="@+id/mainFindByNameButton"
+        style="@style/ButtonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintEnd_toStartOf="@+id/mainFindByRaceButton"
@@ -141,6 +150,7 @@
 
     <Button
         android:id="@+id/mainFindByRaceButton"
+        style="@style/ButtonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintEnd_toStartOf="@+id/mainFindByLocationButton"
@@ -151,6 +161,7 @@
 
     <Button
         android:id="@+id/mainFindByLocationButton"
+        style="@style/ButtonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -161,6 +172,7 @@
 
     <Button
         android:id="@+id/mainFindByOccupationButton"
+        style="@style/ButtonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintEnd_toStartOf="@id/mainFindByOrganizationButton"
@@ -171,6 +183,7 @@
 
     <Button
         android:id="@+id/mainFindByOrganizationButton"
+        style="@style/ButtonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"

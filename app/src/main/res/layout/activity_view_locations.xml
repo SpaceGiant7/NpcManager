@@ -24,7 +24,9 @@
         app:layout_constraintTop_toTopOf="@id/viewLocationHorizontalGuideline20"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/viewLocationVerticalGuideline50">
+        app:layout_constraintEnd_toEndOf="@id/viewLocationVerticalGuideline50"
+        android:background="@color/colorCardBackground">
+
     </androidx.recyclerview.widget.RecyclerView>
 
     <TextView
@@ -47,6 +49,7 @@
 
     <Button
         android:id="@+id/viewLocationSaveButton"
+        style="@style/ButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/viewLocationDescription"
@@ -56,6 +59,7 @@
 
     <Button
         android:id="@+id/viewLocationDeleteButton"
+        style="@style/ButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/viewLocationSaveButton"
@@ -65,6 +69,7 @@
 
     <Button
         android:id="@+id/viewLocationFindByButton"
+        style="@style/ButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/viewLocationDeleteButton"

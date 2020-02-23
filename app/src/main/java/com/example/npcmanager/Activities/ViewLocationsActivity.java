@@ -37,11 +37,18 @@ public class ViewLocationsActivity extends AppCompatActivity {
         locationList.setHasFixedSize(true); // Maybe not needed
         layoutManager = new LinearLayoutManager(this);
         adapter = new RecyclerAdapter(
-                ApplicationModels.getLocationModel().getList());
+                ApplicationModels.getLocationModel().getList(),
+                location -> selectLocation(location.getIdentifier()));
 
         locationList.setLayoutManager(layoutManager);
         locationList.setAdapter(adapter);
+    }
 
-
+    void selectLocation(String locationName) {
+        ApplicationModels.getLocationModel().getLocationMaybe(locationName)
+                .ifPresent(l -> {
+                    name.setText(l.getName());
+                    description.setText(l.getDescription());
+        });
     }
 }

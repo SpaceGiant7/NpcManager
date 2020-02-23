@@ -1,7 +1,5 @@
 package com.example.npcmanager.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +9,8 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.npcmanager.Activities.Utilities.QuestSelectorListener;
 import com.example.npcmanager.DataStorage.CampaignReaderWriter;
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void defineSerachListeners() {
         findByNameButton.setOnClickListener(v -> setActivityChange(FindByNameActivity.class));
-        findByLocationButton.setOnClickListener(v -> setActivityChange(FindByLocationActivity.class));
+        findByLocationButton.setOnClickListener(v -> setActivityChange(ViewLocationsActivity.class));
         findByOccupationButton.setOnClickListener(v -> setActivityChange(FindByOccupationActivity.class));
         findByOrganizationButton.setOnClickListener(v -> setActivityChange(FindByOrganizationActivity.class));
         findByRaceButton.setOnClickListener(v -> setActivityChange(FindByRaceActivity.class));
