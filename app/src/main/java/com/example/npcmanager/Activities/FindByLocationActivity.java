@@ -1,11 +1,11 @@
 package com.example.npcmanager.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.Activities.Utilities.PersonListSelectorListener;
@@ -46,7 +46,7 @@ public class FindByLocationActivity extends AppCompatActivity {
                         personList,
                         item -> new ArrayList<>(ApplicationModels.getPersonModel().findPeople(item))));
 
-        locationMaybe.flatMap(name -> ApplicationModels.getLocationModel().getLocationMaybe(name))
+        locationMaybe.flatMap(name -> ApplicationModels.getLocationModel().findFirstLocationMaybe(name))
                 .ifPresent(location -> locationSelector.setSelection(
                                 locationAdapter.getPosition(location)));
     }

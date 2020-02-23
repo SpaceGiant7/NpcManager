@@ -5,10 +5,13 @@ import com.example.npcmanager.DataStructures.BaseItem;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class BaseModel<T extends BaseItem> {
+import Constants.NpcConstants;
+
+public abstract class BaseModel<T extends BaseItem> {
     private static final Logger LOGGER = Logger.getLogger(BaseModel.class.getName());
     List<T> list;
 
@@ -20,14 +23,33 @@ public class BaseModel<T extends BaseItem> {
         return list;
     }
 
+    public List<T> getListWithNone() {
+        List<T> newList = new ArrayList<T>(list);
+        newList.add(0, getNone());
+        return newList;
+    }
+
+    public Optional<T> getItemMaybe(String identifier) {
+        return getList().stream()
+                .filter(t -> t.getIdentifier()
+                        .equals(identifier))
+                .findFirst();
+    }
+
+    protected abstract T getNone();
+
     protected void addItem(T newItem) {
-        if (!itemExists(newItem)) {
+        if (canItemBeAdded(newItem)) {
             list.add(newItem);
+            list.sort(BaseModel::compareItems);
             logAdd(newItem);
         } else {
             logFailedAdd(newItem);
         }
+    }
 
+    private boolean canItemBeAdded(T item) {
+        return !itemExists(item) && !item.getIdentifier().equals(NpcConstants.NONE);
     }
 
     protected void removeItem(T item) {
@@ -37,6 +59,11 @@ public class BaseModel<T extends BaseItem> {
         } else {
             logFailedRemove(item);
         }
+    }
+
+    private static int compareItems(BaseItem item1, BaseItem item2) {
+        return item1.getIdentifier().toLowerCase().compareTo(
+                item2.getIdentifier().toLowerCase());
     }
 
     protected Boolean itemExists(T item) {
@@ -66,4 +93,5 @@ public class BaseModel<T extends BaseItem> {
     private void logFailedRemove(T item) {
         LOGGER.log(Level.INFO, String.format("Failed to remove %s from model: %s", item.getClass(), item));
     }
+
 }

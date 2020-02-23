@@ -1,54 +1,98 @@
 package com.example.npcmanager.Activities;
 
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import com.example.npcmanager.DataStructures.Location;
+import com.example.npcmanager.Models.ApplicationModelUpdater;
 import com.example.npcmanager.Models.ApplicationModels;
+import com.example.npcmanager.Models.BaseModel;
 import com.example.npcmanager.R;
 
-public class ViewLocationsActivity extends AppCompatActivity {
+public class ViewLocationsActivity extends ViewItemActivity {
 
-
-    private RecyclerView locationList;
-    private RecyclerView.Adapter adapter;
-    private RecyclerView.LayoutManager layoutManager;
     private TextView name;
     private TextView description;
-    private Button saveButton;
-    private Button deleteButton;
-    private Button findByButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_locations);
-        locationList = findViewById(R.id.viewLocationList);
         name = findViewById(R.id.viewLocationName);
         description = findViewById(R.id.viewLocationDescription);
-        saveButton = findViewById(R.id.viewLocationSaveButton);
-        deleteButton = findViewById(R.id.viewLocationDeleteButton);
-        findByButton = findViewById(R.id.viewLocationFindByButton);
-
-        locationList.setHasFixedSize(true); // Maybe not needed
-        layoutManager = new LinearLayoutManager(this);
-        adapter = new RecyclerAdapter(
-                ApplicationModels.getLocationModel().getList(),
-                location -> selectLocation(location.getIdentifier()));
-
-        locationList.setLayoutManager(layoutManager);
-        locationList.setAdapter(adapter);
     }
 
-    void selectLocation(String locationName) {
-        ApplicationModels.getLocationModel().getLocationMaybe(locationName)
-                .ifPresent(l -> {
-                    name.setText(l.getName());
-                    description.setText(l.getDescription());
-        });
+
+    @Override
+    protected void setItem(String item) {
+        ApplicationModels.getLocationModel().findFirstLocationMaybe(item)
+                .ifPresent(this::setLocation);
+
+    }
+
+    private void setLocation(Location location) {
+        name.setText(location.getName());
+        description.setText(location.getDescription());
+    }
+
+    @Override
+    protected BaseModel getModel() {
+        return ApplicationModels.getLocationModel();
+    }
+
+    @Override
+    protected void clearSelection() {
+        name.setText("");
+        description.setText("");
+    }
+
+    private Location createLocation() {
+        return Location.of(
+                name.getText().toString(),
+                description.getText().toString());
+    }
+
+    @Override
+    protected void createItem() {
+        ApplicationModelUpdater.addLocation(createLocation());
+    }
+
+    @Override
+    protected void replaceItem(String oldItem) {
+        ApplicationModelUpdater.replaceLocation(oldItem, createLocation());
+    }
+
+    @Override
+    protected void removeItem(String item) {
+        ApplicationModelUpdater.removeLocation(item);
+    }
+
+    @Override
+    protected int getSaveButtonId() {
+        return R.id.viewLocationSaveButton;
+    }
+
+    @Override
+    protected int getDeleteButtonId() {
+        return R.id.viewLocationDeleteButton;
+    }
+
+    @Override
+    protected int getFindByButtonId() {
+        return R.id.viewLocationFindByButton;
+    }
+
+    @Override
+    protected int getContentView() {
+        return R.layout.activity_view_locations;
+    }
+
+    @Override
+    protected int getRecyclerViewId() {
+        return R.id.viewLocationList;
+    }
+
+    @Override
+    protected Class getFindByActivityClass() {
+        return FindByLocationActivity.class;
     }
 }

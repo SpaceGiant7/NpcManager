@@ -9,7 +9,10 @@ public class LocationModel extends BaseModel {
 
     public LocationModel() {
         super();
-        addLocation(Location.None());
+    }
+
+    protected Location getNone() {
+        return Location.None();
     }
 
     public void addLocation(Location newLocation) {
@@ -17,10 +20,10 @@ public class LocationModel extends BaseModel {
     }
 
     public void removeLocationIfExists(String locationName) {
-        getLocationMaybe(locationName).ifPresent(this::removeItem);
+        findFirstLocationMaybe(locationName).ifPresent(this::removeItem);
     }
 
-    public Optional<Location> getLocationMaybe(String locationName) {
+    public Optional<Location> findFirstLocationMaybe(String locationName) {
         return getAllLocations().stream()
                 .filter(t -> t.getIdentifier()
                         .equals(locationName))

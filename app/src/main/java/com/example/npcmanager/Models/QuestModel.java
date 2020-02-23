@@ -12,6 +12,10 @@ public class QuestModel extends BaseModel{
         super();
     }
 
+    protected Quest getNone() {
+        return Quest.None();
+    }
+
     public void addQuest( Quest newQuest) {
         addItem(newQuest);
     }

@@ -39,7 +39,6 @@ public class ApplicationModels {
 
     public static void setOrganizationList(List<Organization> organizations) {
         INSTANCE.organizationModel.replaceList(organizations);
-        INSTANCE.organizationModel.addOrganization(Organization.None());
     }
 
     public static PersonModel getPersonModel() {
@@ -52,7 +51,6 @@ public class ApplicationModels {
 
     public static void setPersonList(List<Person> people) {
         INSTANCE.personModel.replaceList(people);
-        INSTANCE.personModel.addPerson(Person.None());
     }
 
     public static LocationModel getLocationModel() {
@@ -65,7 +63,6 @@ public class ApplicationModels {
 
     public static void setLocationList(List<Location> locations) {
         INSTANCE.locationModel.replaceList(locations);
-        INSTANCE.locationModel.addLocation(Location.None());
     }
 
     public static QuestModel getQuestModel() {

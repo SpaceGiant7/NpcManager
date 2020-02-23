@@ -10,7 +10,10 @@ public class OrganizationModel extends BaseModel{
 
     public OrganizationModel() {
         super();
-        addOrganization(Organization.None());
+    }
+
+    protected Organization getNone() {
+        return Organization.None();
     }
 
     public void addOrganization(Organization newOrganization) {

@@ -15,7 +15,10 @@ import java.util.stream.Collectors;
 public class PersonModel extends BaseModel{
     public PersonModel() {
         super();
-        addPerson(Person.None());
+    }
+
+    protected Person getNone() {
+        return Person.None();
     }
 
     public void addPerson(Person newPerson) {

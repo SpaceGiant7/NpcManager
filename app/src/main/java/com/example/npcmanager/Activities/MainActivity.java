@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         findByNameButton.setOnClickListener(v -> setActivityChange(FindByNameActivity.class));
         findByLocationButton.setOnClickListener(v -> setActivityChange(ViewLocationsActivity.class));
         findByOccupationButton.setOnClickListener(v -> setActivityChange(FindByOccupationActivity.class));
-        findByOrganizationButton.setOnClickListener(v -> setActivityChange(FindByOrganizationActivity.class));
+        findByOrganizationButton.setOnClickListener(v -> setActivityChange(ViewOrganizationsActivity.class));
         findByRaceButton.setOnClickListener(v -> setActivityChange(FindByRaceActivity.class));
     }
 

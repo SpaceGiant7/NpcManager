@@ -2,6 +2,8 @@ package com.example.npcmanager.DataStructures;
 
 import java.util.Objects;
 
+import Constants.NpcConstants;
+
 public class Quest implements BaseItem{
     private String questName;
     private Person questGiver;
@@ -13,6 +15,10 @@ public class Quest implements BaseItem{
         this.questGiver = questGiver;
         this.returnLocation = returnLocation;
         this.details = details;
+    }
+
+    public static Quest None() {
+        return new Quest(NpcConstants.NONE, Person.None(), Location.None(), "");
     }
 
     public void setQuestName( String questName ) {
