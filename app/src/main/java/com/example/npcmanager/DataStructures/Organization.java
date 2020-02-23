@@ -1,21 +1,29 @@
 package com.example.npcmanager.DataStructures;
 
-public class Organization {
+import Constants.NpcConstants;
 
-    private String organizationName;
+public class Organization implements BaseItem{
+
+    private String name;
     private Location location;
+    private String description;
 
-    public Organization( String organizationName, Location location ) {
-        this.organizationName = organizationName;
+    public Organization(String name, Location location, String description) {
+        this.name = name;
         this.location = location;
+        this.description = description;
     }
 
-    public String getOrganizationName() {
-        return organizationName;
+    public static Organization None() {
+        return new Organization(NpcConstants.NONE, Location.None(), "");
     }
 
-    public void setOrganizationName(String organizationName) {
-        this.organizationName = organizationName;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Location getLocation() {
@@ -26,8 +34,20 @@ public class Organization {
         this.location = location;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String toString() {
-        return organizationName;
+        return name;
+    }
+
+    public String getIdentifier() {
+        return name;
     }
 
     @Override
@@ -39,7 +59,7 @@ public class Organization {
             return false;
 
         Organization otherOrganization = (Organization)other;
-        return organizationName.equals( otherOrganization.organizationName );
+        return name.equals( otherOrganization.name);
     }
 
 }

@@ -1,19 +1,19 @@
 package com.example.npcmanager.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.DataStructures.Location;
 import com.example.npcmanager.DataStructures.Person;
 import com.example.npcmanager.DataStructures.Quest;
+import com.example.npcmanager.Models.ApplicationModelUpdater;
 import com.example.npcmanager.Models.ApplicationModels;
-import com.example.npcmanager.Models.PersonModel;
 import com.example.npcmanager.R;
 
 import java.util.Optional;
@@ -50,15 +50,14 @@ public class AddQuestActivity extends AppCompatActivity {
             Quest quest = ApplicationModels.getQuestModel().findFirstQuest(existingQuestName.get());
             populateInputs(
                     quest.getQuestName(),
-                    Optional.of(quest.getQuestGiver()),
+                    quest.getQuestGiver(),
                     quest.getReturnLocation(),
                     quest.getDetails());
         } else {
             populateInputs(
                     "",
-                    Optional.empty(),
-                    ApplicationModels.getLocationModel()
-                            .getLocationMaybe(Constants.NpcConstants.NONE).get(),
+                    Person.None(),
+                    Location.None(),
                     ""
             );
         }
@@ -66,7 +65,7 @@ public class AddQuestActivity extends AppCompatActivity {
 
     private void populateInputs(
             String name,
-            Optional<Person> questGiverMaybe,
+            Person questGiver,
             Location returnLocation,
             String details) {
 
@@ -78,12 +77,10 @@ public class AddQuestActivity extends AppCompatActivity {
         locationSpinner.setSelection(locationAdaptor.getPosition(
                 returnLocation));
 
-        PersonModel personModel = ApplicationModels.getPersonModel();
         ArrayAdapter<Person> personAdaptor = new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_item, personModel.getAllPeople());
+                this, android.R.layout.simple_spinner_item, ApplicationModels.getPersonModel().getAllPeople());
         personSpinner.setAdapter(personAdaptor);
-        questGiverMaybe.ifPresent(
-                person -> personSpinner.setSelection(personAdaptor.getPosition(person)));
+        personSpinner.setSelection(personAdaptor.getPosition(questGiver));
         detailsTextInput.setText(details);
 
     }
@@ -95,14 +92,17 @@ public class AddQuestActivity extends AppCompatActivity {
     }
 
     private void createQuest() {
-        existingQuestName.ifPresent(
-                name -> ApplicationModels.getQuestModel().removeQuestIfExists(name));
-        ApplicationModels.getQuestModel()
-                .addQuest( new Quest(
-                        nameTextInput.getText().toString(),
-                        (Person)personSpinner.getSelectedItem(),
-                        (Location)locationSpinner.getSelectedItem(),
-                        detailsTextInput.getText().toString()));
+        Quest newQuest = new Quest(
+                nameTextInput.getText().toString(),
+                (Person) personSpinner.getSelectedItem(),
+                (Location) locationSpinner.getSelectedItem(),
+                detailsTextInput.getText().toString());
+
+        if(existingQuestName.isPresent()) {
+            ApplicationModelUpdater.replaceQuest(existingQuestName.get(), newQuest);
+        } else {
+            ApplicationModelUpdater.addQuest(newQuest);
+        }
     }
 
     private void saveButtonClicked() {
@@ -112,7 +112,7 @@ public class AddQuestActivity extends AppCompatActivity {
 
     private void deleteButtonClicked() {
         existingQuestName.ifPresent(
-                name -> ApplicationModels.getQuestModel().removeQuestIfExists(name));
+                ApplicationModelUpdater::removeQuest);
         ActivityUtilities.loadMainActivity(this);
     }
 }

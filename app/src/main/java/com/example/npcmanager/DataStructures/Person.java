@@ -1,9 +1,8 @@
 package com.example.npcmanager.DataStructures;
 
+import Constants.NpcConstants;
 
-import com.example.npcmanager.DataStorage.PersonStorage;
-
-public class Person {
+public class Person implements BaseItem{
     private String name;
     private Race race;
     private Gender gender;
@@ -13,11 +12,18 @@ public class Person {
     private boolean isDeceased;
     private String description;
 
-    public Person( String name, Race race, Gender gender, Location home,
-                   Occupation occupation, Organization organization, boolean isDeceased, String description ) {
+    public Person(
+            String name,
+            Race race,
+            Gender gender,
+            Location home,
+            Occupation occupation,
+            Organization organization,
+            boolean isDeceased,
+            String description) {
         this.name = name;
-        this.home = home;
         this.race = race;
+        this.home = home;
         this.gender = gender;
         this.occupation = occupation;
         this.organization = organization;
@@ -25,15 +31,16 @@ public class Person {
         this.description = description;
     }
 
-    public Person( PersonStorage personStorage ) {
-        this.name = personStorage.getName();
-        this.home = personStorage.getHome();
-        this.race = personStorage.getRace();
-        this.gender = personStorage.getGender();
-        this.occupation = personStorage.getOccpation();
-        this.organization = personStorage.getOrganization();
-        this.isDeceased = personStorage.getIsDeceased();
-        this.description = personStorage.getDescription();
+    public static Person None() {
+        return new Person(
+                NpcConstants.NONE,
+                Race.UNKNOWN,
+                Gender.UNKNOWN,
+                Location.None(),
+                Occupation.NONE,
+                Organization.None(),
+                false,
+                "");
     }
 
     public String getName() {
@@ -68,35 +75,35 @@ public class Person {
         return description;
     }
 
-    public void setName( String newName ) {
+    public void setName(String newName) {
         name = newName;
     }
 
-    public void setRace( Race newRace ) {
+    public void setRace(Race newRace) {
         race = newRace;
     }
 
-    public void setGender( Gender newGender ) {
+    public void setGender(Gender newGender) {
         gender = newGender;
     }
 
-    public void setHome( Location newHome ) {
+    public void setHome(Location newHome) {
         home = newHome;
     }
 
-    public void setOccupation( Occupation newOccupation ) {
+    public void setOccupation(Occupation newOccupation) {
         occupation = newOccupation;
     }
 
-    public void setOrganization( Organization newOrganization ) {
+    public void setOrganization(Organization newOrganization) {
         organization = newOrganization;
     }
 
-    public void setIsDeceased( boolean newIsDeceased ) {
+    public void setIsDeceased(boolean newIsDeceased) {
         isDeceased = newIsDeceased;
     }
 
-    public void setDescription( String newDescription ) {
+    public void setDescription(String newDescription) {
         description = newDescription;
     }
 
@@ -133,19 +140,20 @@ public class Person {
     }
 
     @Override
-    public boolean equals( Object other ) {
-        if ( this == other )
-            return true;
+    public boolean equals(Object other) {
+        if (this == other) return true;
 
-        if ( !(other instanceof Person ) )
-            return false;
+        if (!(other instanceof Person)) return false;
 
-        Person otherPerson = (Person)other;
-        return name.equals( otherPerson.getName() ) &&
-                home.equals( otherPerson.getHome() );
+        Person otherPerson = (Person) other;
+        return name.equals(otherPerson.getName()) && home.equals(otherPerson.getHome());
     }
 
     public String toString() {
+        return name;
+    }
+
+    public String getIdentifier() {
         return name;
     }
 }

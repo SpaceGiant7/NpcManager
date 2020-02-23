@@ -1,14 +1,11 @@
 package com.example.npcmanager.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.DataStructures.Person;
@@ -72,7 +69,7 @@ public class ViewPersonActivity extends AppCompatActivity {
         genderTextInput.setText(person.getGender().toString());
         locationTextInput.setText(person.getHome().getName());
         occupationTextInput.setText(person.getOccpation().toString());
-        organizationTextInput.setText(person.getOrganization().getOrganizationName());
+        organizationTextInput.setText(person.getOrganization().getName());
         deceasedCheckbox.setChecked(person.getIsDeceased());
         descriptionTextInput.setText(person.getDescription());
     }

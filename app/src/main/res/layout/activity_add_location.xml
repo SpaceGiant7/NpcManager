@@ -6,6 +6,61 @@
     android:layout_height="match_parent"
     tools:context=".Activities.AddLocationActivity">
 
+    <TextView
+        android:id="@+id/addLocationTitle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@id/addLocationHorizontalGuideline20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"
+        android:text="Add Location" />
+
+    <TextView
+        android:id="@+id/addLocationNameText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="@id/addLocationVerticalGuideline50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/addLocationHorizontalGuideline20"
+        app:layout_constraintBottom_toBottomOf="@id/addLocationNameInput"
+        android:gravity="center"
+        android:text="@string/name" />
+
+    <EditText
+        android:id="@+id/addLocationNameInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/addLocationVerticalGuideline50"
+        app:layout_constraintTop_toTopOf="@id/addLocationHorizontalGuideline20"
+        android:ems="10"
+        android:hint="@string/name"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/addLocationDescriptionText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/addLocationVerticalGuideline80"
+        app:layout_constraintStart_toStartOf="@id/addLocationVerticalGuideline20"
+        app:layout_constraintTop_toBottomOf="@id/addLocationNameInput"
+        android:gravity="center"
+        android:text="Description" />
+
+    <EditText
+        android:id="@+id/addLocationDescriptionInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/addLocationVerticalGuideline80"
+        app:layout_constraintStart_toStartOf="@id/addLocationVerticalGuideline20"
+        app:layout_constraintTop_toBottomOf="@id/addLocationDescriptionText"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Description" />
+
     <Button
         android:id="@+id/addLocationCreate"
         android:layout_width="match_parent"
@@ -16,43 +71,31 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/addLocationHorizontalGuideline20"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintGuide_percent="0.2" />
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/addLocationVerticalGuideline20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
 
-            <TextView
-                android:id="@+id/addLocationName"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="Location Name" />
-        </LinearLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/addLocationVerticalGuideline50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/addLocationLocationName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:hint="Name" />
-        </LinearLayout>
-
-    </LinearLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/addLocationVerticalGuideline80"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8" />
 </androidx.constraintlayout.widget.ConstraintLayout>

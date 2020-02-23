@@ -1,41 +1,34 @@
 package com.example.npcmanager.Models;
 
-import Constants.NpcConstants;
 import com.example.npcmanager.DataStructures.Location;
 
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 
-public class LocationModel extends BaseModel<Location> {
+public class LocationModel extends BaseModel {
 
     public LocationModel() {
         super();
-        addLocation( Location.of( NpcConstants.NONE ) );
+        addLocation(Location.None());
     }
 
     public void addLocation(Location newLocation) {
         addItem(newLocation);
     }
 
+    public void removeLocationIfExists(String locationName) {
+        getLocationMaybe(locationName).ifPresent(this::removeItem);
+    }
+
     public Optional<Location> getLocationMaybe(String locationName) {
-        return list.stream()
-                .filter(t -> t.getName()
-                    .equals(locationName))
+        return getAllLocations().stream()
+                .filter(t -> t.getIdentifier()
+                        .equals(locationName))
                 .findFirst();
     }
 
     public List<Location> getAllLocations() {
-        return list;
+        return getList();
     }
 
-    public void removeLocation(String locationName ) {
-        removeItem( Location.of( locationName ) );
-    }
-
-    public int getNumberOfLocations() {
-        return getNumberOfItems();
-    }
-
-    public Boolean locationExists(String locationName ) {
-        return itemExists( Location.of( locationName ) );
-    }
 }

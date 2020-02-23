@@ -6,85 +6,82 @@
     android:layout_height="match_parent"
     tools:context=".Activities.AddOrganizationActivity">
 
-    <LinearLayout
-        android:id="@+id/addOrganizationNameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:orientation="horizontal"
+    <TextView
+        android:id="@+id/addOrganizationTitle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/addOrganizationHorizontalGuideline20"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:baselineAligned="false">
+        android:gravity="center"
+        android:textSize="30sp"
+        android:text="Add Organization" />
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="horizontal">
+    <TextView
+        android:id="@+id/addOrganizationNameText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="@id/addOrganizationVerticalGuideline50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/addOrganizationHorizontalGuideline20"
+        app:layout_constraintBottom_toBottomOf="@id/addOrganizationNameInput"
+        android:gravity="center"
+        android:text="Name" />
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Name" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/addOrganizationNameInput"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:hint="Name" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/addOrganizationLocationLayout"
-        android:layout_width="match_parent"
+    <EditText
+        android:id="@+id/addOrganizationNameInput"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/addOrganizationVerticalGuideline50"
+        app:layout_constraintTop_toTopOf="@id/addOrganizationHorizontalGuideline20"
+        android:gravity="center"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/addOrganizationLocationText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="@id/addOrganizationVerticalGuideline50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addOrganizationNameText"
+        app:layout_constraintBottom_toBottomOf="@id/addOrganizationLocationSelector"
+        android:gravity="center"
+        android:text="Location" />
+
+    <Spinner
+        android:id="@+id/addOrganizationLocationSelector"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/addOrganizationNameInput"
+        app:layout_constraintStart_toStartOf="@id/addOrganizationVerticalGuideline50"
+        app:layout_constraintTop_toBottomOf="@id/addOrganizationNameInput"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/addOrganizationDescriptionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addOrganizationNameLayout"
-        android:baselineAligned="false">
+        app:layout_constraintTop_toBottomOf="@id/addOrganizationLocationText"
+        android:gravity="center"
+        android:text="Description" />
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Location" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <Spinner
-                android:id="@+id/addOrganizationLocationSelector"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-    </LinearLayout>
+    <EditText
+        android:id="@+id/addOrganizationDescriptionInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addOrganizationDescriptionText"
+        android:gravity="center"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:hint="Description" />
 
     <Button
         android:id="@+id/addOrganizationCreate"
@@ -95,4 +92,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/addOrganizationVerticalGuideline50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/addOrganizationHorizontalGuideline20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,12 +1,13 @@
 package com.example.npcmanager.Models;
 
+import com.example.npcmanager.DataStructures.Location;
+import com.example.npcmanager.DataStructures.Person;
 import com.example.npcmanager.DataStructures.Quest;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
-public class QuestModel extends BaseModel<Quest> {
+public class QuestModel extends BaseModel{
     public QuestModel() {
         super();
     }
@@ -36,8 +37,19 @@ public class QuestModel extends BaseModel<Quest> {
         return getList();
     }
 
-    public int getNumberOfQuests() {
-        return getNumberOfItems();
+    public void replaceLocation(String oldLocationName, Location newLocation) {
+        getAllQuests()
+                .stream()
+                .filter(q -> q.getReturnLocation().getName().equals(oldLocationName))
+                .forEach(q -> q.setReturnLocation(newLocation));
     }
+
+    public void replacePerson(String oldPersonName, Person newPerson) {
+        getAllQuests()
+                .stream()
+                .filter(q -> q.getQuestGiver().getName().equals(oldPersonName))
+                .forEach(q -> q.setQuestGiver(newPerson));
+    }
+
 
 }

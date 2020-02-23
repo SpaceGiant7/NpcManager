@@ -1,13 +1,13 @@
 package com.example.npcmanager.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.DataStructures.Gender;
@@ -16,14 +16,13 @@ import com.example.npcmanager.DataStructures.Occupation;
 import com.example.npcmanager.DataStructures.Organization;
 import com.example.npcmanager.DataStructures.Person;
 import com.example.npcmanager.DataStructures.Race;
+import com.example.npcmanager.Models.ApplicationModelUpdater;
 import com.example.npcmanager.Models.ApplicationModels;
 import com.example.npcmanager.Models.LocationModel;
 import com.example.npcmanager.Models.OrganizationModel;
 import com.example.npcmanager.R;
 
 import java.util.Optional;
-
-import Constants.NpcConstants;
 
 public class AddPersonActivity extends AppCompatActivity {
 
@@ -77,9 +76,9 @@ public class AddPersonActivity extends AppCompatActivity {
                     "",
                     Race.UNKNOWN,
                     Gender.UNKNOWN,
-                    ApplicationModels.getLocationModel().getLocationMaybe(NpcConstants.NONE).get(),
+                    Location.None(),
                     Occupation.NONE,
-                    ApplicationModels.getOrganizationModel().getOrganizationMaybe(NpcConstants.NONE).get(),
+                    Organization.None(),
                     false,
                     "");
         }
@@ -128,18 +127,21 @@ public class AddPersonActivity extends AppCompatActivity {
 
 
     private void createPerson() {
-        existingPersonName.ifPresent(
-                name -> ApplicationModels.getPersonModel().removePersonIfExists(name));
-        ApplicationModels.getPersonModel().addPerson(
-                new Person(
-                    nameTextInput.getText().toString(),
-                        (Race)raceSelector.getSelectedItem(),
-                        (Gender)genderSelector.getSelectedItem(),
-                        (Location)homeSelector.getSelectedItem(),
-                        (Occupation)occupationSelector.getSelectedItem(),
-                        (Organization)organizationSelector.getSelectedItem(),
-                    deceasedCheckBox.isChecked(),
-                    descriptionTextInput.getText().toString()));
+        Person newPerson = new Person(
+                nameTextInput.getText().toString(),
+                (Race)raceSelector.getSelectedItem(),
+                (Gender)genderSelector.getSelectedItem(),
+                (Location)homeSelector.getSelectedItem(),
+                (Occupation)occupationSelector.getSelectedItem(),
+                (Organization)organizationSelector.getSelectedItem(),
+                deceasedCheckBox.isChecked(),
+                descriptionTextInput.getText().toString());
+
+        if( existingPersonName.isPresent()) {
+            ApplicationModelUpdater.replacePerson(existingPersonName.get(), newPerson);
+        } else {
+            ApplicationModelUpdater.addPerson(newPerson);
+        }
     }
 
     private void saveButtonClicked() {
@@ -149,7 +151,7 @@ public class AddPersonActivity extends AppCompatActivity {
 
     private void deleteButtonClicked() {
         existingPersonName.ifPresent(
-                name -> ApplicationModels.getPersonModel().removePersonIfExists(name));
+                ApplicationModelUpdater::removePerson);
         ActivityUtilities.loadMainActivity(this);
     }
 }

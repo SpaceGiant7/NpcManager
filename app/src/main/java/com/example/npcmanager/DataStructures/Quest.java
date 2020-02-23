@@ -1,10 +1,8 @@
 package com.example.npcmanager.DataStructures;
 
-import com.example.npcmanager.DataStorage.QuestStorage;
-
 import java.util.Objects;
 
-public class Quest {
+public class Quest implements BaseItem{
     private String questName;
     private Person questGiver;
     private Location returnLocation;
@@ -15,13 +13,6 @@ public class Quest {
         this.questGiver = questGiver;
         this.returnLocation = returnLocation;
         this.details = details;
-    }
-
-    public Quest( QuestStorage questStorage ) {
-        this.questName = questStorage.getQuestName();
-        this.questGiver = new Person(questStorage.getQuestGiver());
-        this.returnLocation = questStorage.getReturnLocation();
-        this.details = questStorage.getDetails();
     }
 
     public void setQuestName( String questName ) {
@@ -90,5 +81,9 @@ public class Quest {
     @Override
     public int hashCode() {
         return Objects.hash( questName );
+    }
+
+    public String getIdentifier() {
+        return questName;
     }
 }

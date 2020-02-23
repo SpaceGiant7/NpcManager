@@ -1,7 +1,9 @@
 package com.example.npcmanager.Models;
 
-import com.example.npcmanager.DataStructures.*;
-import Constants.NpcConstants;
+import com.example.npcmanager.DataStructures.Location;
+import com.example.npcmanager.DataStructures.Organization;
+import com.example.npcmanager.DataStructures.Person;
+import com.example.npcmanager.DataStructures.Quest;
 
 import java.util.List;
 
@@ -20,38 +22,37 @@ public class ApplicationModels {
         questModel = new QuestModel();
     }
 
-    public static void loadModels( ApplicationModels model ) {
-        setOrganizationModel( model.organizationModel );
-        setPersonModel( model.personModel );
-        setLocationModel( model.locationModel);
-        setQuestModel( model.questModel );
+    public static void loadModels(ApplicationModels model) {
+        setOrganizationModel(model.organizationModel);
+        setPersonModel(model.personModel);
+        setLocationModel(model.locationModel);
+        setQuestModel(model.questModel);
     }
 
     public static OrganizationModel getOrganizationModel() {
         return INSTANCE.organizationModel;
     }
 
-    public static void setOrganizationModel( OrganizationModel organizationModel ) {
+    public static void setOrganizationModel(OrganizationModel organizationModel) {
         INSTANCE.organizationModel = organizationModel;
     }
 
-    public static void setOrganizationList( List<Organization> organizations ) {
-        INSTANCE.organizationModel.replaceList( organizations );
-        if ( !INSTANCE.organizationModel.organizationExists( NpcConstants.NONE ) )
-            INSTANCE.organizationModel.addOrganization( new Organization(
-                    NpcConstants.NONE, Location.of( NpcConstants.NONE ) ) );
+    public static void setOrganizationList(List<Organization> organizations) {
+        INSTANCE.organizationModel.replaceList(organizations);
+        INSTANCE.organizationModel.addOrganization(Organization.None());
     }
 
     public static PersonModel getPersonModel() {
         return INSTANCE.personModel;
     }
 
-    public static void setPersonModel( PersonModel personModel ) {
+    public static void setPersonModel(PersonModel personModel) {
         INSTANCE.personModel = personModel;
     }
 
-    public static void setPersonList( List<Person> people ) {
-        INSTANCE.personModel.replaceList( people );
+    public static void setPersonList(List<Person> people) {
+        INSTANCE.personModel.replaceList(people);
+        INSTANCE.personModel.addPerson(Person.None());
     }
 
     public static LocationModel getLocationModel() {
@@ -64,19 +65,20 @@ public class ApplicationModels {
 
     public static void setLocationList(List<Location> locations) {
         INSTANCE.locationModel.replaceList(locations);
-        if ( !INSTANCE.locationModel.locationExists( NpcConstants.NONE ) )
-            INSTANCE.locationModel.addLocation( Location.of( NpcConstants.NONE ) );
+        INSTANCE.locationModel.addLocation(Location.None());
     }
 
     public static QuestModel getQuestModel() {
         return INSTANCE.questModel;
     }
 
-    public static void setQuestModel( QuestModel questModel ) {
+    public static void setQuestModel(QuestModel questModel) {
         INSTANCE.questModel = questModel;
     }
 
-    public static void setQuestList( List<Quest> quests ) {
-        INSTANCE.questModel.replaceList( quests );
+    public static void setQuestList(List<Quest> quests) {
+        INSTANCE.questModel.replaceList(quests);
     }
+
+
 }

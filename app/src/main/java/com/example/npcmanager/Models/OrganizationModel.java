@@ -1,43 +1,46 @@
 package com.example.npcmanager.Models;
 
-import Constants.NpcConstants;
 import com.example.npcmanager.DataStructures.Location;
 import com.example.npcmanager.DataStructures.Organization;
 
 import java.util.List;
 import java.util.Optional;
 
-public class OrganizationModel extends BaseModel<Organization> {
+public class OrganizationModel extends BaseModel{
 
     public OrganizationModel() {
         super();
-        addOrganization( new Organization( NpcConstants.NONE, Location.of( NpcConstants.NONE ) ) );
+        addOrganization(Organization.None());
     }
 
-    public void addOrganization( Organization newOrganization ) {
-        addItem( newOrganization );
+    public void addOrganization(Organization newOrganization) {
+        addItem(newOrganization);
     }
 
-    public void removeOrganization( Organization organization ) {
-        removeItem( organization );
+    public void removeOrganizationIfExists(String organizationName) {
+        findFirstOrganizationMaybe(organizationName).ifPresent(this::removeItem);
     }
 
-    public int getNumberOfOrganizations() {
-        return getNumberOfItems();
-    }
-
-    public Optional<Organization> getOrganizationMaybe(String organizationName ) {
-        return list.stream()
-                .filter( o -> o.getOrganizationName()
-                    .equals( organizationName ) )
+    public Optional<Organization> findFirstOrganizationMaybe(String organizationName) {
+        return getAllOrganizations()
+                .stream()
+                .filter(o -> o.getName()
+                        .equals(organizationName))
                 .findFirst();
     }
 
     public List<Organization> getAllOrganizations() {
-        return list;
+        return getList();
     }
 
-    public boolean organizationExists( String organizationName ) {
-        return getOrganizationMaybe( organizationName ).isPresent();
+    public boolean organizationExists(String organizationName) {
+        return findFirstOrganizationMaybe(organizationName).isPresent();
+    }
+
+    public void replaceLocation(String oldLocationName, Location newLocation) {
+        getAllOrganizations()
+                .stream()
+                .filter(o -> o.getLocation().getName().equals(oldLocationName))
+                .forEach(o -> o.setLocation(newLocation));
     }
 }

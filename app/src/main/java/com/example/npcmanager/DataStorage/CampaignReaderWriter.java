@@ -49,6 +49,8 @@ public class CampaignReaderWriter {
             return false;
         }
         return true;
+
+
     }
 
     private static boolean loadCampaign(String campaignName, Context context) {
@@ -56,16 +58,14 @@ public class CampaignReaderWriter {
 
         try {
             BufferedReader bufferedReader =
-                    new BufferedReader(
-                            new InputStreamReader(
-                                    context.openFileInput(filename)));
+                    new BufferedReader(new InputStreamReader(context.openFileInput(filename)));
             StringBuilder sb = new StringBuilder();
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 sb.append(line);
             }
             parseJsonString(sb.toString());
-        } catch( IOException ioException) {
+        } catch (IOException ioException) {
             return false;
         }
         return true;
@@ -77,7 +77,6 @@ public class CampaignReaderWriter {
         if (files.length > 0) {
             files[0].delete();
         }
-
     }
 
     private static String createJsonString() {
@@ -97,7 +96,4 @@ public class CampaignReaderWriter {
         ApplicationModels.setPersonList(transferObject.getPeople());
         ApplicationModels.setQuestList(transferObject.getQuests());
     }
-
-
-
 }
