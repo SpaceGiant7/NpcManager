@@ -19,13 +19,13 @@
         <activity android:name=".Activities.CreateCampaignActivity" />
         <activity android:name=".Activities.ViewQuestActivity" />
         <activity android:name=".Activities.ViewPersonActivity" />
-        <activity android:name=".Activities.FindByNameActivity" />
-        <activity android:name=".Activities.FindByRaceActivity" />
-        <activity android:name=".Activities.FindByLocationActivity" />
-        <activity android:name=".Activities.FindByOrganizationActivity" />
+        <activity android:name=".Activities.FindBy.FindByNameActivity" />
+        <activity android:name=".Activities.FindBy.FindByRaceActivity" />
+        <activity android:name=".Activities.FindBy.FindByLocationActivity" />
+        <activity android:name=".Activities.FindBy.FindByOrganizationActivity" />
         <activity android:name=".Activities.AddOrganizationActivity" />
         <activity android:name=".Activities.AddLocationActivity" />
-        <activity android:name=".Activities.FindByOccupationActivity" />
+        <activity android:name=".Activities.FindBy.FindByOccupationActivity" />
         <activity
             android:name=".Activities.AddPersonActivity"
             android:windowSoftInputMode="adjustPan" />

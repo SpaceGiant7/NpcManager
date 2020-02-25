@@ -1,15 +1,16 @@
-package com.example.npcmanager.Activities;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.npcmanager.Activities.FindBy;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.Activities.Utilities.PersonListSelectorListener;
 import com.example.npcmanager.Activities.Utilities.PersonSelectorListener;
+import com.example.npcmanager.Activities.ViewPersonActivity;
 import com.example.npcmanager.DataStructures.Occupation;
 import com.example.npcmanager.Models.ApplicationModels;
 import com.example.npcmanager.R;

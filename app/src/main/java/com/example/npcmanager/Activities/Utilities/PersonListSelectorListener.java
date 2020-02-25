@@ -47,7 +47,7 @@ public class PersonListSelectorListener<T> implements AdapterView.OnItemSelected
     private void resetPersonList() {
         ArrayAdapter<Person> occupationAdaptor = new ArrayAdapter<>(
                 context, android.R.layout.simple_list_item_1,
-                ApplicationModels.getPersonModel().getAllPeople());
+                ApplicationModels.getPersonModel().getAllItems());
         personList.setAdapter(occupationAdaptor);
     }
 }

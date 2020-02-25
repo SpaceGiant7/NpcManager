@@ -47,7 +47,7 @@ public class AddQuestActivity extends AppCompatActivity {
 
     private void populateInputs() {
         if (existingQuestName.isPresent()) {
-            Quest quest = ApplicationModels.getQuestModel().findFirstQuest(existingQuestName.get());
+            Quest quest = ApplicationModels.getQuestModel().getQuest(existingQuestName.get());
             populateInputs(
                     quest.getQuestName(),
                     quest.getQuestGiver(),
@@ -72,13 +72,13 @@ public class AddQuestActivity extends AppCompatActivity {
         nameTextInput.setText(name);
         ArrayAdapter<Location> locationAdaptor = new ArrayAdapter<>(
                 this, android.R.layout.simple_spinner_item,
-                ApplicationModels.getLocationModel().getAllLocations());
+                ApplicationModels.getLocationModel().getAllItems());
         locationSpinner.setAdapter(locationAdaptor);
         locationSpinner.setSelection(locationAdaptor.getPosition(
                 returnLocation));
 
         ArrayAdapter<Person> personAdaptor = new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_item, ApplicationModels.getPersonModel().getAllPeople());
+                this, android.R.layout.simple_spinner_item, ApplicationModels.getPersonModel().getAllItems());
         personSpinner.setAdapter(personAdaptor);
         personSpinner.setSelection(personAdaptor.getPosition(questGiver));
         detailsTextInput.setText(details);

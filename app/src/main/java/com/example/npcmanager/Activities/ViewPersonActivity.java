@@ -7,6 +7,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.npcmanager.Activities.FindBy.FindByLocationActivity;
+import com.example.npcmanager.Activities.FindBy.FindByOccupationActivity;
+import com.example.npcmanager.Activities.FindBy.FindByOrganizationActivity;
+import com.example.npcmanager.Activities.FindBy.FindByRaceActivity;
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.DataStructures.Person;
 import com.example.npcmanager.Models.ApplicationModels;

@@ -1,11 +1,12 @@
 package com.example.npcmanager.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.npcmanager.Activities.FindBy.FindByLocationActivity;
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.DataStructures.Quest;
 import com.example.npcmanager.Models.ApplicationModels;
@@ -30,7 +31,7 @@ public class ViewQuestActivity extends AppCompatActivity {
         editButton = findViewById(R.id.viewQuestEditButton);
 
         String name = ActivityUtilities.getNameExtra(getIntent());
-        setQuest(ApplicationModels.getQuestModel().findFirstQuest(name));
+        setQuest(ApplicationModels.getQuestModel().getQuest(name));
 
         setOnClickListeners();
     }

@@ -4,23 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.FindByLocationActivity">
+    tools:context=".Activities.FindBy.FindByLocationActivity">
 
     <TextView
         android:id="@+id/findByLocationTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Find By Location"
-        android:textSize="30sp"
+        android:textSize="@dimen/titleSize"
         app:layout_constraintBottom_toBottomOf="@id/findByLocationHorizontalGuideline20"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/findByLocationLocationSelector"
+    <TextView
+        android:id="@+id/findByLocationLocationText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Location"
+        android:textSize="@dimen/titleSize"
         app:layout_constraintEnd_toEndOf="@id/findByLocationVerticalGuideline80"
         app:layout_constraintStart_toStartOf="@id/findByLocationVerticalGuideline20"
         app:layout_constraintTop_toTopOf="@id/findByLocationHorizontalGuideline20" />
@@ -32,7 +35,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/findByLocationVerticalGuideline80"
         app:layout_constraintStart_toStartOf="@id/findByLocationVerticalGuideline20"
-        app:layout_constraintTop_toBottomOf="@id/findByLocationLocationSelector" />
+        app:layout_constraintTop_toBottomOf="@id/findByLocationLocationText" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/findByLocationHorizontalGuideline20"

@@ -5,11 +5,16 @@ import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.npcmanager.Activities.MainActivity;
+import com.example.npcmanager.DataStructures.Location;
+import com.example.npcmanager.DataStructures.Organization;
 
+import java.io.Serializable;
 import java.util.Optional;
 
 public class ActivityUtilities {
-    private static String nameKey = "name";
+    private static final String nameKey = "name";
+    public static final String locationKey = "location";
+    public static final String organizationKey = "organization";
 
     public static void loadMainActivity(AppCompatActivity fromActivity) {
         Intent intent = new Intent(fromActivity, MainActivity.class);
@@ -31,13 +36,40 @@ public class ActivityUtilities {
         fromActivity.startActivity(intent);
     }
 
+    public static void loadActivityWithExtra(
+            AppCompatActivity fromActivity, Class cls, Location location) {
+        loadActivityWithExtra(fromActivity, cls, location, locationKey);
+    }
+
+    public static void loadActivityWithExtra(
+            AppCompatActivity fromActivity, Class cls, Serializable val, String key) {
+        Intent intent = new Intent(fromActivity, cls);
+        intent.putExtra(key, val);
+        fromActivity.startActivity(intent);
+    }
+
     public static String getNameExtra(Intent intent) {
         return (String) intent.getExtras().get(nameKey);
     }
 
+    private static Optional<Serializable> getSerializableExtraMaybe(Intent intent, String key) {
+        return Optional.ofNullable(intent.getExtras())
+                .flatMap(extras -> Optional.ofNullable(extras.getSerializable(key)));
+    }
+
+    public static Optional<Location> getLocationExtraMaybe(Intent intent) {
+        return getSerializableExtraMaybe(intent, locationKey)
+                .map(s -> (Location) s);
+    }
+
+    public static Optional<Organization> getOrganizationExtraMaybe(Intent intent) {
+        return getSerializableExtraMaybe(intent, organizationKey)
+                .map(s -> (Organization) s);
+    }
+
     public static Optional<String> getNameExtraMaybe(Intent intent) {
         return Optional.ofNullable(intent.getExtras())
-                .flatMap(extras -> Optional.ofNullable(extras.get("name")))
+                .flatMap(extras -> Optional.ofNullable(extras.get(nameKey)))
                 .map(name -> (String) name);
     }
 }

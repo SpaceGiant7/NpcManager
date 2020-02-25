@@ -5,12 +5,16 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.npcmanager.Activities.FindBy.FindByOrganizationActivity;
+import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.DataStructures.Location;
 import com.example.npcmanager.DataStructures.Organization;
 import com.example.npcmanager.Models.ApplicationModelUpdater;
 import com.example.npcmanager.Models.ApplicationModels;
 import com.example.npcmanager.Models.BaseModel;
 import com.example.npcmanager.R;
+
+import java.io.Serializable;
 
 public class ViewOrganizationsActivity extends ViewItemActivity {
 
@@ -30,7 +34,7 @@ public class ViewOrganizationsActivity extends ViewItemActivity {
 
     @Override
     protected void setItem(String item) {
-        ApplicationModels.getOrganizationModel().findFirstOrganizationMaybe(item)
+        ApplicationModels.getOrganizationModel().getItemMaybe(item)
                 .ifPresent(this::setOrganization);
 
     }
@@ -113,5 +117,15 @@ public class ViewOrganizationsActivity extends ViewItemActivity {
     @Override
     protected Class getFindByActivityClass() {
         return FindByOrganizationActivity.class;
+    }
+
+    @Override
+    protected Serializable getSelectedItem(String selectedItem) {
+        return ApplicationModels.getOrganizationModel().getItemMaybe(selectedItem).get();
+    }
+
+    @Override
+    protected String getSerializationKey() {
+        return ActivityUtilities.organizationKey;
     }
 }

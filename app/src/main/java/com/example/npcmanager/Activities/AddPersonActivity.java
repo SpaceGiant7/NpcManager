@@ -106,7 +106,7 @@ public class AddPersonActivity extends AppCompatActivity {
 
         LocationModel locationModel = ApplicationModels.getLocationModel();
         ArrayAdapter<Location> locationAdaptor = new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_item, locationModel.getAllLocations());
+                this, android.R.layout.simple_spinner_item, locationModel.getAllItems());
         homeSelector.setAdapter(locationAdaptor);
         homeSelector.setSelection(locationAdaptor.getPosition(location));
 
@@ -117,7 +117,7 @@ public class AddPersonActivity extends AppCompatActivity {
 
         OrganizationModel organizationModel = ApplicationModels.getOrganizationModel();
         ArrayAdapter<Organization> organizationAdaptor = new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_item, organizationModel.getAllOrganizations());
+                this, android.R.layout.simple_spinner_item, organizationModel.getAllItems());
         organizationSelector.setAdapter(organizationAdaptor);
         organizationSelector.setSelection(organizationAdaptor.getPosition(organization));
         deceasedCheckBox.setChecked(deceased);

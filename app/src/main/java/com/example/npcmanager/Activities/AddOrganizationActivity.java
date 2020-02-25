@@ -32,7 +32,7 @@ public class AddOrganizationActivity extends AppCompatActivity {
 
         LocationModel locationModel = ApplicationModels.getLocationModel();
         ArrayAdapter<Location> locationAdaptor = new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_item, locationModel.getAllLocations());
+                this, android.R.layout.simple_spinner_item, locationModel.getAllItems());
         locationSelector.setAdapter(locationAdaptor);
         locationSelector.setSelection(locationAdaptor.getPosition(
                 Location.None()));

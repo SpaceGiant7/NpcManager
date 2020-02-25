@@ -12,6 +12,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.npcmanager.Activities.FindBy.FindByNameActivity;
+import com.example.npcmanager.Activities.FindBy.FindByOccupationActivity;
+import com.example.npcmanager.Activities.FindBy.FindByRaceActivity;
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.Activities.Utilities.QuestSelectorListener;
 import com.example.npcmanager.DataStorage.CampaignReaderWriter;
@@ -108,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
     private void fillQuestList() {
         ArrayAdapter<Quest> nameAdapter = new ArrayAdapter<>(
                 this, android.R.layout.simple_list_item_1,
-                new ArrayList<>(ApplicationModels.getQuestModel().getAllQuests()));
+                new ArrayList<>(ApplicationModels.getQuestModel().getAllItems()));
         questList.setAdapter(nameAdapter);
     }
 

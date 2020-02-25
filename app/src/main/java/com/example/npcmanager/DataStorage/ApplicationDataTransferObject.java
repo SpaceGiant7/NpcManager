@@ -15,10 +15,10 @@ public class ApplicationDataTransferObject {
     private List<Quest> quests;
 
     public ApplicationDataTransferObject() {
-        this.locations = ApplicationModels.getLocationModel().getAllLocations();
-        this.organizations = ApplicationModels.getOrganizationModel().getAllOrganizations();
-        this.people = ApplicationModels.getPersonModel().getAllPeople();
-        this.quests = ApplicationModels.getQuestModel().getAllQuests();
+        this.locations = ApplicationModels.getLocationModel().getAllItems();
+        this.organizations = ApplicationModels.getOrganizationModel().getAllItems();
+        this.people = ApplicationModels.getPersonModel().getAllItems();
+        this.quests = ApplicationModels.getQuestModel().getAllItems();
     }
 
     public ApplicationDataTransferObject(

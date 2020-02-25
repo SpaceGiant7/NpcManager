@@ -1,8 +1,10 @@
 package com.example.npcmanager.DataStructures;
 
+import java.io.Serializable;
+
 import Constants.NpcConstants;
 
-public class Person implements BaseItem{
+public class Person implements BaseItem, Serializable {
     private String name;
     private Race race;
     private Gender gender;

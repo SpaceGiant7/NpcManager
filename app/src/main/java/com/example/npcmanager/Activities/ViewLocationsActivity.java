@@ -3,11 +3,15 @@ package com.example.npcmanager.Activities;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.npcmanager.Activities.FindBy.FindByLocationActivity;
+import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.DataStructures.Location;
 import com.example.npcmanager.Models.ApplicationModelUpdater;
 import com.example.npcmanager.Models.ApplicationModels;
 import com.example.npcmanager.Models.BaseModel;
 import com.example.npcmanager.R;
+
+import java.io.Serializable;
 
 public class ViewLocationsActivity extends ViewItemActivity {
 
@@ -24,7 +28,7 @@ public class ViewLocationsActivity extends ViewItemActivity {
 
     @Override
     protected void setItem(String item) {
-        ApplicationModels.getLocationModel().findFirstLocationMaybe(item)
+        ApplicationModels.getLocationModel().getItemMaybe(item)
                 .ifPresent(this::setLocation);
 
     }
@@ -94,5 +98,15 @@ public class ViewLocationsActivity extends ViewItemActivity {
     @Override
     protected Class getFindByActivityClass() {
         return FindByLocationActivity.class;
+    }
+
+    @Override
+    protected Serializable getSelectedItem(String selectedItem) {
+        return ApplicationModels.getLocationModel().getItemMaybe(selectedItem).get();
+    }
+
+    @Override
+    protected String getSerializationKey() {
+        return ActivityUtilities.locationKey;
     }
 }

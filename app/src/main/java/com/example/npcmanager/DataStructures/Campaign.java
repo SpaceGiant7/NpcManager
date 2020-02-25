@@ -1,6 +1,8 @@
 package com.example.npcmanager.DataStructures;
 
-public class Campaign implements BaseItem {
+import java.io.Serializable;
+
+public class Campaign implements BaseItem, Serializable {
     String name;
 
     public Campaign(String name) {

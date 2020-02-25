@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.Models.BaseModel;
 
+import java.io.Serializable;
 import java.util.Optional;
 
 public abstract class ViewItemActivity extends AppCompatActivity {
@@ -41,7 +42,7 @@ public abstract class ViewItemActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true); // Maybe not needed
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new RecyclerAdapter(
-                () -> getModel().getList(),
+                () -> getModel().getAllItems(),
                 item -> selectItem(item.getIdentifier()));
         recyclerView.setAdapter(adapter);
     }
@@ -78,8 +79,8 @@ public abstract class ViewItemActivity extends AppCompatActivity {
 
     private void clickFindBy() {
         selectedItem.ifPresent(item ->
-                ActivityUtilities.loadActivityWithNameExtra(
-                        this, getFindByActivityClass(), item));
+                ActivityUtilities.loadActivityWithExtra(
+                        this, getFindByActivityClass(), getSelectedItem(item), getSerializationKey()));
     }
 
     protected abstract void setItem(String item);
@@ -101,4 +102,6 @@ public abstract class ViewItemActivity extends AppCompatActivity {
     protected abstract int getFindByButtonId();
     protected abstract int getContentView();
     protected abstract int getRecyclerViewId();
+    protected abstract Serializable getSelectedItem(String selectedItem);
+    protected abstract String getSerializationKey();
 }

@@ -1,6 +1,4 @@
-package com.example.npcmanager.Activities;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.npcmanager.Activities.FindBy;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -8,7 +6,10 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.npcmanager.Activities.Utilities.PersonSelectorListener;
+import com.example.npcmanager.Activities.ViewPersonActivity;
 import com.example.npcmanager.DataStructures.Person;
 import com.example.npcmanager.Models.ApplicationModels;
 import com.example.npcmanager.R;

@@ -19,7 +19,7 @@ public abstract class BaseModel<T extends BaseItem> {
         list = new ArrayList<>();
     }
 
-    public List<T> getList() {
+    public List<T> getAllItems() {
         return list;
     }
 
@@ -30,7 +30,7 @@ public abstract class BaseModel<T extends BaseItem> {
     }
 
     public Optional<T> getItemMaybe(String identifier) {
-        return getList().stream()
+        return getAllItems().stream()
                 .filter(t -> t.getIdentifier()
                         .equals(identifier))
                 .findFirst();
@@ -48,8 +48,17 @@ public abstract class BaseModel<T extends BaseItem> {
         }
     }
 
+    public void removeItemIfExists(String identifier) {
+        getItemMaybe(identifier).ifPresent(this::removeItem);
+    }
+
     private boolean canItemBeAdded(T item) {
-        return !itemExists(item) && !item.getIdentifier().equals(NpcConstants.NONE);
+        return !itemExists(item) && identifierIsValid(item);
+    }
+
+    private boolean identifierIsValid(T item) {
+        return item.getIdentifier().length() > 0
+                && !item.getIdentifier().equals(NpcConstants.NONE);
     }
 
     protected void removeItem(T item) {

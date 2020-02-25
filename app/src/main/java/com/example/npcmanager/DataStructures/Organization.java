@@ -1,8 +1,10 @@
 package com.example.npcmanager.DataStructures;
 
+import java.io.Serializable;
+
 import Constants.NpcConstants;
 
-public class Organization implements BaseItem{
+public class Organization implements BaseItem, Serializable {
 
     private String name;
     private Location location;
