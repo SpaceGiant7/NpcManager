@@ -1,18 +1,54 @@
 package com.example.npcmanager.DataStructures;
 
-public enum Gender {
-    FEMALE( "Female" ),
-    MALE( "Male" ),
-    UNKNOWN( "Unknown" );
+import java.io.Serializable;
+import java.util.Objects;
 
-    private final String name;
+import Constants.NpcConstants;
 
-    Gender( String name ){
+public class Gender implements BaseItem, Serializable {
+    private String name;
+
+    private Gender(String name) {
         this.name = name;
+    }
+
+    public static Gender of(String name) {
+        return new Gender(name);
+    }
+
+    public static Gender None() {
+        return Gender.of(NpcConstants.NONE);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getIdentifier() {
+        return name;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other)
+            return true;
+
+        if (other == null || getClass() != other.getClass())
+            return false;
+
+        Gender otherGender = (Gender) other;
+        return name.equals(otherGender.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 
     @Override
     public String toString() {
         return name;
     }
+
 }
+

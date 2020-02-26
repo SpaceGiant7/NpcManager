@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.example.npcmanager.Activities.FindBy.FindByOrganizationActivity;
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
+import com.example.npcmanager.DataStructures.BaseItem;
 import com.example.npcmanager.DataStructures.Location;
 import com.example.npcmanager.DataStructures.Organization;
 import com.example.npcmanager.Models.ApplicationModelUpdater;
@@ -46,7 +47,7 @@ public class ViewOrganizationsActivity extends ViewItemActivity {
     }
 
     private void setLocationSelection(Location location) {
-        ArrayAdapter<Location> locationAdapter = new ArrayAdapter<>(
+        ArrayAdapter<BaseItem> locationAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_spinner_item,
                 ApplicationModels.getLocationModel().getListWithNone());
@@ -76,17 +77,17 @@ public class ViewOrganizationsActivity extends ViewItemActivity {
 
     @Override
     protected void createItem() {
-        ApplicationModelUpdater.addOrganization(createOrganization());
+        ApplicationModelUpdater.addOrganization(createOrganization(), this);
     }
 
     @Override
     protected void replaceItem(String oldItem) {
-        ApplicationModelUpdater.replaceOrganization(oldItem, createOrganization());
+        ApplicationModelUpdater.replaceOrganization(oldItem, createOrganization(), this);
     }
 
     @Override
     protected void removeItem(String item) {
-        ApplicationModelUpdater.removeOrganization(item);
+        ApplicationModelUpdater.removeOrganization(item, this);
     }
 
     @Override

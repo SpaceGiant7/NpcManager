@@ -1,5 +1,8 @@
 package com.example.npcmanager.Models;
 
+import android.content.Context;
+
+import com.example.npcmanager.DataStorage.CampaignReaderWriter;
 import com.example.npcmanager.DataStructures.Location;
 import com.example.npcmanager.DataStructures.Organization;
 import com.example.npcmanager.DataStructures.Person;
@@ -7,17 +10,23 @@ import com.example.npcmanager.DataStructures.Quest;
 
 public class ApplicationModelUpdater {
 
-    public static void addPerson(Person person) {
+    private static void save(Context context) {
+        CampaignReaderWriter.save(ApplicationModels.getCampaignName(), context);
+    }
+
+    public static void addPerson(Person person, Context context) {
         ApplicationModels.getPersonModel().addItem(person);
+        save(context);
     }
 
-    public static void removePerson(String personName) {
+    public static void removePerson(String personName, Context context) {
         replacePersonInModels(personName, Person.None());
+        save(context);
     }
 
-    public static void replacePerson(String oldPersonName, Person newPerson) {
+    public static void replacePerson(String oldPersonName, Person newPerson, Context context) {
         replacePersonInModels(oldPersonName, newPerson);
-        addPerson(newPerson);
+        addPerson(newPerson, context);
     }
 
     private static void replacePersonInModels(String oldPersonName, Person newPerson) {
@@ -25,30 +34,34 @@ public class ApplicationModelUpdater {
         ApplicationModels.getPersonModel().removeItemIfExists(oldPersonName);
     }
 
-    public static void addQuest(Quest quest) {
+    public static void addQuest(Quest quest, Context context) {
         ApplicationModels.getQuestModel().addItem(quest);
+        save(context);
     }
 
-    public static void removeQuest(String questName) {
+    public static void removeQuest(String questName, Context context) {
         ApplicationModels.getQuestModel().removeItemIfExists(questName);
+        save(context);
     }
 
-    public static void replaceQuest(String oldQuestName, Quest newQuest) {
-        removeQuest(oldQuestName);
-        addQuest(newQuest);
+    public static void replaceQuest(String oldQuestName, Quest newQuest, Context context) {
+        removeQuest(oldQuestName, context);
+        addQuest(newQuest, context);
     }
 
-    public static void addLocation(Location location) {
+    public static void addLocation(Location location, Context context) {
         ApplicationModels.getLocationModel().addItem(location);
+        save(context);
     }
 
-    public static void removeLocation(String locationName) {
+    public static void removeLocation(String locationName, Context context) {
         replaceLocationInModels(locationName, Location.None());
+        save(context);
     }
 
-    public static void replaceLocation(String oldLocationName, Location newLocation) {
+    public static void replaceLocation(String oldLocationName, Location newLocation, Context context) {
         replaceLocationInModels(oldLocationName, newLocation);
-        addLocation(newLocation);
+        addLocation(newLocation, context);
     }
 
     private static void replaceLocationInModels(String oldLocationName, Location newLocation) {
@@ -58,18 +71,20 @@ public class ApplicationModelUpdater {
         ApplicationModels.getLocationModel().removeItemIfExists(oldLocationName);
     }
 
-    public static void addOrganization(Organization organization) {
+    public static void addOrganization(Organization organization, Context context) {
         ApplicationModels.getOrganizationModel().addItem(organization);
+        save(context);
     }
 
-    public static void removeOrganization(String organizationName) {
+    public static void removeOrganization(String organizationName, Context context) {
         replaceOrganizationInModels(organizationName, Organization.None());
+        save(context);
     }
 
     public static void replaceOrganization(
-            String oldOrganizationName, Organization newOrganization) {
+            String oldOrganizationName, Organization newOrganization, Context context) {
         replaceOrganizationInModels(oldOrganizationName, newOrganization);
-        addOrganization(newOrganization);
+        addOrganization(newOrganization, context);
     }
 
     private static void replaceOrganizationInModels(

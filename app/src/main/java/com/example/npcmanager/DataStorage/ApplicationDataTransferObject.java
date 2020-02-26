@@ -1,50 +1,60 @@
 package com.example.npcmanager.DataStorage;
 
+import com.example.npcmanager.DataStructures.Gender;
 import com.example.npcmanager.DataStructures.Location;
+import com.example.npcmanager.DataStructures.Occupation;
 import com.example.npcmanager.DataStructures.Organization;
 import com.example.npcmanager.DataStructures.Person;
 import com.example.npcmanager.DataStructures.Quest;
+import com.example.npcmanager.DataStructures.Race;
 import com.example.npcmanager.Models.ApplicationModels;
 
 import java.util.List;
 
-public class ApplicationDataTransferObject {
-    private List<Location> locations;
-    private List<Organization> organizations;
+class ApplicationDataTransferObject {
     private List<Person> people;
     private List<Quest> quests;
+    private List<Organization> organizations;
+    private List<Location> locations;
+    private List<Race> races;
+    private List<Occupation> occupations;
+    private List<Gender> genders;
 
-    public ApplicationDataTransferObject() {
-        this.locations = ApplicationModels.getLocationModel().getAllItems();
-        this.organizations = ApplicationModels.getOrganizationModel().getAllItems();
+    ApplicationDataTransferObject() {
         this.people = ApplicationModels.getPersonModel().getAllItems();
         this.quests = ApplicationModels.getQuestModel().getAllItems();
+        this.organizations = ApplicationModels.getOrganizationModel().getAllItems();
+        this.locations = ApplicationModels.getLocationModel().getAllItems();
+        this.races = ApplicationModels.getRaceModel().getAllItems();
+        this.occupations = ApplicationModels.getOccupationModel().getAllItems();
+        this.genders = ApplicationModels.getGenderModel().getAllItems();
     }
 
-    public ApplicationDataTransferObject(
-            List<Location> locations,
-            List<Organization> organizations,
-            List<Person> people,
-            List<Quest> quests) {
-        this.locations = locations;
-        this.organizations = organizations;
-        this.people = people;
-        this.quests = quests;
-    }
-
-    public List<Location> getLocations() {
-        return locations;
-    }
-
-    public List<Organization> getOrganizations() {
-        return organizations;
-    }
-
-    public List<Person> getPeople() {
+    List<Person> getPeople() {
         return people;
     }
 
-    public List<Quest> getQuests() {
+    List<Quest> getQuests() {
         return quests;
+    }
+
+    List<Organization> getOrganizations() {
+        return organizations;
+    }
+
+    List<Location> getLocations() {
+        return locations;
+    }
+
+    List<Race> getRaces() {
+        return races;
+    }
+
+    List<Occupation> getOccupations() {
+        return occupations;
+    }
+
+    List<Gender> getGenders() {
+        return genders;
     }
 }

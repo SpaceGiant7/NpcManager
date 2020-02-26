@@ -102,9 +102,12 @@ public class CampaignReaderWriter {
         ApplicationDataTransferObject transferObject =
                 gson.fromJson(jsonString, ApplicationDataTransferObject.class);
 
-        ApplicationModels.setLocationList(transferObject.getLocations());
-        ApplicationModels.setOrganizationList(transferObject.getOrganizations());
         ApplicationModels.setPersonList(transferObject.getPeople());
         ApplicationModels.setQuestList(transferObject.getQuests());
+        ApplicationModels.setOrganizationList(transferObject.getOrganizations());
+        ApplicationModels.setLocationList(transferObject.getLocations());
+        ApplicationModels.setRaceList(transferObject.getRaces());
+        ApplicationModels.setOccupationList(transferObject.getOccupations());
+        ApplicationModels.setGenderList(transferObject.getGenders());
     }
 }

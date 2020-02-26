@@ -45,6 +45,7 @@ public class AddOrganizationActivity extends AppCompatActivity {
                 new Organization(
                         nameText.getText().toString(),
                         (Location) locationSelector.getSelectedItem(),
-                        descriptionText.getText().toString()));
+                        descriptionText.getText().toString()),
+                this);
     }
 }

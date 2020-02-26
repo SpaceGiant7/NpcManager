@@ -1,5 +1,6 @@
 package com.example.npcmanager.DataStructures;
 
+
 import java.io.Serializable;
 
 import Constants.NpcConstants;
@@ -36,10 +37,10 @@ public class Person implements BaseItem, Serializable {
     public static Person None() {
         return new Person(
                 NpcConstants.NONE,
-                Race.UNKNOWN,
-                Gender.UNKNOWN,
+                Race.None(),
+                Gender.None(),
                 Location.None(),
-                Occupation.NONE,
+                Occupation.None(),
                 Organization.None(),
                 false,
                 "");

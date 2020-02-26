@@ -16,7 +16,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.ViewLocationsActivity" />
-        <activity android:name=".Activities.CreateCampaignActivity" />
         <activity android:name=".Activities.ViewQuestActivity" />
         <activity android:name=".Activities.ViewPersonActivity" />
         <activity android:name=".Activities.FindBy.FindByNameActivity" />
@@ -34,6 +33,7 @@
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".Activities.MainActivity" />
         <activity android:name=".Activities.ViewOrganizationsActivity" />
+        <activity android:name=".Activities.FindBy.FindByGenderActivity" />
     </application>
 
 </manifest>

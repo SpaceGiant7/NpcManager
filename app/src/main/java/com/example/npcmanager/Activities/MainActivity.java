@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         defineAddObjectListeners();
         defineSerachListeners();
 
-        ActivityUtilities.getNameExtraMaybe(getIntent()).ifPresent(this::setCampaignName);
+        campiagnName.setText(ApplicationModels.getCampaignName());
 
         fileButton.setOnClickListener(v -> ActivityUtilities.loadActivityWithNameExtra(
                 this, ViewCampaignsActivity.class, campiagnName.getText()));
@@ -100,12 +100,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         refreshActivity();
-
     }
 
     private void refreshActivity() {
         fillQuestList();
-        CampaignReaderWriter.save(campiagnName.getText().toString(), this);
+        CampaignReaderWriter.save(ApplicationModels.getCampaignName(), this);
     }
 
     private void fillQuestList() {
@@ -113,11 +112,6 @@ public class MainActivity extends AppCompatActivity {
                 this, android.R.layout.simple_list_item_1,
                 new ArrayList<>(ApplicationModels.getQuestModel().getAllItems()));
         questList.setAdapter(nameAdapter);
-    }
-
-    private void setCampaignName(String name) {
-        campiagnName.setText(name);
-
     }
 
     private View.OnClickListener getDisableMenuListener(final LinearLayout menu){

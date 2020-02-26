@@ -5,26 +5,25 @@ import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.npcmanager.Activities.MainActivity;
+import com.example.npcmanager.DataStructures.Gender;
 import com.example.npcmanager.DataStructures.Location;
+import com.example.npcmanager.DataStructures.Occupation;
 import com.example.npcmanager.DataStructures.Organization;
+import com.example.npcmanager.DataStructures.Race;
 
 import java.io.Serializable;
 import java.util.Optional;
 
 public class ActivityUtilities {
     private static final String nameKey = "name";
-    public static final String locationKey = "location";
     public static final String organizationKey = "organization";
+    public static final String locationKey = "location";
+    public static final String raceKey = "race";
+    public static final String occupationKey = "occupation";
+    public static final String genderKey = "gender";
 
     public static void loadMainActivity(AppCompatActivity fromActivity) {
         Intent intent = new Intent(fromActivity, MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        fromActivity.startActivity(intent);
-    }
-
-    public static void loadMainActivityWithCampaignName(AppCompatActivity fromActivity, String name) {
-        Intent intent = new Intent(fromActivity, MainActivity.class);
-        intent.putExtra(nameKey, name);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         fromActivity.startActivity(intent);
     }
@@ -34,11 +33,6 @@ public class ActivityUtilities {
         Intent intent = new Intent(fromActivity, cls);
         intent.putExtra(nameKey, name);
         fromActivity.startActivity(intent);
-    }
-
-    public static void loadActivityWithExtra(
-            AppCompatActivity fromActivity, Class cls, Location location) {
-        loadActivityWithExtra(fromActivity, cls, location, locationKey);
     }
 
     public static void loadActivityWithExtra(
@@ -66,6 +60,22 @@ public class ActivityUtilities {
         return getSerializableExtraMaybe(intent, organizationKey)
                 .map(s -> (Organization) s);
     }
+
+    public static Optional<Race> getRaceExtraMaybe(Intent intent) {
+        return getSerializableExtraMaybe(intent, raceKey)
+                .map(s -> (Race) s);
+    }
+
+    public static Optional<Occupation> getOccupationExtraMaybe(Intent intent) {
+        return getSerializableExtraMaybe(intent, occupationKey)
+                .map(s -> (Occupation) s);
+    }
+
+    public static Optional<Gender> getGendereExtraMaybe(Intent intent) {
+        return getSerializableExtraMaybe(intent, genderKey)
+                .map(s -> (Gender) s);
+    }
+
 
     public static Optional<String> getNameExtraMaybe(Intent intent) {
         return Optional.ofNullable(intent.getExtras())

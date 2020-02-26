@@ -31,7 +31,8 @@ public class AddLocationActivity extends AppCompatActivity {
         ApplicationModelUpdater.addLocation(
                 Location.of(
                         locationNameText.getText().toString(),
-                        locationDescriptionText.getText().toString()));
+                        locationDescriptionText.getText().toString()),
+                this);
         ActivityUtilities.loadMainActivity(this);
     }
 }

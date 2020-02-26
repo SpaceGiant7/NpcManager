@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
+import com.example.npcmanager.DataStructures.BaseItem;
 import com.example.npcmanager.DataStructures.Gender;
 import com.example.npcmanager.DataStructures.Location;
 import com.example.npcmanager.DataStructures.Occupation;
@@ -18,10 +19,9 @@ import com.example.npcmanager.DataStructures.Person;
 import com.example.npcmanager.DataStructures.Race;
 import com.example.npcmanager.Models.ApplicationModelUpdater;
 import com.example.npcmanager.Models.ApplicationModels;
-import com.example.npcmanager.Models.LocationModel;
-import com.example.npcmanager.Models.OrganizationModel;
 import com.example.npcmanager.R;
 
+import java.util.List;
 import java.util.Optional;
 
 public class AddPersonActivity extends AppCompatActivity {
@@ -74,10 +74,10 @@ public class AddPersonActivity extends AppCompatActivity {
         } else {
             populateInputs(
                     "",
-                    Race.UNKNOWN,
-                    Gender.UNKNOWN,
+                    Race.None(),
+                    Gender.None(),
                     Location.None(),
-                    Occupation.NONE,
+                    Occupation.None(),
                     Organization.None(),
                     false,
                     "");
@@ -94,37 +94,26 @@ public class AddPersonActivity extends AppCompatActivity {
             boolean deceased,
             String description) {
         nameTextInput.setText(name);
-        ArrayAdapter<Race> raceAdaptor = new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_item, Race.values());
-        raceSelector.setAdapter(raceAdaptor);
-        raceSelector.setSelection(raceAdaptor.getPosition(race));
-
-        ArrayAdapter<Gender> genderAdaptor = new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_item, Gender.values());
-        genderSelector.setAdapter(genderAdaptor);
-        genderSelector.setSelection(genderAdaptor.getPosition(gender));
-
-        LocationModel locationModel = ApplicationModels.getLocationModel();
-        ArrayAdapter<Location> locationAdaptor = new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_item, locationModel.getAllItems());
-        homeSelector.setAdapter(locationAdaptor);
-        homeSelector.setSelection(locationAdaptor.getPosition(location));
-
-        ArrayAdapter<Occupation> occupationAdaptor = new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_item, Occupation.values());
-        occupationSelector.setAdapter(occupationAdaptor);
-        occupationSelector.setSelection(occupationAdaptor.getPosition(occupation));
-
-        OrganizationModel organizationModel = ApplicationModels.getOrganizationModel();
-        ArrayAdapter<Organization> organizationAdaptor = new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_item, organizationModel.getAllItems());
-        organizationSelector.setAdapter(organizationAdaptor);
-        organizationSelector.setSelection(organizationAdaptor.getPosition(organization));
+        setupSelector(raceSelector,
+                ApplicationModels.getRaceModel().getListWithNone(), race);
+        setupSelector(genderSelector,
+                ApplicationModels.getGenderModel().getListWithNone(), gender);
+        setupSelector(homeSelector,
+                ApplicationModels.getLocationModel().getListWithNone(), location);
+        setupSelector(occupationSelector,
+                ApplicationModels.getOccupationModel().getListWithNone(), occupation);
+        setupSelector(organizationSelector,
+                ApplicationModels.getOrganizationModel().getListWithNone(), organization);
         deceasedCheckBox.setChecked(deceased);
         descriptionTextInput.setText(description);
     }
 
-
+    private void setupSelector(Spinner selector, List<BaseItem> items, BaseItem item) {
+        ArrayAdapter<BaseItem> adapter = new ArrayAdapter<>(
+                this, android.R.layout.simple_spinner_item, items);
+        selector.setAdapter(adapter);
+        selector.setSelection(adapter.getPosition(item));
+    }
 
     private void createPerson() {
         Person newPerson = new Person(
@@ -138,9 +127,9 @@ public class AddPersonActivity extends AppCompatActivity {
                 descriptionTextInput.getText().toString());
 
         if( existingPersonName.isPresent()) {
-            ApplicationModelUpdater.replacePerson(existingPersonName.get(), newPerson);
+            ApplicationModelUpdater.replacePerson(existingPersonName.get(), newPerson, this);
         } else {
-            ApplicationModelUpdater.addPerson(newPerson);
+            ApplicationModelUpdater.addPerson(newPerson, this);
         }
     }
 
@@ -151,7 +140,7 @@ public class AddPersonActivity extends AppCompatActivity {
 
     private void deleteButtonClicked() {
         existingPersonName.ifPresent(
-                ApplicationModelUpdater::removePerson);
+                name -> ApplicationModelUpdater.removePerson(name, this));
         ActivityUtilities.loadMainActivity(this);
     }
 }

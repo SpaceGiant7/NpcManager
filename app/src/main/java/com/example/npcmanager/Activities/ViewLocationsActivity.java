@@ -57,17 +57,17 @@ public class ViewLocationsActivity extends ViewItemActivity {
 
     @Override
     protected void createItem() {
-        ApplicationModelUpdater.addLocation(createLocation());
+        ApplicationModelUpdater.addLocation(createLocation(), this);
     }
 
     @Override
     protected void replaceItem(String oldItem) {
-        ApplicationModelUpdater.replaceLocation(oldItem, createLocation());
+        ApplicationModelUpdater.replaceLocation(oldItem, createLocation(), this);
     }
 
     @Override
     protected void removeItem(String item) {
-        ApplicationModelUpdater.removeLocation(item);
+        ApplicationModelUpdater.removeLocation(item, this);
     }
 
     @Override

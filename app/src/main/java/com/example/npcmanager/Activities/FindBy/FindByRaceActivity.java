@@ -1,58 +1,28 @@
 package com.example.npcmanager.Activities.FindBy;
 
-import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Spinner;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
-import com.example.npcmanager.Activities.Utilities.PersonListSelectorListener;
-import com.example.npcmanager.Activities.Utilities.PersonSelectorListener;
-import com.example.npcmanager.Activities.ViewPersonActivity;
+import com.example.npcmanager.DataStructures.Person;
 import com.example.npcmanager.DataStructures.Race;
 import com.example.npcmanager.Models.ApplicationModels;
-import com.example.npcmanager.R;
 
-import java.util.ArrayList;
-import java.util.Optional;
+import java.util.List;
 
-public class FindByRaceActivity extends AppCompatActivity {
+public class FindByRaceActivity extends FindByActivity {
 
-    Spinner raceSelector;
-    ListView personList;
+    Race race;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_find_by_race);
-        raceSelector = findViewById(R.id.findByRaceRaceSelector);
-        personList = findViewById(R.id.findByRacePersonList);
+   protected String deserializeInputs() {
+        race = ActivityUtilities.getRaceExtraMaybe(getIntent()).get();
+        return race.getName();
+   }
 
-        setupSelector();
-        setOnClickListeners();
-    }
+   protected List<Person> getPersonList() {
+       return ApplicationModels.getPersonModel().findPeople(race);
+   }
 
-    private void setupSelector() {
-        Optional<String> raceMaybe = ActivityUtilities.getNameExtraMaybe(getIntent());
-        ArrayAdapter<Race> raceAdaptor = new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_item, Race.values());
+   protected String getTitleString() {
+       return "Race";
+   }
 
-        raceSelector.setAdapter(raceAdaptor);
-        raceSelector.setOnItemSelectedListener(
-                new PersonListSelectorListener<Race>(
-                        this,
-                        personList,
-                        item -> new ArrayList<>(ApplicationModels.getPersonModel().findPeople(item))));
 
-        raceMaybe.map(Race::fromName)
-                .ifPresent(race -> raceSelector.setSelection(
-                        raceAdaptor.getPosition(race)));
-    }
-
-    private void setOnClickListeners() {
-        personList.setOnItemClickListener(
-                new PersonSelectorListener(this, ViewPersonActivity.class));
-    }
 }

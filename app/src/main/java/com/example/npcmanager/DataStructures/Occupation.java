@@ -1,35 +1,48 @@
 package com.example.npcmanager.DataStructures;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.io.Serializable;
+import java.util.Objects;
 
-public enum Occupation {
-    BARBER( "Barber", "Cuts hair" ),
-    BARTENDER( "Bartender", "Makes drinks at the local bar" ),
-    BLACKSMITH( "Blacksmith", "Works with metal to make weapons and armor" ),
-    FARMER( "Farmer", "Farms things" ),
-    MAYOR( "Mayor", "Runs the town" ),
-    MERCENARY( "Mercenary", "Muscle for hire" ),
-    MERCHANT( "Merchant", "Sells general goods" ),
-    MONK( "Monk", "Practices self deprecation, makes beer too" ),
-    NONE( "None", "Doesn't work" ),
-    PRIEST( "Priest", "Works in the church" ),
-    TANNER( "Tanner", "Works with leather" );
+public class Occupation implements BaseItem, Serializable {
+    private String name;
+    private String description;
 
-    private static final Map<String, Occupation> BY_NAME = new HashMap<>();
-
-    static {
-        for (Occupation o : values()) {
-            BY_NAME.put(o.name, o);
-        }
-    }
-
-    private final String name;
-    private final String description;
-
-    Occupation( String name, String description ) {
+    private Occupation(String name, String description) {
         this.name = name;
         this.description = description;
+    }
+
+    public static Occupation of(String name, String description) {
+        return new Occupation(name, description);
+    }
+
+    public static Occupation None() {
+        return Occupation.of(Constants.NpcConstants.NONE, "");
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other)
+            return true;
+
+        if (other == null || getClass() != other.getClass())
+            return false;
+
+        Occupation otherOccupation = (Occupation) other;
+        return name.equals(otherOccupation.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 
     @Override
@@ -37,7 +50,7 @@ public enum Occupation {
         return name;
     }
 
-    public static Occupation fromName(String name) {
-        return BY_NAME.get(name);
+    public String getIdentifier() {
+        return name;
     }
 }

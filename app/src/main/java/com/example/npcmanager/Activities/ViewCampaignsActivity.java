@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.DataStorage.CampaignReaderWriter;
+import com.example.npcmanager.Models.ApplicationModels;
 import com.example.npcmanager.R;
 
 import java.util.Optional;
@@ -90,6 +91,7 @@ public class ViewCampaignsActivity extends AppCompatActivity {
 
     private void loadCampaign(String name) {
         CampaignReaderWriter.load(name, this);
-        ActivityUtilities.loadMainActivityWithCampaignName(this, name);
+        ApplicationModels.setCampaignName(name);
+        ActivityUtilities.loadMainActivity(this);
     }
 }

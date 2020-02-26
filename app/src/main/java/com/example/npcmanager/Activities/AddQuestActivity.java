@@ -99,9 +99,9 @@ public class AddQuestActivity extends AppCompatActivity {
                 detailsTextInput.getText().toString());
 
         if(existingQuestName.isPresent()) {
-            ApplicationModelUpdater.replaceQuest(existingQuestName.get(), newQuest);
+            ApplicationModelUpdater.replaceQuest(existingQuestName.get(), newQuest, this);
         } else {
-            ApplicationModelUpdater.addQuest(newQuest);
+            ApplicationModelUpdater.addQuest(newQuest, this);
         }
     }
 
@@ -112,7 +112,7 @@ public class AddQuestActivity extends AppCompatActivity {
 
     private void deleteButtonClicked() {
         existingQuestName.ifPresent(
-                ApplicationModelUpdater::removeQuest);
+                name -> ApplicationModelUpdater.removeQuest(name, this));
         ActivityUtilities.loadMainActivity(this);
     }
 }
