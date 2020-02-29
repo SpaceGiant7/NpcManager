@@ -1,11 +1,11 @@
-package com.example.npcmanager.Activities;
+package com.example.npcmanager.Activities.View;
 
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.example.npcmanager.Activities.FindBy.FindByLocationActivity;
+import com.example.npcmanager.Activities.FindBy.FindByRaceActivity;
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
-import com.example.npcmanager.DataStructures.Location;
+import com.example.npcmanager.DataStructures.Race;
 import com.example.npcmanager.Models.ApplicationModelUpdater;
 import com.example.npcmanager.Models.ApplicationModels;
 import com.example.npcmanager.Models.BaseModel;
@@ -13,7 +13,7 @@ import com.example.npcmanager.R;
 
 import java.io.Serializable;
 
-public class ViewLocationsActivity extends ViewItemActivity {
+public class ViewRacesActivity extends ViewItemActivity {
 
     private TextView name;
     private TextView description;
@@ -21,26 +21,24 @@ public class ViewLocationsActivity extends ViewItemActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        name = findViewById(R.id.viewLocationName);
-        description = findViewById(R.id.viewLocationDescription);
+        name = findViewById(R.id.viewRaceName);
+        description = findViewById(R.id.viewRaceDescription);
     }
-
 
     @Override
     protected void setItem(String item) {
-        ApplicationModels.getLocationModel().getItemMaybe(item)
-                .ifPresent(this::setLocation);
-
+        ApplicationModels.getRaceModel().getItemMaybe(item)
+                .ifPresent(this::setRace);
     }
 
-    private void setLocation(Location location) {
-        name.setText(location.getName());
-        description.setText(location.getDescription());
+    private void setRace(Race race) {
+        name.setText(race.getName());
+        description.setText(race.getDescription());
     }
 
     @Override
     protected BaseModel getModel() {
-        return ApplicationModels.getLocationModel();
+        return ApplicationModels.getRaceModel();
     }
 
     @Override
@@ -49,64 +47,64 @@ public class ViewLocationsActivity extends ViewItemActivity {
         description.setText("");
     }
 
-    private Location createLocation() {
-        return Location.of(
+    private Race createRace() {
+        return new Race(
                 name.getText().toString(),
                 description.getText().toString());
     }
 
     @Override
     protected void createItem() {
-        ApplicationModelUpdater.addLocation(createLocation(), this);
+        ApplicationModelUpdater.addRace(createRace(), this);
     }
 
     @Override
     protected void replaceItem(String oldItem) {
-        ApplicationModelUpdater.replaceLocation(oldItem, createLocation(), this);
+        ApplicationModelUpdater.replaceRace(oldItem, createRace(), this);
     }
 
     @Override
     protected void removeItem(String item) {
-        ApplicationModelUpdater.removeLocation(item, this);
+        ApplicationModelUpdater.removeRace(item, this);
     }
 
     @Override
     protected int getSaveButtonId() {
-        return R.id.viewLocationSaveButton;
+        return R.id.viewRaceSaveButton;
     }
 
     @Override
     protected int getDeleteButtonId() {
-        return R.id.viewLocationDeleteButton;
+        return R.id.viewRaceDeleteButton;
     }
 
     @Override
     protected int getFindByButtonId() {
-        return R.id.viewLocationFindByButton;
+        return R.id.viewRaceFindByButton;
     }
 
     @Override
     protected int getContentView() {
-        return R.layout.activity_view_locations;
+        return R.layout.activity_view_races;
     }
 
     @Override
     protected int getRecyclerViewId() {
-        return R.id.viewLocationList;
+        return R.id.viewRaceList;
     }
 
     @Override
     protected Class getFindByActivityClass() {
-        return FindByLocationActivity.class;
+        return FindByRaceActivity.class;
     }
 
     @Override
     protected Serializable getSelectedItem(String selectedItem) {
-        return ApplicationModels.getLocationModel().getItemMaybe(selectedItem).get();
+        return ApplicationModels.getRaceModel().getItemMaybe(selectedItem).get();
     }
 
     @Override
     protected String getSerializationKey() {
-        return ActivityUtilities.locationKey;
+        return ActivityUtilities.raceKey;
     }
 }

@@ -63,18 +63,38 @@ public class PersonModel extends BaseModel<Person>{
                 .collect(Collectors.toList());
     }
 
-    public void replaceLocation(String oldLocationName, Location newLocation) {
+    void replaceLocation(String oldLocationName, Location newLocation) {
         getAllItems()
                 .stream()
                 .filter(p -> p.getHome().getName().equals(oldLocationName))
                 .forEach(p -> p.setHome(newLocation));
     }
 
-    public void replaceOrganization(String oldOrganizationName, Organization newOrganization) {
+    void replaceOrganization(String oldOrganizationName, Organization newOrganization) {
         getAllItems()
                 .stream()
                 .filter(p -> p.getOrganization().getName().equals(oldOrganizationName))
                 .forEach(p -> p.setOrganization(newOrganization));
     }
 
+    void replaceRace(String oldRaceName, Race newRace) {
+        getAllItems()
+                .stream()
+                .filter(p -> p.getRace().getName().equals(oldRaceName))
+                .forEach(p -> p.setRace(newRace));
+    }
+
+    void replaceOccupation(String oldOccupationName, Occupation newOccupation) {
+        getAllItems()
+                .stream()
+                .filter(p -> p.getOccpation().getName().equals(oldOccupationName))
+                .forEach(p -> p.setOccupation(newOccupation));
+    }
+
+    void replaceGender(String oldGenderName, Gender newGender) {
+        getAllItems()
+                .stream()
+                .filter(p -> p.getGender().getName().equals(oldGenderName))
+                .forEach(p -> p.setGender(newGender));
+    }
 }

@@ -87,53 +87,12 @@
             android:text="@string/organization" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/fileMenu"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toStartOf="@+id/mainVerticalGuideline50"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainHorizontalGuideline10"
-        tools:visibility="invisible">
-
-        <Button
-            android:id="@+id/mainNewCampaignButon"
-            style="@style/ButtonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/New" />
-
-        <Button
-            android:id="@+id/mainSaveButton"
-            style="@style/ButtonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/save" />
-
-        <Button
-            android:id="@+id/mainLoadButton"
-            style="@style/ButtonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/load" />
-
-        <Button
-            android:id="@+id/mainDeleteCampaignButton"
-            style="@style/ButtonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/delete" />
-    </LinearLayout>
-
     <TextView
         android:id="@+id/mainFindByText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Find By"
-        tools:text="Find By"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mainHorizontalGuideline40"
@@ -188,11 +147,22 @@
         style="@style/ButtonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/mainFindByGenderButton"
         app:layout_constraintStart_toEndOf="@id/mainFindByOccupationButton"
         app:layout_constraintTop_toBottomOf="@+id/mainFindByLocationButton"
         app:layout_constraintBottom_toTopOf="@+id/mainHorizontalGuideline70"
         android:text="@string/organization" />
+
+    <Button
+        android:id="@+id/mainFindByGenderButton"
+        style="@style/ButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/mainFindByOrganizationButton"
+        app:layout_constraintTop_toBottomOf="@+id/mainFindByLocationButton"
+        app:layout_constraintBottom_toTopOf="@+id/mainHorizontalGuideline70"
+        android:text="@string/gender" />
 
     <TextView
         android:id="@+id/mainQuestsText"

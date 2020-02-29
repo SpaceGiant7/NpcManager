@@ -7,7 +7,7 @@ public class Race implements BaseItem, Serializable {
     private String name;
     private String description;
 
-    private Race(String name, String description) {
+    public Race(String name, String description) {
         this.name = name;
         this.description = description;
     }

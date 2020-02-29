@@ -7,7 +7,7 @@ public class Occupation implements BaseItem, Serializable {
     private String name;
     private String description;
 
-    private Occupation(String name, String description) {
+    public Occupation(String name, String description) {
         this.name = name;
         this.description = description;
     }

@@ -1,4 +1,4 @@
-package com.example.npcmanager.Activities;
+package com.example.npcmanager.Activities.View;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.npcmanager.Activities.RecyclerAdapter;
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.DataStorage.CampaignReaderWriter;
 import com.example.npcmanager.Models.ApplicationModels;

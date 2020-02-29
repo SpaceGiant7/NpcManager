@@ -21,5 +21,8 @@
     <string name="save">Save</string>
     <string name="New">New</string>
     <string name="delete">Delete</string>
+    <string name="title_activity_new_main">NewMainActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
 
 </resources>

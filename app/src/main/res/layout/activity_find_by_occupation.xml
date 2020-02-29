@@ -17,10 +17,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/findByOccupationOccupationSelector"
+    <TextView
+        android:id="@+id/findByOccupationOccupationText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Occupation"
+        android:textSize="@dimen/titleSize"
         app:layout_constraintTop_toTopOf="@id/findByOccupationHorizontalGuideline20"
         app:layout_constraintStart_toStartOf="@id/findByOccupationVerticalGuideline20"
         app:layout_constraintEnd_toEndOf="@id/findByOccupationVerticalGuideline80" />
@@ -29,7 +32,7 @@
         android:id="@+id/findByOccupationPersonList"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/findByOccupationOccupationSelector"
+        app:layout_constraintTop_toBottomOf="@+id/findByOccupationOccupationText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/findByOccupationVerticalGuideline80"
         app:layout_constraintStart_toStartOf="@id/findByOccupationVerticalGuideline20" />

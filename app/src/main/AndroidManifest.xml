@@ -9,13 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.ViewCampaignsActivity">
+        <activity
+            android:name=".Activities.NewMainActivity"
+            android:label="@string/title_activity_new_main"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Activities.View.ViewGendersActivity" />
+        <activity android:name=".Activities.View.ViewOccupationsActivity" />
+        <activity android:name=".Activities.View.ViewRacesActivity" />
+        <activity android:name=".Activities.View.ViewCampaignsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.ViewLocationsActivity" />
+        <activity android:name=".Activities.View.ViewLocationsActivity" />
         <activity android:name=".Activities.ViewQuestActivity" />
         <activity android:name=".Activities.ViewPersonActivity" />
         <activity android:name=".Activities.FindBy.FindByNameActivity" />
@@ -32,7 +40,7 @@
             android:name=".Activities.AddQuestActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".Activities.MainActivity" />
-        <activity android:name=".Activities.ViewOrganizationsActivity" />
+        <activity android:name=".Activities.View.ViewOrganizationsActivity" />
         <activity android:name=".Activities.FindBy.FindByGenderActivity" />
     </application>
 

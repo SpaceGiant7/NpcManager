@@ -1,4 +1,4 @@
-package com.example.npcmanager.Activities;
+package com.example.npcmanager.Activities.View;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -37,7 +37,6 @@ public class ViewOrganizationsActivity extends ViewItemActivity {
     protected void setItem(String item) {
         ApplicationModels.getOrganizationModel().getItemMaybe(item)
                 .ifPresent(this::setOrganization);
-
     }
 
     private void setOrganization(Organization organization) {

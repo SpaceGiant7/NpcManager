@@ -3,10 +3,13 @@ package com.example.npcmanager.Models;
 import android.content.Context;
 
 import com.example.npcmanager.DataStorage.CampaignReaderWriter;
+import com.example.npcmanager.DataStructures.Gender;
 import com.example.npcmanager.DataStructures.Location;
+import com.example.npcmanager.DataStructures.Occupation;
 import com.example.npcmanager.DataStructures.Organization;
 import com.example.npcmanager.DataStructures.Person;
 import com.example.npcmanager.DataStructures.Quest;
+import com.example.npcmanager.DataStructures.Race;
 
 public class ApplicationModelUpdater {
 
@@ -92,5 +95,74 @@ public class ApplicationModelUpdater {
         ApplicationModels.getPersonModel()
                 .replaceOrganization(oldOrganizationName, newOrganization);
         ApplicationModels.getOrganizationModel().removeItemIfExists(oldOrganizationName);
+    }
+
+    public static void addRace(Race race, Context context) {
+        ApplicationModels.getRaceModel().addItem(race);
+        save(context);
+    }
+
+    public static void removeRace(String raceName, Context context) {
+        replaceRaceInModels(raceName, Race.None());
+        save(context);
+    }
+
+    public static void replaceRace(
+            String oldRaceName, Race newRace, Context context) {
+        replaceRaceInModels(oldRaceName, newRace);
+        addRace(newRace, context);
+    }
+
+    private static void replaceRaceInModels(
+            String oldRaceName, Race newRace) {
+        ApplicationModels.getPersonModel()
+                .replaceRace(oldRaceName, newRace);
+        ApplicationModels.getOrganizationModel().removeItemIfExists(oldRaceName);
+    }
+
+    public static void addOccupation(Occupation occupation, Context context) {
+        ApplicationModels.getOccupationModel().addItem(occupation);
+        save(context);
+    }
+
+    public static void removeOccupation(String occupationName, Context context) {
+        replaceOccupationInModels(occupationName, Occupation.None());
+        save(context);
+    }
+
+    public static void replaceOccupation(
+            String oldOccupationName, Occupation newOccupation, Context context) {
+        replaceOccupationInModels(oldOccupationName, newOccupation);
+        addOccupation(newOccupation, context);
+    }
+
+    private static void replaceOccupationInModels(
+            String oldOccupationName, Occupation newOccupation) {
+        ApplicationModels.getPersonModel()
+                .replaceOccupation(oldOccupationName, newOccupation);
+        ApplicationModels.getOccupationModel().removeItemIfExists(oldOccupationName);
+    }
+
+    public static void addGender(Gender gender, Context context) {
+        ApplicationModels.getGenderModel().addItem(gender);
+        save(context);
+    }
+
+    public static void removeGender(String genderName, Context context) {
+        replaceGenderInModels(genderName, Gender.None());
+        save(context);
+    }
+
+    public static void replaceGender(
+            String oldGenderName, Gender newGender, Context context) {
+        replaceGenderInModels(oldGenderName, newGender);
+        addGender(newGender, context);
+    }
+
+    private static void replaceGenderInModels(
+            String oldGenderName, Gender newGender) {
+        ApplicationModels.getPersonModel()
+                .replaceGender(oldGenderName, newGender);
+        ApplicationModels.getGenderModel().removeItemIfExists(oldGenderName);
     }
 }

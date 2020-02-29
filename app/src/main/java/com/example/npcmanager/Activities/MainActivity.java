@@ -13,10 +13,14 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.npcmanager.Activities.FindBy.FindByNameActivity;
-import com.example.npcmanager.Activities.FindBy.FindByOccupationActivity;
-import com.example.npcmanager.Activities.FindBy.FindByRaceActivity;
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.Activities.Utilities.QuestSelectorListener;
+import com.example.npcmanager.Activities.View.ViewCampaignsActivity;
+import com.example.npcmanager.Activities.View.ViewGendersActivity;
+import com.example.npcmanager.Activities.View.ViewLocationsActivity;
+import com.example.npcmanager.Activities.View.ViewOccupationsActivity;
+import com.example.npcmanager.Activities.View.ViewOrganizationsActivity;
+import com.example.npcmanager.Activities.View.ViewRacesActivity;
 import com.example.npcmanager.DataStorage.CampaignReaderWriter;
 import com.example.npcmanager.DataStructures.Quest;
 import com.example.npcmanager.Models.ApplicationModels;
@@ -33,13 +37,13 @@ public class MainActivity extends AppCompatActivity {
     Button findByOccupationButton;
     Button findByOrganizationButton;
     Button findByRaceButton;
+    Button findByGenderButton;
     Button addPersonButton;
     Button addLocationButton;
     Button addOrganizationButton;
     Button addQuestButton;
     ListView questList;
     TextView campiagnName;
-    LinearLayout fileMenu;
     LinearLayout addMenu;
 
     @Override
@@ -49,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         getElementReferences();
         defineMenuListeners();
         defineAddObjectListeners();
-        defineSerachListeners();
+        defineSearchListeners();
 
         campiagnName.setText(ApplicationModels.getCampaignName());
 
@@ -68,21 +72,22 @@ public class MainActivity extends AppCompatActivity {
         findByOccupationButton = findViewById(R.id.mainFindByOccupationButton);
         findByOrganizationButton = findViewById(R.id.mainFindByOrganizationButton);
         findByRaceButton = findViewById(R.id.mainFindByRaceButton);
+        findByGenderButton = findViewById(R.id.mainFindByGenderButton);
         addPersonButton = findViewById(R.id.mainAddPersonButton);
         addLocationButton = findViewById(R.id.mainAddLocationButton);
         addOrganizationButton = findViewById(R.id.mainAddOrganizationButton);
         addQuestButton = findViewById(R.id.mainAddQuestButton);
         questList = findViewById(R.id.mainQuestListView);
-        fileMenu = findViewById(R.id.fileMenu);
         addMenu = findViewById(R.id.addMenu);
     }
 
-    private void defineSerachListeners() {
+    private void defineSearchListeners() {
         findByNameButton.setOnClickListener(v -> setActivityChange(FindByNameActivity.class));
         findByLocationButton.setOnClickListener(v -> setActivityChange(ViewLocationsActivity.class));
-        findByOccupationButton.setOnClickListener(v -> setActivityChange(FindByOccupationActivity.class));
+        findByOccupationButton.setOnClickListener(v -> setActivityChange(ViewOccupationsActivity.class));
         findByOrganizationButton.setOnClickListener(v -> setActivityChange(ViewOrganizationsActivity.class));
-        findByRaceButton.setOnClickListener(v -> setActivityChange(FindByRaceActivity.class));
+        findByRaceButton.setOnClickListener(v -> setActivityChange(ViewRacesActivity.class));
+        findByGenderButton.setOnClickListener(v -> setActivityChange(ViewGendersActivity.class));
     }
 
     private void defineAddObjectListeners() {

@@ -4,90 +4,90 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.View.ViewLocationsActivity">
+    tools:context=".Activities.View.ViewOccupationsActivity">
 
     <TextView
-        android:id="@+id/viewLocationTitle"
+        android:id="@+id/viewOccupationTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30sp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/viewLocationHorizontalGuideline20"
+        app:layout_constraintBottom_toBottomOf="@id/viewOccupationHorizontalGuideline20"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="Locations"/>
+        android:text="Occupations"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/viewLocationList"
+        android:id="@+id/viewOccupationList"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="@id/viewLocationHorizontalGuideline20"
+        app:layout_constraintTop_toTopOf="@id/viewOccupationHorizontalGuideline20"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/viewLocationVerticalGuideline50"
+        app:layout_constraintEnd_toEndOf="@id/viewOccupationVerticalGuideline50"
         android:background="@color/colorCardBackground">
 
     </androidx.recyclerview.widget.RecyclerView>
 
     <EditText
-        android:id="@+id/viewLocationName"
+        android:id="@+id/viewOccupationName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Name"
-        app:layout_constraintTop_toTopOf="@id/viewLocationHorizontalGuideline20"
-        app:layout_constraintStart_toStartOf="@id/viewLocationVerticalGuideline50"
+        app:layout_constraintTop_toTopOf="@id/viewOccupationHorizontalGuideline20"
+        app:layout_constraintStart_toStartOf="@id/viewOccupationVerticalGuideline50"
         app:layout_constraintEnd_toEndOf="parent"
         android:inputType="textPersonName"/>
 
     <EditText
-        android:id="@+id/viewLocationDescription"
+        android:id="@+id/viewOccupationDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Description"
-        app:layout_constraintTop_toBottomOf="@id/viewLocationName"
-        app:layout_constraintStart_toStartOf="@id/viewLocationVerticalGuideline50"
+        app:layout_constraintTop_toBottomOf="@id/viewOccupationName"
+        app:layout_constraintStart_toStartOf="@id/viewOccupationVerticalGuideline50"
         app:layout_constraintEnd_toEndOf="parent"
         android:inputType="textMultiLine"/>
 
     <Button
-        android:id="@+id/viewLocationSaveButton"
+        android:id="@+id/viewOccupationSaveButton"
         style="@style/ButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/viewLocationDescription"
-        app:layout_constraintStart_toStartOf="@id/viewLocationVerticalGuideline50"
+        app:layout_constraintTop_toBottomOf="@id/viewOccupationDescription"
+        app:layout_constraintStart_toStartOf="@id/viewOccupationVerticalGuideline50"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="Save" />
 
     <Button
-        android:id="@+id/viewLocationDeleteButton"
+        android:id="@+id/viewOccupationDeleteButton"
         style="@style/ButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/viewLocationSaveButton"
-        app:layout_constraintStart_toStartOf="@id/viewLocationVerticalGuideline50"
+        app:layout_constraintTop_toBottomOf="@id/viewOccupationSaveButton"
+        app:layout_constraintStart_toStartOf="@id/viewOccupationVerticalGuideline50"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="Delete" />
 
     <Button
-        android:id="@+id/viewLocationFindByButton"
+        android:id="@+id/viewOccupationFindByButton"
         style="@style/ButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/viewLocationDeleteButton"
-        app:layout_constraintStart_toStartOf="@id/viewLocationVerticalGuideline50"
+        app:layout_constraintTop_toBottomOf="@id/viewOccupationDeleteButton"
+        app:layout_constraintStart_toStartOf="@id/viewOccupationVerticalGuideline50"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="Find By" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/viewLocationVerticalGuideline50"
+        android:id="@+id/viewOccupationVerticalGuideline50"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/viewLocationHorizontalGuideline20"
+        android:id="@+id/viewOccupationHorizontalGuideline20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
