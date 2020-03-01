@@ -1,10 +1,11 @@
 package com.example.npcmanager.Activities.Utilities;
 
+import android.app.Activity;
 import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.npcmanager.Activities.MainActivity;
+import com.example.npcmanager.Activities.NewMainActivity;
 import com.example.npcmanager.DataStructures.Gender;
 import com.example.npcmanager.DataStructures.Location;
 import com.example.npcmanager.DataStructures.Occupation;
@@ -23,7 +24,7 @@ public class ActivityUtilities {
     public static final String genderKey = "gender";
 
     public static void loadMainActivity(AppCompatActivity fromActivity) {
-        Intent intent = new Intent(fromActivity, MainActivity.class);
+        Intent intent = new Intent(fromActivity, NewMainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         fromActivity.startActivity(intent);
     }
@@ -37,6 +38,13 @@ public class ActivityUtilities {
 
     public static void loadActivityWithExtra(
             AppCompatActivity fromActivity, Class cls, Serializable val, String key) {
+        Intent intent = new Intent(fromActivity, cls);
+        intent.putExtra(key, val);
+        fromActivity.startActivity(intent);
+    }
+
+    public static void loadActivityWithExtra(
+            Activity fromActivity, Class cls, Serializable val, String key) {
         Intent intent = new Intent(fromActivity, cls);
         intent.putExtra(key, val);
         fromActivity.startActivity(intent);

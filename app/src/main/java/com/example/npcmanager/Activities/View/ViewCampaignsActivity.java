@@ -8,8 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.npcmanager.Activities.RecyclerAdapter;
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
+import com.example.npcmanager.Activities.Utilities.RecyclerAdapter;
 import com.example.npcmanager.DataStorage.CampaignReaderWriter;
 import com.example.npcmanager.Models.ApplicationModels;
 import com.example.npcmanager.R;
@@ -75,6 +75,7 @@ public class ViewCampaignsActivity extends AppCompatActivity {
         if (selectedCampaign.isPresent()) {
             CampaignReaderWriter.rename(selectedCampaign.get(), name.getText().toString(), this);
         } else {
+            ApplicationModels.resetModels();
             CampaignReaderWriter.save(name.getText().toString(), this);
         }
         adapter.reloadItems();

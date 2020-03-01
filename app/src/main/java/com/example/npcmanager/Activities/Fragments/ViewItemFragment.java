@@ -1,9 +1,14 @@
-package com.example.npcmanager.Activities.View;
+package com.example.npcmanager.Activities.Fragments;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,7 +19,7 @@ import com.example.npcmanager.Models.BaseModel;
 import java.io.Serializable;
 import java.util.Optional;
 
-public abstract class ViewItemActivity extends AppCompatActivity {
+public abstract class ViewItemFragment extends Fragment {
 
     protected Optional<String> selectedItem = Optional.empty();
     private RecyclerView recyclerView;
@@ -23,25 +28,40 @@ public abstract class ViewItemActivity extends AppCompatActivity {
     private Button deleteButton;
     private Button findByButton;
 
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(getContentView());
-        recyclerView = findViewById(getRecyclerViewId());
-        saveButton = findViewById(getSaveButtonId());
-        deleteButton = findViewById(getDeleteButtonId());
-        findByButton = findViewById(getFindByButtonId());
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(getContentView(), container, false);
+        recyclerView = view.findViewById(getRecyclerViewId());
+        saveButton = view.findViewById(getSaveButtonId());
+        deleteButton = view.findViewById(getDeleteButtonId());
+        findByButton = view.findViewById(getFindByButtonId());
 
         setupRecyclerView();
 
         findByButton.setOnClickListener(v -> this.clickFindBy());
         saveButton.setOnClickListener(v -> this.clickSave());
         deleteButton.setOnClickListener(v -> this.clickDelete());
+        return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        // TODO: Use the ViewModel
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
     }
 
     private void setupRecyclerView() {
         recyclerView.setHasFixedSize(true); // Maybe not needed
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new RecyclerAdapter(
                 () -> getModel().getAllItems(),
                 item -> selectItem(item.getIdentifier()));
@@ -53,8 +73,8 @@ public abstract class ViewItemActivity extends AppCompatActivity {
         setSelectedItem(item);
     }
 
-    private void setSelectedItem(String itme) {
-        selectedItem = Optional.of(itme);
+    private void setSelectedItem(String item) {
+        selectedItem = Optional.of(item);
     }
 
     private void clearSelectedItem() {
@@ -81,7 +101,7 @@ public abstract class ViewItemActivity extends AppCompatActivity {
     private void clickFindBy() {
         selectedItem.ifPresent(item ->
                 ActivityUtilities.loadActivityWithExtra(
-                        this, getFindByActivityClass(), getSelectedItem(item), getSerializationKey()));
+                        getActivity(), getFindByActivityClass(), getSelectedItem(item), getSerializationKey()));
     }
 
     protected abstract void setItem(String item);
@@ -105,4 +125,7 @@ public abstract class ViewItemActivity extends AppCompatActivity {
     protected abstract int getRecyclerViewId();
     protected abstract Serializable getSelectedItem(String selectedItem);
     protected abstract String getSerializationKey();
+
+
+
 }

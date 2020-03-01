@@ -21,7 +21,6 @@ import com.example.npcmanager.Activities.View.ViewLocationsActivity;
 import com.example.npcmanager.Activities.View.ViewOccupationsActivity;
 import com.example.npcmanager.Activities.View.ViewOrganizationsActivity;
 import com.example.npcmanager.Activities.View.ViewRacesActivity;
-import com.example.npcmanager.DataStorage.CampaignReaderWriter;
 import com.example.npcmanager.DataStructures.Quest;
 import com.example.npcmanager.Models.ApplicationModels;
 import com.example.npcmanager.R;
@@ -109,7 +108,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void refreshActivity() {
         fillQuestList();
-        CampaignReaderWriter.save(ApplicationModels.getCampaignName(), this);
     }
 
     private void fillQuestList() {

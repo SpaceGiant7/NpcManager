@@ -1,9 +1,6 @@
 package com.example.npcmanager.DataStructures.InitialData;
 
-import java.util.HashMap;
-import java.util.Map;
-
-public enum InitialRaces {
+public enum DefaultRace {
     DRAGONBORN( "Dragonborn", "Dragonborn look very much like dragons standing"
             + "erect in humanoid form, though they lack wings or a tail." ),
     DWARF( "Dwarf", "Bold and hardy, dwarves are known as skilled warriors, "
@@ -30,22 +27,12 @@ public enum InitialRaces {
             + "warrior must be strong enough to take what is needed by force " ),
     TIEFLING( "Tiefling", "To be greeted with stares and whispers, to suffer "
             + "violence and insult on the street, to see mistrust and fear in every eye: this "
-            + "is the lot of the tiefling" ),
-    UNKNOWN( "Unknown", "You just don't know" );
-
-
-    private static final Map<String, InitialRaces> BY_NAME = new HashMap<>();
-
-    static {
-        for (InitialRaces r : values()) {
-            BY_NAME.put(r.name, r);
-        }
-    }
+            + "is the lot of the tiefling" );
 
     private final String name;
     private final String description;
 
-    InitialRaces( String name, String description ) {
+    DefaultRace(String name, String description ) {
         this.name = name;
         this.description = description;
     }
@@ -62,6 +49,4 @@ public enum InitialRaces {
     public String toString() {
         return name;
     }
-
-    public static InitialRaces fromName(String name) { return BY_NAME.get(name); }
 }

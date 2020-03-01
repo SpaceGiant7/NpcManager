@@ -1,4 +1,4 @@
-package com.example.npcmanager.Activities;
+package com.example.npcmanager.Activities.Utilities;
 
 
 import android.view.LayoutInflater;

@@ -1,14 +1,17 @@
 package com.example.npcmanager.DataStructures.InitialData;
 
-public enum InitialGenders {
+public enum DefaultGender {
     FEMALE( "Female" ),
-    MALE( "Male" ),
-    UNKNOWN( "Unknown" );
+    MALE( "Male" );
 
     private final String name;
 
-    InitialGenders( String name ){
+    DefaultGender(String name){
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override

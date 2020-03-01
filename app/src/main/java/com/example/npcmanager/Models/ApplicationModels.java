@@ -32,6 +32,10 @@ public class ApplicationModels {
         genderModel = new GenderModel();
     }
 
+    public static void resetModels() {
+        INSTANCE = new ApplicationModels();
+    }
+
     public static String getCampaignName() {
         return INSTANCE.campaignName;
     }
