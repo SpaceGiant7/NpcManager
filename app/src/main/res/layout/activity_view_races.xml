@@ -51,7 +51,7 @@
 
     <Button
         android:id="@+id/viewRaceSaveButton"
-        style="@style/ButtonStyle"
+        style="@style/TextButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/viewRaceDescription"
@@ -61,7 +61,7 @@
 
     <Button
         android:id="@+id/viewRaceDeleteButton"
-        style="@style/ButtonStyle"
+        style="@style/TextButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/viewRaceSaveButton"
@@ -71,7 +71,7 @@
 
     <Button
         android:id="@+id/viewRaceFindByButton"
-        style="@style/ButtonStyle"
+        style="@style/TextButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/viewRaceDeleteButton"

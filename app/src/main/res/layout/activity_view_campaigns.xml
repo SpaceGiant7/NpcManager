@@ -41,7 +41,7 @@
 
     <Button
         android:id="@+id/viewCampaignSaveButton"
-        style="@style/ButtonStyle"
+        style="@style/TextButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/viewCampaignName"
@@ -51,7 +51,7 @@
 
     <Button
         android:id="@+id/viewCampaignDeleteButton"
-        style="@style/ButtonStyle"
+        style="@style/TextButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/viewCampaignSaveButton"
@@ -61,7 +61,7 @@
 
     <Button
         android:id="@+id/viewCampaignLoadButton"
-        style="@style/ButtonStyle"
+        style="@style/TextButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/viewCampaignDeleteButton"

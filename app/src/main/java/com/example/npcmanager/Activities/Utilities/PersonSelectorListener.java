@@ -1,6 +1,5 @@
 package com.example.npcmanager.Activities.Utilities;
 
-import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -20,9 +19,8 @@ public class PersonSelectorListener implements AdapterView.OnItemClickListener {
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         Person person = (Person) adapterView.getAdapter().getItem(i);
-        Intent intent = new Intent( currentActivity, activityClassToOpen);
-        intent.putExtra("name", person.getName());
-        currentActivity.startActivity(intent);
+        ActivityUtilities.loadActivityWithExtra(
+                currentActivity, activityClassToOpen, person, ActivityUtilities.personKey);
     }
 }
 

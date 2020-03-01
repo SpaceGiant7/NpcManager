@@ -29,8 +29,15 @@
         <item name="android:background">@color/black_overlay</item>
     </style>
 
-    <style name="ButtonStyle">
+    <style name="TextButtonStyle">
         <item name="android:background">@color/colorButton</item>
+        <item name="android:layout_marginTop">@dimen/buttonMargin</item>
+        <item name="android:layout_marginBottom">@dimen/buttonMargin</item>
+        <item name="android:layout_marginStart">@dimen/buttonMargin</item>
+        <item name="android:layout_marginEnd">@dimen/buttonMargin</item>
+    </style>
+
+    <style name="ImageButtonStyle">
         <item name="android:layout_marginTop">@dimen/buttonMargin</item>
         <item name="android:layout_marginBottom">@dimen/buttonMargin</item>
         <item name="android:layout_marginStart">@dimen/buttonMargin</item>

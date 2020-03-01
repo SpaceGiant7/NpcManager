@@ -51,7 +51,7 @@
 
     <Button
         android:id="@+id/viewLocationSaveButton"
-        style="@style/ButtonStyle"
+        style="@style/TextButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/viewLocationDescription"
@@ -61,7 +61,7 @@
 
     <Button
         android:id="@+id/viewLocationDeleteButton"
-        style="@style/ButtonStyle"
+        style="@style/TextButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/viewLocationSaveButton"
@@ -71,7 +71,7 @@
 
     <Button
         android:id="@+id/viewLocationFindByButton"
-        style="@style/ButtonStyle"
+        style="@style/TextButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/viewLocationDeleteButton"

@@ -41,7 +41,7 @@
 
     <Button
         android:id="@+id/viewGenderSaveButton"
-        style="@style/ButtonStyle"
+        style="@style/TextButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/viewGenderName"
@@ -51,7 +51,7 @@
 
     <Button
         android:id="@+id/viewGenderDeleteButton"
-        style="@style/ButtonStyle"
+        style="@style/TextButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/viewGenderSaveButton"
@@ -61,7 +61,7 @@
 
     <Button
         android:id="@+id/viewGenderFindByButton"
-        style="@style/ButtonStyle"
+        style="@style/TextButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/viewGenderDeleteButton"

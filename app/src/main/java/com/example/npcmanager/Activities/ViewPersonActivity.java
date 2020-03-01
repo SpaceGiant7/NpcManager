@@ -7,13 +7,13 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.npcmanager.Activities.FindBy.FindByGenderActivity;
 import com.example.npcmanager.Activities.FindBy.FindByLocationActivity;
 import com.example.npcmanager.Activities.FindBy.FindByOccupationActivity;
 import com.example.npcmanager.Activities.FindBy.FindByOrganizationActivity;
 import com.example.npcmanager.Activities.FindBy.FindByRaceActivity;
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.DataStructures.Person;
-import com.example.npcmanager.Models.ApplicationModels;
 import com.example.npcmanager.R;
 
 public class ViewPersonActivity extends AppCompatActivity {
@@ -42,28 +42,43 @@ public class ViewPersonActivity extends AppCompatActivity {
         descriptionTextInput = findViewById(R.id.viewPersonDescriptionText);
         editButton = findViewById(R.id.viewPersonEditButton);
 
-        String name = ActivityUtilities.getNameExtra(getIntent());
-        setPerson(ApplicationModels.getPersonModel().findFirstPerson(name));
+        setPerson(ActivityUtilities.getPersonExtraMaybe(getIntent()).get());
 
         setOnClickListeners();
     }
 
     private void setOnClickListeners() {
         editButton.setOnClickListener(
-                v -> ActivityUtilities.loadActivityWithNameExtra(
-                        this, AddPersonActivity.class, nameTextInput.getText()));
+                v -> ActivityUtilities.loadActivityWithPersonExtra(
+                        this,
+                        AddPersonActivity.class,
+                        nameTextInput.getText().toString()));
         raceTextInput.setOnClickListener(
-                v -> ActivityUtilities.loadActivityWithNameExtra(
-                        this, FindByRaceActivity.class, raceTextInput.getText()));
+                v -> ActivityUtilities.loadActivityWithRaceExtra(
+                        this,
+                        FindByRaceActivity.class,
+                        raceTextInput.getText().toString()));
         locationTextInput.setOnClickListener(
-                v -> ActivityUtilities.loadActivityWithNameExtra(
-                        this, FindByLocationActivity.class, locationTextInput.getText()));
+                v -> ActivityUtilities.loadActivityWithLocationExtra(
+                        this,
+                        FindByLocationActivity.class,
+                        locationTextInput.getText().toString()));
         occupationTextInput.setOnClickListener(
-                v -> ActivityUtilities.loadActivityWithNameExtra(
-                        this, FindByOccupationActivity.class, occupationTextInput.getText()));
+                v -> ActivityUtilities.loadActivityWithOccupationExtra(
+                        this,
+                        FindByOccupationActivity.class,
+                        occupationTextInput.getText().toString()));
         organizationTextInput.setOnClickListener(
-                v -> ActivityUtilities.loadActivityWithNameExtra(
-                        this, FindByOrganizationActivity.class, organizationTextInput.getText()));
+                v -> ActivityUtilities.loadActivityWithOrganizationExtra(
+                        this,
+                        FindByOrganizationActivity.class,
+                        organizationTextInput.getText().toString()));
+        genderTextInput.setOnClickListener(
+                v -> ActivityUtilities.loadActivityWithGenderExtra(
+                        this,
+                        FindByGenderActivity.class,
+                        genderTextInput.getText().toString()));
+
 
     }
 

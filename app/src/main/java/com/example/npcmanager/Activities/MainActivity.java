@@ -56,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
 
         campiagnName.setText(ApplicationModels.getCampaignName());
 
-        fileButton.setOnClickListener(v -> ActivityUtilities.loadActivityWithNameExtra(
-                this, ViewCampaignsActivity.class, campiagnName.getText()));
+        fileButton.setOnClickListener(v -> ActivityUtilities.loadActivity(
+                this, ViewCampaignsActivity.class));
 
         questList.setOnItemClickListener(new QuestSelectorListener(this, ViewQuestActivity.class));
     }

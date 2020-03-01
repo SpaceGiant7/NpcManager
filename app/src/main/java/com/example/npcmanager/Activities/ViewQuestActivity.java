@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.npcmanager.Activities.FindBy.FindByLocationActivity;
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.DataStructures.Quest;
-import com.example.npcmanager.Models.ApplicationModels;
 import com.example.npcmanager.R;
 
 public class ViewQuestActivity extends AppCompatActivity {
@@ -30,22 +29,27 @@ public class ViewQuestActivity extends AppCompatActivity {
         detailsTextView = findViewById(R.id.viewQuestDetailsText);
         editButton = findViewById(R.id.viewQuestEditButton);
 
-        String name = ActivityUtilities.getNameExtra(getIntent());
-        setQuest(ApplicationModels.getQuestModel().getQuest(name));
+        setQuest(ActivityUtilities.getQuestExtraMaybe(getIntent()).get());
 
         setOnClickListeners();
     }
 
     private void setOnClickListeners() {
         editButton.setOnClickListener(
-                v -> ActivityUtilities.loadActivityWithNameExtra(
-                        this, AddQuestActivity.class, nameTextView.getText()));
+                v -> ActivityUtilities.loadActivityWithQuestExtra(
+                        this,
+                        AddQuestActivity.class,
+                        nameTextView.getText().toString()));
         questGiverTextView.setOnClickListener(
-                v -> ActivityUtilities.loadActivityWithNameExtra(
-                        this, ViewPersonActivity.class, questGiverTextView.getText()));
+                v -> ActivityUtilities.loadActivityWithPersonExtra(
+                        this,
+                        ViewPersonActivity.class,
+                        questGiverTextView.getText().toString()));
         locationTextView.setOnClickListener(
-                v -> ActivityUtilities.loadActivityWithNameExtra(
-                        this, FindByLocationActivity.class, locationTextView.getText()));
+                v -> ActivityUtilities.loadActivityWithLocationExtra(
+                        this,
+                        FindByLocationActivity.class,
+                        locationTextView.getText().toString()));
     }
 
     public void setQuest(Quest quest) {

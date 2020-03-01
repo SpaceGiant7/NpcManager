@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.npcmanager.Activities.Fragments.GenderFragment;
 import com.example.npcmanager.Activities.Fragments.LocationFragment;
+import com.example.npcmanager.Activities.Fragments.MainFragment;
 import com.example.npcmanager.Activities.Fragments.OccupationFragment;
 import com.example.npcmanager.Activities.Fragments.OrganizationFragment;
 import com.example.npcmanager.Activities.Fragments.RaceFragment;
@@ -28,10 +29,9 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     private final Context context;
 
     private List<String> tabNames = Arrays.asList(
-            "Person", "Quest", "Organization", "Location", "Race", "Occupation", "Gender");
+            "Main", "Organization", "Location", "Race", "Occupation", "Gender");
     private List<Supplier<Fragment>> tabFragments = Arrays.asList(
-            GenderFragment::new,
-            GenderFragment::new,
+            MainFragment::new,
             OrganizationFragment::new,
             LocationFragment::new,
             RaceFragment::new,

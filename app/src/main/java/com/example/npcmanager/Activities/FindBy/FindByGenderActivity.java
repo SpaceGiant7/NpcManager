@@ -11,7 +11,7 @@ public class FindByGenderActivity extends FindByActivity {
     Gender gender;
 
     protected String deserializeInputs() {
-        gender = ActivityUtilities.getGendereExtraMaybe(getIntent()).get();
+        gender = ActivityUtilities.getGenderExtraMaybe(getIntent()).get();
         return gender.getName();
     }
 

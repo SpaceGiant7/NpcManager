@@ -23,12 +23,10 @@ public abstract class ViewItemFragment extends Fragment {
 
     protected Optional<String> selectedItem = Optional.empty();
     private RecyclerView recyclerView;
-    RecyclerAdapter adapter;
+    private RecyclerAdapter adapter;
     private Button saveButton;
     private Button deleteButton;
     private Button findByButton;
-
-
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -45,18 +43,6 @@ public abstract class ViewItemFragment extends Fragment {
         saveButton.setOnClickListener(v -> this.clickSave());
         deleteButton.setOnClickListener(v -> this.clickDelete());
         return view;
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        // TODO: Use the ViewModel
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
     }
 
     private void setupRecyclerView() {

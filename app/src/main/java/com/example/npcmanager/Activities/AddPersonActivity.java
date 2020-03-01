@@ -26,7 +26,7 @@ import java.util.Optional;
 
 public class AddPersonActivity extends AppCompatActivity {
 
-    private Optional<String> existingPersonName;
+    private Optional<Person> existingPerson;
 
     private TextView nameTextInput;
     private Spinner raceSelector;
@@ -52,7 +52,7 @@ public class AddPersonActivity extends AppCompatActivity {
         Button saveButton = findViewById(R.id.addPersonSaveButton);
         Button deleteButton = findViewById(R.id.addPersonDeleteButton);
 
-        existingPersonName = ActivityUtilities.getNameExtraMaybe(getIntent());
+        existingPerson = ActivityUtilities.getPersonExtraMaybe(getIntent());
         populateInputs();
 
         saveButton.setOnClickListener(v -> saveButtonClicked());
@@ -60,8 +60,8 @@ public class AddPersonActivity extends AppCompatActivity {
     }
 
     private void populateInputs() {
-        if (existingPersonName.isPresent()) {
-            Person person = ApplicationModels.getPersonModel().findFirstPerson(existingPersonName.get());
+        if (existingPerson.isPresent()) {
+            Person person = existingPerson.get();
             populateInputs(
                     person.getName(),
                     person.getRace(),
@@ -126,8 +126,8 @@ public class AddPersonActivity extends AppCompatActivity {
                 deceasedCheckBox.isChecked(),
                 descriptionTextInput.getText().toString());
 
-        if( existingPersonName.isPresent()) {
-            ApplicationModelUpdater.replacePerson(existingPersonName.get(), newPerson, this);
+        if( existingPerson.isPresent()) {
+            ApplicationModelUpdater.replacePerson(existingPerson.get().getName(), newPerson, this);
         } else {
             ApplicationModelUpdater.addPerson(newPerson, this);
         }
@@ -139,8 +139,8 @@ public class AddPersonActivity extends AppCompatActivity {
     }
 
     private void deleteButtonClicked() {
-        existingPersonName.ifPresent(
-                name -> ApplicationModelUpdater.removePerson(name, this));
+        existingPerson.ifPresent(
+                person -> ApplicationModelUpdater.removePerson(person.getName(), this));
         ActivityUtilities.loadMainActivity(this);
     }
 }

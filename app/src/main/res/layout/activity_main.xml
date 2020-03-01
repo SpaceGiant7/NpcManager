@@ -60,28 +60,28 @@
 
         <Button
             android:id="@+id/mainAddPersonButton"
-            style="@style/ButtonStyle"
+            style="@style/TextButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/person" />
 
         <Button
             android:id="@+id/mainAddQuestButton"
-            style="@style/ButtonStyle"
+            style="@style/TextButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/quest" />
 
         <Button
             android:id="@+id/mainAddLocationButton"
-            style="@style/ButtonStyle"
+            style="@style/TextButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/location" />
 
         <Button
             android:id="@+id/mainAddOrganizationButton"
-            style="@style/ButtonStyle"
+            style="@style/TextButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/organization" />
@@ -100,7 +100,7 @@
 
     <Button
         android:id="@+id/mainFindByNameButton"
-        style="@style/ButtonStyle"
+        style="@style/TextButtonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintEnd_toStartOf="@+id/mainFindByRaceButton"
@@ -111,7 +111,7 @@
 
     <Button
         android:id="@+id/mainFindByRaceButton"
-        style="@style/ButtonStyle"
+        style="@style/TextButtonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintEnd_toStartOf="@+id/mainFindByLocationButton"
@@ -122,7 +122,7 @@
 
     <Button
         android:id="@+id/mainFindByLocationButton"
-        style="@style/ButtonStyle"
+        style="@style/TextButtonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -133,7 +133,7 @@
 
     <Button
         android:id="@+id/mainFindByOccupationButton"
-        style="@style/ButtonStyle"
+        style="@style/TextButtonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintEnd_toStartOf="@id/mainFindByOrganizationButton"
@@ -144,7 +144,7 @@
 
     <Button
         android:id="@+id/mainFindByOrganizationButton"
-        style="@style/ButtonStyle"
+        style="@style/TextButtonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintEnd_toStartOf="@id/mainFindByGenderButton"
@@ -155,7 +155,7 @@
 
     <Button
         android:id="@+id/mainFindByGenderButton"
-        style="@style/ButtonStyle"
+        style="@style/TextButtonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"

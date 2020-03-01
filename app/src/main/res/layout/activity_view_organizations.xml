@@ -59,7 +59,7 @@
 
     <Button
         android:id="@+id/viewOrganizationSaveButton"
-        style="@style/ButtonStyle"
+        style="@style/TextButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/viewOrganizationDescription"
@@ -69,7 +69,7 @@
 
     <Button
         android:id="@+id/viewOrganizationDeleteButton"
-        style="@style/ButtonStyle"
+        style="@style/TextButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/viewOrganizationSaveButton"
@@ -79,7 +79,7 @@
 
     <Button
         android:id="@+id/viewOrganizationFindByButton"
-        style="@style/ButtonStyle"
+        style="@style/TextButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/viewOrganizationDeleteButton"

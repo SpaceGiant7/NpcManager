@@ -20,7 +20,7 @@ import java.util.Optional;
 
 public class AddQuestActivity extends AppCompatActivity {
 
-    private Optional<String> existingQuestName;
+    private Optional<Quest> existingQuest;
 
     EditText nameTextInput;
     Spinner personSpinner;
@@ -38,7 +38,7 @@ public class AddQuestActivity extends AppCompatActivity {
         Button saveButton = findViewById(R.id.addQuestSaveButton);
         Button deleteButton = findViewById(R.id.addQuestDeleteButton);
 
-        existingQuestName = getQuestNameMaybe();
+        existingQuest = ActivityUtilities.getQuestExtraMaybe(getIntent());
         populateInputs();
 
         saveButton.setOnClickListener(v -> saveButtonClicked());
@@ -46,8 +46,8 @@ public class AddQuestActivity extends AppCompatActivity {
     }
 
     private void populateInputs() {
-        if (existingQuestName.isPresent()) {
-            Quest quest = ApplicationModels.getQuestModel().getQuest(existingQuestName.get());
+        if (existingQuest.isPresent()) {
+            Quest quest = existingQuest.get();
             populateInputs(
                     quest.getQuestName(),
                     quest.getQuestGiver(),
@@ -98,8 +98,8 @@ public class AddQuestActivity extends AppCompatActivity {
                 (Location) locationSpinner.getSelectedItem(),
                 detailsTextInput.getText().toString());
 
-        if(existingQuestName.isPresent()) {
-            ApplicationModelUpdater.replaceQuest(existingQuestName.get(), newQuest, this);
+        if(existingQuest.isPresent()) {
+            ApplicationModelUpdater.replaceQuest(existingQuest.get().getQuestName(), newQuest, this);
         } else {
             ApplicationModelUpdater.addQuest(newQuest, this);
         }
@@ -111,8 +111,8 @@ public class AddQuestActivity extends AppCompatActivity {
     }
 
     private void deleteButtonClicked() {
-        existingQuestName.ifPresent(
-                name -> ApplicationModelUpdater.removeQuest(name, this));
+        existingQuest.ifPresent(
+                quest -> ApplicationModelUpdater.removeQuest(quest.getQuestName(), this));
         ActivityUtilities.loadMainActivity(this);
     }
 }

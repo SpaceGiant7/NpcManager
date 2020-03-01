@@ -36,6 +36,10 @@ public abstract class BaseModel<T extends BaseItem> {
                 .findFirst();
     }
 
+    public T getItem(String identifier) {
+        return getItemMaybe(identifier).get();
+    }
+
     protected abstract T getNone();
 
     protected void addItem(T newItem) {
