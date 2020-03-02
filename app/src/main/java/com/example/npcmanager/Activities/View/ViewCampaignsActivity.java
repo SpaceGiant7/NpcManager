@@ -48,13 +48,20 @@ public class ViewCampaignsActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new RecyclerAdapter(
                 () -> CampaignReaderWriter.getExistingCampaigns(this),
-                item -> selectCampaign(item.getIdentifier()));
+                item -> selectCampaign(item.getIdentifier()),
+                item -> deleteCampaign(item.getIdentifier()));
         recyclerView.setAdapter(adapter);
     }
 
     private void selectCampaign(String item) {
         name.setText(item);
         setSelectedCampaign(item);
+    }
+
+    private void deleteCampaign(String item) {
+        CampaignReaderWriter.delete(item, this);
+        clearSelectedCampaign();
+        adapter.reloadItems();
     }
 
     private void setSelectedCampaign(String campaign) {

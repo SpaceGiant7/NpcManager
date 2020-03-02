@@ -6,9 +6,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
+import com.example.npcmanager.DataStructures.BaseItem;
 import com.example.npcmanager.DataStructures.Location;
 import com.example.npcmanager.DataStructures.Person;
 import com.example.npcmanager.DataStructures.Quest;
@@ -18,7 +17,7 @@ import com.example.npcmanager.R;
 
 import java.util.Optional;
 
-public class AddQuestActivity extends AppCompatActivity {
+public class AddQuestActivity extends HomeButtonActivity {
 
     private Optional<Quest> existingQuest;
 
@@ -70,15 +69,16 @@ public class AddQuestActivity extends AppCompatActivity {
             String details) {
 
         nameTextInput.setText(name);
-        ArrayAdapter<Location> locationAdaptor = new ArrayAdapter<>(
+        ArrayAdapter<BaseItem> locationAdaptor = new ArrayAdapter<>(
                 this, android.R.layout.simple_spinner_item,
-                ApplicationModels.getLocationModel().getAllItems());
+                ApplicationModels.getLocationModel().getListWithNone());
         locationSpinner.setAdapter(locationAdaptor);
         locationSpinner.setSelection(locationAdaptor.getPosition(
                 returnLocation));
 
-        ArrayAdapter<Person> personAdaptor = new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_item, ApplicationModels.getPersonModel().getAllItems());
+        ArrayAdapter<BaseItem> personAdaptor = new ArrayAdapter<>(
+                this, android.R.layout.simple_spinner_item,
+                ApplicationModels.getPersonModel().getListWithNone());
         personSpinner.setAdapter(personAdaptor);
         personSpinner.setSelection(personAdaptor.getPosition(questGiver));
         detailsTextInput.setText(details);

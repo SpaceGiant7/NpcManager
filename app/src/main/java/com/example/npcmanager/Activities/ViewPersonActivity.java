@@ -5,8 +5,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.npcmanager.Activities.FindBy.FindByGenderActivity;
 import com.example.npcmanager.Activities.FindBy.FindByLocationActivity;
 import com.example.npcmanager.Activities.FindBy.FindByOccupationActivity;
@@ -16,7 +14,7 @@ import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.DataStructures.Person;
 import com.example.npcmanager.R;
 
-public class ViewPersonActivity extends AppCompatActivity {
+public class ViewPersonActivity extends HomeButtonActivity {
 
     private TextView nameTextInput;
     private TextView raceTextInput;

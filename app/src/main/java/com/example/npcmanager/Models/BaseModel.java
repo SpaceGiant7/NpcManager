@@ -1,6 +1,7 @@
 package com.example.npcmanager.Models;
 
 
+import com.example.npcmanager.Constants.NpcConstants;
 import com.example.npcmanager.DataStructures.BaseItem;
 
 import java.util.ArrayList;
@@ -8,8 +9,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import Constants.NpcConstants;
 
 public abstract class BaseModel<T extends BaseItem> {
     private static final Logger LOGGER = Logger.getLogger(BaseModel.class.getName());

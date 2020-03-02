@@ -1,5 +1,7 @@
 package com.example.npcmanager.DataStructures;
 
+import com.example.npcmanager.Constants.NpcConstants;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -17,7 +19,7 @@ public class Race implements BaseItem, Serializable {
     }
 
     public static Race None() {
-        return Race.of(Constants.NpcConstants.NONE, "");
+        return Race.of(NpcConstants.NONE, "");
     }
 
     public String getName() {

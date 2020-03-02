@@ -1,5 +1,7 @@
 package com.example.npcmanager.DataStructures;
 
+import com.example.npcmanager.Constants.NpcConstants;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -17,7 +19,7 @@ public class Occupation implements BaseItem, Serializable {
     }
 
     public static Occupation None() {
-        return Occupation.of(Constants.NpcConstants.NONE, "");
+        return Occupation.of(NpcConstants.NONE, "");
     }
 
     public String getName() {

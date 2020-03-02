@@ -4,14 +4,12 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.npcmanager.Activities.FindBy.FindByLocationActivity;
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.DataStructures.Quest;
 import com.example.npcmanager.R;
 
-public class ViewQuestActivity extends AppCompatActivity {
+public class ViewQuestActivity extends HomeButtonActivity {
 
     private TextView nameTextView;
     private TextView questGiverTextView;
@@ -59,4 +57,5 @@ public class ViewQuestActivity extends AppCompatActivity {
         detailsTextView.setText(quest.getDetails());
 
     }
+
 }

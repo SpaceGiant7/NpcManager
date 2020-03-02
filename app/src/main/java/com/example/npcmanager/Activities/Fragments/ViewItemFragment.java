@@ -50,13 +50,20 @@ public abstract class ViewItemFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new RecyclerAdapter(
                 () -> getModel().getAllItems(),
-                item -> selectItem(item.getIdentifier()));
+                item -> selectItem(item.getIdentifier()),
+                item -> deleteItem(item.getIdentifier()));
         recyclerView.setAdapter(adapter);
     }
 
     void selectItem(String item) {
         setItem(item);
         setSelectedItem(item);
+    }
+
+    private void deleteItem(String item) {
+        removeItem(item);
+        adapter.reloadItems();
+        clearSelectedItem();
     }
 
     private void setSelectedItem(String item) {
@@ -111,7 +118,5 @@ public abstract class ViewItemFragment extends Fragment {
     protected abstract int getRecyclerViewId();
     protected abstract Serializable getSelectedItem(String selectedItem);
     protected abstract String getSerializationKey();
-
-
 
 }

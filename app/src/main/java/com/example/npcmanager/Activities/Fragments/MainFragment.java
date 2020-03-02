@@ -17,6 +17,7 @@ import com.example.npcmanager.Activities.FindBy.FindByNameActivity;
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.Activities.Utilities.RecyclerAdapter;
 import com.example.npcmanager.Activities.ViewQuestActivity;
+import com.example.npcmanager.Models.ApplicationModelUpdater;
 import com.example.npcmanager.Models.ApplicationModels;
 import com.example.npcmanager.R;
 
@@ -53,7 +54,8 @@ public class MainFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new RecyclerAdapter(
                 () -> ApplicationModels.getQuestModel().getAllItems(),
-                item -> selectQuest(item.getIdentifier()));
+                item -> selectQuest(item.getIdentifier()),
+                item -> deleteQuest(item.getIdentifier()));
         recyclerView.setAdapter(adapter);
     }
 
@@ -63,6 +65,11 @@ public class MainFragment extends Fragment {
                 ViewQuestActivity.class,
                 ApplicationModels.getQuestModel().getItemMaybe(quest).get(),
                 ActivityUtilities.questKey);
+    }
+
+    private void deleteQuest(String quest) {
+        ApplicationModelUpdater.removeQuest(quest, getContext());
+        adapter.reloadItems();
     }
 
     private void setupButtons() {

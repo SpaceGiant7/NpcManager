@@ -23,7 +23,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text=""
-            android:textSize="20sp"/>
+            android:textSize="@dimen/cardTextSize"/>
+
+        <ImageButton
+            android:id="@+id/cardDeleteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:visibility="invisible"
+            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

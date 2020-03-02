@@ -1,9 +1,9 @@
 package com.example.npcmanager.DataStructures;
 
+import com.example.npcmanager.Constants.NpcConstants;
+
 import java.io.Serializable;
 import java.util.Objects;
-
-import Constants.NpcConstants;
 
 public class Quest implements BaseItem, Serializable {
     private String questName;

@@ -1,9 +1,9 @@
 package com.example.npcmanager.DataStructures;
 
 
-import java.io.Serializable;
+import com.example.npcmanager.Constants.NpcConstants;
 
-import Constants.NpcConstants;
+import java.io.Serializable;
 
 public class Person implements BaseItem, Serializable {
     private String name;

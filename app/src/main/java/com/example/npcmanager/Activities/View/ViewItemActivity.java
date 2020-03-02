@@ -3,10 +3,10 @@ package com.example.npcmanager.Activities.View;
 import android.os.Bundle;
 import android.widget.Button;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.npcmanager.Activities.HomeButtonActivity;
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.Activities.Utilities.RecyclerAdapter;
 import com.example.npcmanager.Models.BaseModel;
@@ -14,7 +14,7 @@ import com.example.npcmanager.Models.BaseModel;
 import java.io.Serializable;
 import java.util.Optional;
 
-public abstract class ViewItemActivity extends AppCompatActivity {
+public abstract class ViewItemActivity extends HomeButtonActivity {
 
     protected Optional<String> selectedItem = Optional.empty();
     private RecyclerView recyclerView;
@@ -44,8 +44,15 @@ public abstract class ViewItemActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new RecyclerAdapter(
                 () -> getModel().getAllItems(),
-                item -> selectItem(item.getIdentifier()));
+                item -> selectItem(item.getIdentifier()),
+                item -> deleteItem(item.getIdentifier()));
         recyclerView.setAdapter(adapter);
+    }
+
+    void deleteItem(String item) {
+        removeItem(item);
+        adapter.reloadItems();
+        clearSelectedItem();
     }
 
     void selectItem(String item) {
@@ -53,8 +60,8 @@ public abstract class ViewItemActivity extends AppCompatActivity {
         setSelectedItem(item);
     }
 
-    private void setSelectedItem(String itme) {
-        selectedItem = Optional.of(itme);
+    private void setSelectedItem(String item) {
+        selectedItem = Optional.of(item);
     }
 
     private void clearSelectedItem() {

@@ -5,8 +5,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import com.example.npcmanager.Activities.HomeButtonActivity;
 import com.example.npcmanager.Activities.Utilities.PersonSelectorListener;
 import com.example.npcmanager.Activities.ViewPersonActivity;
 import com.example.npcmanager.DataStructures.Person;
@@ -14,7 +13,7 @@ import com.example.npcmanager.R;
 
 import java.util.List;
 
-public abstract class FindByActivity extends AppCompatActivity {
+public abstract class FindByActivity extends HomeButtonActivity {
 
     TextView titleText;
     TextView identifierText;

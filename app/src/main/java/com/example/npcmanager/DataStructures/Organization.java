@@ -1,8 +1,8 @@
 package com.example.npcmanager.DataStructures;
 
-import java.io.Serializable;
+import com.example.npcmanager.Constants.NpcConstants;
 
-import Constants.NpcConstants;
+import java.io.Serializable;
 
 public class Organization implements BaseItem, Serializable {
 

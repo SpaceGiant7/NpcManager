@@ -7,8 +7,6 @@ import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.DataStructures.BaseItem;
 import com.example.npcmanager.DataStructures.Gender;
@@ -24,7 +22,7 @@ import com.example.npcmanager.R;
 import java.util.List;
 import java.util.Optional;
 
-public class AddPersonActivity extends AppCompatActivity {
+public class AddPersonActivity extends HomeButtonActivity {
 
     private Optional<Person> existingPerson;
 
