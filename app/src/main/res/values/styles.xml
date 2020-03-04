@@ -37,11 +37,15 @@
         <item name="android:layout_marginEnd">@dimen/buttonMargin</item>
     </style>
 
+
     <style name="ImageButtonStyle">
         <item name="android:layout_marginTop">@dimen/buttonMargin</item>
         <item name="android:layout_marginBottom">@dimen/buttonMargin</item>
         <item name="android:layout_marginStart">@dimen/buttonMargin</item>
         <item name="android:layout_marginEnd">@dimen/buttonMargin</item>
+        <item name="android:background">@color/colorTransparent</item>
+        <item name="layout_constraintHeight_max">@dimen/maxButtonSize</item>
+        <item name="layout_constraintWidth_max">@dimen/maxButtonSize</item>
     </style>
 
 </resources>

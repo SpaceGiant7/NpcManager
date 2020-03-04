@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,9 +24,8 @@ public abstract class ViewItemFragment extends Fragment {
     protected Optional<String> selectedItem = Optional.empty();
     private RecyclerView recyclerView;
     private RecyclerAdapter adapter;
-    private Button saveButton;
-    private Button deleteButton;
-    private Button findByButton;
+    private ImageButton saveButton;
+    private ImageButton findByButton;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -34,16 +33,16 @@ public abstract class ViewItemFragment extends Fragment {
         View view = inflater.inflate(getContentView(), container, false);
         recyclerView = view.findViewById(getRecyclerViewId());
         saveButton = view.findViewById(getSaveButtonId());
-        deleteButton = view.findViewById(getDeleteButtonId());
         findByButton = view.findViewById(getFindByButtonId());
 
         setupRecyclerView();
 
         findByButton.setOnClickListener(v -> this.clickFindBy());
         saveButton.setOnClickListener(v -> this.clickSave());
-        deleteButton.setOnClickListener(v -> this.clickDelete());
         return view;
     }
+
+
 
     private void setupRecyclerView() {
         recyclerView.setHasFixedSize(true); // Maybe not needed
@@ -51,7 +50,8 @@ public abstract class ViewItemFragment extends Fragment {
         adapter = new RecyclerAdapter(
                 () -> getModel().getAllItems(),
                 item -> selectItem(item.getIdentifier()),
-                item -> deleteItem(item.getIdentifier()));
+                item -> deleteItem(item.getIdentifier()),
+                getActivity());
         recyclerView.setAdapter(adapter);
     }
 
@@ -85,12 +85,6 @@ public abstract class ViewItemFragment extends Fragment {
         clearSelectedItem();
     }
 
-    private void clickDelete() {
-        selectedItem.ifPresent(this::removeItem);
-        adapter.reloadItems();
-        clearSelectedItem();
-    }
-
     private void clickFindBy() {
         selectedItem.ifPresent(item ->
                 ActivityUtilities.loadActivityWithExtra(
@@ -112,7 +106,6 @@ public abstract class ViewItemFragment extends Fragment {
     protected abstract Class getFindByActivityClass();
 
     protected abstract int getSaveButtonId();
-    protected abstract int getDeleteButtonId();
     protected abstract int getFindByButtonId();
     protected abstract int getContentView();
     protected abstract int getRecyclerViewId();

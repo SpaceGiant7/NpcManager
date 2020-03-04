@@ -95,11 +95,6 @@ public class ViewOrganizationsActivity extends ViewItemActivity {
     }
 
     @Override
-    protected int getDeleteButtonId() {
-        return R.id.viewOrganizationDeleteButton;
-    }
-
-    @Override
     protected int getFindByButtonId() {
         return R.id.viewOrganizationFindByButton;
     }

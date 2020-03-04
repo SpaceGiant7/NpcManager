@@ -85,11 +85,6 @@ public class GenderFragment extends ViewItemFragment {
     }
 
     @Override
-    protected int getDeleteButtonId() {
-        return R.id.viewGenderDeleteButton;
-    }
-
-    @Override
     protected int getFindByButtonId() {
         return R.id.viewGenderFindByButton;
     }

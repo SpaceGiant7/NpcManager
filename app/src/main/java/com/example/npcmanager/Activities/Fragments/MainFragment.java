@@ -55,7 +55,8 @@ public class MainFragment extends Fragment {
         adapter = new RecyclerAdapter(
                 () -> ApplicationModels.getQuestModel().getAllItems(),
                 item -> selectQuest(item.getIdentifier()),
-                item -> deleteQuest(item.getIdentifier()));
+                item -> deleteQuest(item.getIdentifier()),
+                getActivity());
         recyclerView.setAdapter(adapter);
     }
 

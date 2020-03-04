@@ -30,8 +30,8 @@
     <ImageButton
         android:id="@+id/fragmentMainSearchButton"
         style="@style/ImageButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/fragmentMainQuestButton"
         app:layout_constraintTop_toTopOf="@id/fragmentMainHorizontalGuideline20"
@@ -41,8 +41,8 @@
     <ImageButton
         android:id="@+id/fragmentMainQuestButton"
         style="@style/ImageButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintStart_toEndOf="@id/fragmentMainSearchButton"
         app:layout_constraintEnd_toStartOf="@+id/fragmentMainAddButton"
         app:layout_constraintTop_toTopOf="@id/fragmentMainHorizontalGuideline20"
@@ -52,8 +52,8 @@
     <ImageButton
         android:id="@+id/fragmentMainAddButton"
         style="@style/ImageButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintStart_toEndOf="@id/fragmentMainQuestButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/fragmentMainHorizontalGuideline20"

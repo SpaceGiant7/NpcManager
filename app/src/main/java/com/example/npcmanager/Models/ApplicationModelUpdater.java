@@ -117,7 +117,7 @@ public class ApplicationModelUpdater {
             String oldRaceName, Race newRace) {
         ApplicationModels.getPersonModel()
                 .replaceRace(oldRaceName, newRace);
-        ApplicationModels.getOrganizationModel().removeItemIfExists(oldRaceName);
+        ApplicationModels.getRaceModel().removeItemIfExists(oldRaceName);
     }
 
     public static void addOccupation(Occupation occupation, Context context) {

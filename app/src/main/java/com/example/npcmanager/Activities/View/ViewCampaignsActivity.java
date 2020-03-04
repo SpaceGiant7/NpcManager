@@ -23,7 +23,6 @@ public class ViewCampaignsActivity extends AppCompatActivity {
     private TextView name;
     private RecyclerView recyclerView;
     private Button saveButton;
-    private Button deleteButton;
     private Button loadButton;
 
     @Override
@@ -33,13 +32,11 @@ public class ViewCampaignsActivity extends AppCompatActivity {
         name = findViewById(R.id.viewCampaignName);
         recyclerView = findViewById(R.id.viewCampaignList);
         saveButton = findViewById(R.id.viewCampaignSaveButton);
-        deleteButton = findViewById(R.id.viewCampaignDeleteButton);
         loadButton = findViewById(R.id.viewCampaignLoadButton);
 
         setupRecyclerView();
 
         saveButton.setOnClickListener(v -> clickSave());
-        deleteButton.setOnClickListener(v -> clickDelete());
         loadButton.setOnClickListener(v -> clickLoad());
     }
 
@@ -49,7 +46,8 @@ public class ViewCampaignsActivity extends AppCompatActivity {
         adapter = new RecyclerAdapter(
                 () -> CampaignReaderWriter.getExistingCampaigns(this),
                 item -> selectCampaign(item.getIdentifier()),
-                item -> deleteCampaign(item.getIdentifier()));
+                item -> deleteCampaign(item.getIdentifier()),
+                this);
         recyclerView.setAdapter(adapter);
     }
 
@@ -85,12 +83,6 @@ public class ViewCampaignsActivity extends AppCompatActivity {
             ApplicationModels.resetModels();
             CampaignReaderWriter.save(name.getText().toString(), this);
         }
-        adapter.reloadItems();
-    }
-
-    void clickDelete() {
-        CampaignReaderWriter.delete(name.getText().toString(), this);
-        clearSelectedCampaign();
         adapter.reloadItems();
     }
 

@@ -76,11 +76,6 @@ public class ViewLocationsActivity extends ViewItemActivity {
     }
 
     @Override
-    protected int getDeleteButtonId() {
-        return R.id.viewLocationDeleteButton;
-    }
-
-    @Override
     protected int getFindByButtonId() {
         return R.id.viewLocationFindByButton;
     }

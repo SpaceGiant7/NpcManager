@@ -28,7 +28,6 @@ public class ViewGendersActivity extends ViewItemActivity {
     protected void setItem(String item) {
         ApplicationModels.getGenderModel().getItemMaybe(item)
                 .ifPresent(this::setGender);
-
     }
 
     private void setGender(Gender gender) {
@@ -68,11 +67,6 @@ public class ViewGendersActivity extends ViewItemActivity {
     @Override
     protected int getSaveButtonId() {
         return R.id.viewGenderSaveButton;
-    }
-
-    @Override
-    protected int getDeleteButtonId() {
-        return R.id.viewGenderDeleteButton;
     }
 
     @Override

@@ -1,7 +1,7 @@
 package com.example.npcmanager.Activities.Utilities;
 
 
-import android.graphics.Color;
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,17 +25,17 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
     private Consumer<BaseItem> selectItemConsumer;
     private Consumer<BaseItem> deleteItemConsumer;
     private RecyclerViewHolderModel viewHolderModel;
-    int selectedItem = RecyclerView.NO_POSITION;
 
     public RecyclerAdapter(
             Supplier<List<? extends BaseItem>> listSupplier,
             Consumer<BaseItem> selectItemConsumer,
-            Consumer<BaseItem> deleteItemConsumer) {
+            Consumer<BaseItem> deleteItemConsumer,
+            Activity activity) {
         this.listSupplier = listSupplier;
         this.cardItems = listSupplier.get();
         this.selectItemConsumer = selectItemConsumer;
         this.deleteItemConsumer = deleteItemConsumer;
-        viewHolderModel = new RecyclerViewHolderModel();
+        viewHolderModel = new RecyclerViewHolderModel(activity);
     }
 
     @Override
@@ -71,13 +71,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
         TextView textView;
         ImageButton deleteButton;
         RecyclerViewHolderModel model;
+        Activity a;
 
         RecyclerViewHolder(@NonNull View itemView, RecyclerViewHolderModel model) {
             super(itemView);
             textView = itemView.findViewById(R.id.cardText);
             deleteButton = itemView.findViewById(R.id.cardDeleteButton);
             this.model = model;
-            this.itemView.setBackgroundColor(Color.WHITE);
+            this.itemView.setBackgroundColor(model.getColor(R.color.colorCard));
         }
 
         void bindOnClick(final BaseItem item, final Consumer<BaseItem> consumer) {
@@ -91,28 +92,32 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
         private void onItemClick(final BaseItem item, final Consumer<BaseItem> consumer) {
             consumer.accept(item);
             model.clearSelection();
-            itemView.setBackgroundColor(Color.GREEN);
+            itemView.setBackgroundColor(model.getColor(R.color.colorCardSelected));
             deleteButton.setVisibility(View.INVISIBLE);
         }
 
         private boolean onItemLongClick(final BaseItem item, final Consumer<BaseItem> consumer) {
             model.clearSelection();
             deleteButton.setVisibility(View.VISIBLE);
-            itemView.setBackgroundColor(Color.RED);
+            itemView.setBackgroundColor(model.getColor(R.color.colorCardDelete));
             deleteButton.setOnClickListener(v -> consumer.accept(item));
             return true;
         }
 
         void resetItem() {
             deleteButton.setVisibility(View.INVISIBLE);
-            itemView.setBackgroundColor(Color.WHITE);
+            itemView.setBackgroundColor(model.getColor(R.color.colorCard));
         }
 
     }
 
     private static class RecyclerViewHolderModel {
         List<RecyclerViewHolder> viewHolders = new ArrayList<>();
-        int selectedIndex = RecyclerView.NO_POSITION;
+        Activity activity;
+
+        public RecyclerViewHolderModel(Activity activity) {
+            this.activity = activity;
+        }
 
         public void addItem(RecyclerViewHolder v) {
             viewHolders.add(v);
@@ -122,6 +127,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
             for (RecyclerViewHolder v : viewHolders) {
                 v.resetItem();
             }
+        }
+
+        int getColor(int colorResourceId) {
+            return activity.getColor(colorResourceId);
         }
     }
 

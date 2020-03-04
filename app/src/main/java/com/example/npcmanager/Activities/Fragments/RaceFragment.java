@@ -81,11 +81,6 @@ public class RaceFragment extends ViewItemFragment {
     }
 
     @Override
-    protected int getDeleteButtonId() {
-        return R.id.viewRaceDeleteButton;
-    }
-
-    @Override
     protected int getFindByButtonId() {
         return R.id.viewRaceFindByButton;
     }

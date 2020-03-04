@@ -74,11 +74,6 @@ public class ViewRacesActivity extends ViewItemActivity {
     }
 
     @Override
-    protected int getDeleteButtonId() {
-        return R.id.viewRaceDeleteButton;
-    }
-
-    @Override
     protected int getFindByButtonId() {
         return R.id.viewRaceFindByButton;
     }

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     tools:context=".Activities.View.ViewCampaignsActivity">
 
     <TextView
@@ -50,21 +51,11 @@
         android:text="Save" />
 
     <Button
-        android:id="@+id/viewCampaignDeleteButton"
-        style="@style/TextButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/viewCampaignSaveButton"
-        app:layout_constraintStart_toStartOf="@id/viewCampaignVerticalGuideline50"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:text="Delete" />
-
-    <Button
         android:id="@+id/viewCampaignLoadButton"
         style="@style/TextButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/viewCampaignDeleteButton"
+        app:layout_constraintTop_toBottomOf="@id/viewCampaignSaveButton"
         app:layout_constraintStart_toStartOf="@id/viewCampaignVerticalGuideline50"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="Load" />

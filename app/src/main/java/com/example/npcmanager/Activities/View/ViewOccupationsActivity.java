@@ -76,11 +76,6 @@ public class ViewOccupationsActivity extends ViewItemActivity {
     }
 
     @Override
-    protected int getDeleteButtonId() {
-        return R.id.viewOccupationDeleteButton;
-    }
-
-    @Override
     protected int getFindByButtonId() {
         return R.id.viewOccupationFindByButton;
     }

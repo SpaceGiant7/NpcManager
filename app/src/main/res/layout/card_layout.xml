@@ -16,21 +16,27 @@
         android:id="@+id/cardRelativeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="20dp">
+        android:padding="5dp">
 
         <TextView
             android:id="@+id/cardText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text=""
+            android:paddingTop="@dimen/cardContentPadding"
+            android:paddingBottom="@dimen/cardContentPadding"
+            android:paddingLeft="@dimen/cardContentPadding"
+            android:paddingRight="@dimen/cardContentPadding"
             android:textSize="@dimen/cardTextSize"/>
 
         <ImageButton
             android:id="@+id/cardDeleteButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
             android:visibility="invisible"
+            android:background="@color/colorTransparent"
             app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
     </RelativeLayout>
 

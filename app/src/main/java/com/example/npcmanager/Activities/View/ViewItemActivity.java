@@ -20,7 +20,6 @@ public abstract class ViewItemActivity extends HomeButtonActivity {
     private RecyclerView recyclerView;
     RecyclerAdapter adapter;
     private Button saveButton;
-    private Button deleteButton;
     private Button findByButton;
 
     @Override
@@ -29,14 +28,12 @@ public abstract class ViewItemActivity extends HomeButtonActivity {
         setContentView(getContentView());
         recyclerView = findViewById(getRecyclerViewId());
         saveButton = findViewById(getSaveButtonId());
-        deleteButton = findViewById(getDeleteButtonId());
         findByButton = findViewById(getFindByButtonId());
 
         setupRecyclerView();
 
         findByButton.setOnClickListener(v -> this.clickFindBy());
         saveButton.setOnClickListener(v -> this.clickSave());
-        deleteButton.setOnClickListener(v -> this.clickDelete());
     }
 
     private void setupRecyclerView() {
@@ -45,7 +42,8 @@ public abstract class ViewItemActivity extends HomeButtonActivity {
         adapter = new RecyclerAdapter(
                 () -> getModel().getAllItems(),
                 item -> selectItem(item.getIdentifier()),
-                item -> deleteItem(item.getIdentifier()));
+                item -> deleteItem(item.getIdentifier()),
+                this);
         recyclerView.setAdapter(adapter);
     }
 
@@ -106,7 +104,6 @@ public abstract class ViewItemActivity extends HomeButtonActivity {
     protected abstract Class getFindByActivityClass();
 
     protected abstract int getSaveButtonId();
-    protected abstract int getDeleteButtonId();
     protected abstract int getFindByButtonId();
     protected abstract int getContentView();
     protected abstract int getRecyclerViewId();

@@ -57,9 +57,18 @@ public class OrganizationFragment extends ViewItemFragment {
                 getActivity(),
                 android.R.layout.simple_spinner_item,
                 ApplicationModels.getLocationModel().getListWithNone());
-
         locationSelector.setAdapter(locationAdapter);
         locationSelector.setSelection(locationAdapter.getPosition(location));
+    }
+
+    private void updateLocations() {
+        BaseItem selectedItem = (BaseItem) locationSelector.getSelectedItem();
+        ArrayAdapter<BaseItem> locationAdapter = new ArrayAdapter<>(
+                getActivity(),
+                android.R.layout.simple_spinner_item,
+                ApplicationModels.getLocationModel().getListWithNone());
+        locationSelector.setAdapter(locationAdapter);
+        locationSelector.setSelection(locationAdapter.getPosition(selectedItem));
     }
 
     @Override
@@ -102,11 +111,6 @@ public class OrganizationFragment extends ViewItemFragment {
     }
 
     @Override
-    protected int getDeleteButtonId() {
-        return R.id.viewOrganizationDeleteButton;
-    }
-
-    @Override
     protected int getFindByButtonId() {
         return R.id.viewOrganizationFindByButton;
     }
@@ -134,5 +138,14 @@ public class OrganizationFragment extends ViewItemFragment {
     @Override
     protected String getSerializationKey() {
         return ActivityUtilities.organizationKey;
+    }
+
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if(isVisibleToUser) {
+            updateLocations();
+        }
     }
 }

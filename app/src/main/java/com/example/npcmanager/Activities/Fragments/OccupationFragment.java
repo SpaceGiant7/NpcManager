@@ -83,11 +83,6 @@ public class OccupationFragment extends ViewItemFragment{
     }
 
     @Override
-    protected int getDeleteButtonId() {
-        return R.id.viewOccupationDeleteButton;
-    }
-
-    @Override
     protected int getFindByButtonId() {
         return R.id.viewOccupationFindByButton;
     }

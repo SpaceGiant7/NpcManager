@@ -83,11 +83,6 @@ public class LocationFragment extends ViewItemFragment {
     }
 
     @Override
-    protected int getDeleteButtonId() {
-        return R.id.viewLocationDeleteButton;
-    }
-
-    @Override
     protected int getFindByButtonId() {
         return R.id.viewLocationFindByButton;
     }
@@ -116,4 +111,6 @@ public class LocationFragment extends ViewItemFragment {
     protected String getSerializationKey() {
         return ActivityUtilities.locationKey;
     }
+
+
 }
