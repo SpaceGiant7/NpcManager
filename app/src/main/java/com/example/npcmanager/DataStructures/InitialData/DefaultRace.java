@@ -8,7 +8,7 @@ public enum DefaultRace {
     ELF( "Elf", "Elves are a magical people of otherworldly grace, living "
             + "in the world but not entirely part of it." ),
     FIRBOLG( "Firbolg", "Firbolg tribes cloister in remote forest strongholds, "
-            + "preferring to spend their days in the quiet harmony ith the woods" ),
+            + "preferring to spend their days in the quiet harmony in the woods" ),
     GNOME( "Gnome", "A gnome's energy and enthusiasm for living shines through "
             + "every inch of his or her tiny body." ),
     GOBLIN( "Goblin", "Goblins occupy an uneasy place in a dangerous world, "
