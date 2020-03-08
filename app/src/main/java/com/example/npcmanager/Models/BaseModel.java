@@ -22,8 +22,12 @@ public abstract class BaseModel<T extends BaseItem> {
         return list;
     }
 
+    public List<BaseItem> getList() {
+        return new ArrayList<>(list);
+    }
+
     public List<BaseItem> getListWithNone() {
-        List<BaseItem> newList = new ArrayList<BaseItem>(list);
+        List<BaseItem> newList = getList();
         newList.add(0, getNone());
         return newList;
     }

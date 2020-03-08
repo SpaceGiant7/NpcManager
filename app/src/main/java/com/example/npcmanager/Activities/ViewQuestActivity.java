@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.npcmanager.Activities.FindBy.FindByLocationActivity;
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
-import com.example.npcmanager.Activities.Utilities.ViewItemRecyclerAdapter;
+import com.example.npcmanager.Activities.Utilities.RecyclerAdapters.ViewItemRecyclerAdapter;
 import com.example.npcmanager.DataStructures.BaseItem;
 import com.example.npcmanager.DataStructures.Quest;
 import com.example.npcmanager.DataStructures.ViewItem;

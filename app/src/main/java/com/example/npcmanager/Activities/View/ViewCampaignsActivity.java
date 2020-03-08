@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
-import com.example.npcmanager.Activities.Utilities.BaseItemRecyclerAdapter;
+import com.example.npcmanager.Activities.Utilities.RecyclerAdapters.BaseItemRecyclerAdapter;
 import com.example.npcmanager.DataStorage.CampaignReaderWriter;
 import com.example.npcmanager.Models.ApplicationModels;
 import com.example.npcmanager.R;

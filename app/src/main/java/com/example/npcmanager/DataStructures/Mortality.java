@@ -2,6 +2,7 @@ package com.example.npcmanager.DataStructures;
 
 import com.example.npcmanager.Constants.NpcConstants;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,9 +20,9 @@ public enum Mortality implements BaseItem {
     }
 
     public static List<BaseItem> getList() {
-//        List<BaseItem> list = new ArrayList<>(Arrays.asList(Mortality.values()));
-//        list.remove(Mortality.None());
-        return Arrays.asList(Mortality.values());
+        List<BaseItem> list = new ArrayList<>(Arrays.asList(Mortality.values()));
+        list.remove(Mortality.None());
+        return list;
     }
 
     public static Mortality None() {

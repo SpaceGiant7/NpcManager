@@ -1,4 +1,4 @@
-package com.example.npcmanager.Activities.Utilities;
+package com.example.npcmanager.Activities.Utilities.RecyclerAdapters;
 
 
 import android.app.Activity;

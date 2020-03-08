@@ -8,26 +8,13 @@
     android:background="@color/colorBackground"
     tools:context=".Activities.AddPersonActivity">
 
-
-
-    <TextView
-        android:id="@+id/addPersonNameTextField"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/addPersonHorizontalGuideline10"
-        app:layout_constraintBottom_toTopOf="@id/addPersonRaceTextField"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/addPersonVerticalGuideline50"
-        android:gravity="center"
-        android:text="Name" />
-
     <EditText
         android:id="@+id/addPersonNameTextInput"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/addPersonHorizontalGuideline10"
-        app:layout_constraintBottom_toTopOf="@id/addPersonRaceSelector"
-        app:layout_constraintStart_toStartOf="@id/addPersonVerticalGuideline50"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/addPersonHorizontalGuideline20"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center"
         android:ems="10"
@@ -35,11 +22,22 @@
         android:inputType="textPersonName" />
 
     <TextView
+        android:id="@+id/addPersonEnableRaceText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/addPersonHorizontalGuideline20"
+        app:layout_constraintBottom_toTopOf="@id/addPersonEnableGenderText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        android:text="Add Race" />
+
+    <TextView
         android:id="@+id/addPersonRaceTextField"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/addPersonNameTextField"
-        app:layout_constraintBottom_toTopOf="@id/addPersonGenderTextField"
+        app:layout_constraintTop_toTopOf="@id/addPersonEnableRaceText"
+        app:layout_constraintBottom_toBottomOf="@id/addPersonEnableRaceText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/addPersonVerticalGuideline50"
         android:gravity="center"
@@ -49,18 +47,29 @@
         android:id="@+id/addPersonRaceSelector"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/addPersonNameTextInput"
-        app:layout_constraintBottom_toTopOf="@id/addPersonGenderSelector"
+        app:layout_constraintTop_toTopOf="@id/addPersonEnableRaceText"
+        app:layout_constraintBottom_toBottomOf="@id/addPersonEnableRaceText"
         app:layout_constraintStart_toStartOf="@id/addPersonVerticalGuideline50"
         app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center" />
 
     <TextView
+        android:id="@+id/addPersonEnableGenderText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/addPersonEnableRaceText"
+        app:layout_constraintBottom_toTopOf="@id/addPersonEnableHomeText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        android:text="Add Gender" />
+
+    <TextView
         android:id="@+id/addPersonGenderTextField"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/addPersonRaceTextField"
-        app:layout_constraintBottom_toTopOf="@id/addPersonHomeTextField"
+        app:layout_constraintTop_toTopOf="@id/addPersonEnableGenderText"
+        app:layout_constraintBottom_toBottomOf="@id/addPersonEnableGenderText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/addPersonVerticalGuideline50"
         android:gravity="center"
@@ -70,18 +79,29 @@
         android:id="@+id/addPersonGenderSelector"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/addPersonRaceSelector"
-        app:layout_constraintBottom_toTopOf="@id/addPersonHomeSelector"
+        app:layout_constraintTop_toTopOf="@id/addPersonEnableGenderText"
+        app:layout_constraintBottom_toBottomOf="@id/addPersonEnableGenderText"
         app:layout_constraintStart_toStartOf="@id/addPersonVerticalGuideline50"
         app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center" />
 
     <TextView
+        android:id="@+id/addPersonEnableHomeText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/addPersonEnableGenderText"
+        app:layout_constraintBottom_toTopOf="@id/addPersonEnableOccupationText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        android:text="Add Home" />
+
+    <TextView
         android:id="@+id/addPersonHomeTextField"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/addPersonGenderTextField"
-        app:layout_constraintBottom_toTopOf="@id/addPersonOccupationTextField"
+        app:layout_constraintTop_toTopOf="@id/addPersonEnableHomeText"
+        app:layout_constraintBottom_toBottomOf="@id/addPersonEnableHomeText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/addPersonVerticalGuideline50"
         android:gravity="center"
@@ -91,18 +111,29 @@
         android:id="@+id/addPersonHomeSelector"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/addPersonGenderSelector"
-        app:layout_constraintBottom_toTopOf="@id/addPersonOccupationSelector"
+        app:layout_constraintTop_toTopOf="@id/addPersonEnableHomeText"
+        app:layout_constraintBottom_toBottomOf="@id/addPersonEnableHomeText"
         app:layout_constraintStart_toStartOf="@id/addPersonVerticalGuideline50"
         app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center" />
 
     <TextView
+        android:id="@+id/addPersonEnableOccupationText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/addPersonEnableHomeText"
+        app:layout_constraintBottom_toTopOf="@id/addPersonEnableOrganizationText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        android:text="Add Occupation" />
+
+    <TextView
         android:id="@+id/addPersonOccupationTextField"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/addPersonHomeTextField"
-        app:layout_constraintBottom_toTopOf="@id/addPersonOrganizationTextField"
+        app:layout_constraintTop_toTopOf="@id/addPersonEnableOccupationText"
+        app:layout_constraintBottom_toBottomOf="@id/addPersonEnableOccupationText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/addPersonVerticalGuideline50"
         android:gravity="center"
@@ -112,18 +143,29 @@
         android:id="@+id/addPersonOccupationSelector"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/addPersonHomeSelector"
-        app:layout_constraintBottom_toTopOf="@id/addPersonOrganizationSelector"
+        app:layout_constraintTop_toTopOf="@id/addPersonEnableOccupationText"
+        app:layout_constraintBottom_toBottomOf="@id/addPersonEnableOccupationText"
         app:layout_constraintStart_toStartOf="@id/addPersonVerticalGuideline50"
         app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center" />
 
     <TextView
+        android:id="@+id/addPersonEnableOrganizationText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/addPersonEnableOccupationText"
+        app:layout_constraintBottom_toTopOf="@id/addPersonEnableMortalityText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        android:text="Add Organization" />
+
+    <TextView
         android:id="@+id/addPersonOrganizationTextField"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/addPersonOccupationTextField"
-        app:layout_constraintBottom_toTopOf="@id/addPersonDeceasedTextField"
+        app:layout_constraintTop_toTopOf="@id/addPersonEnableOrganizationText"
+        app:layout_constraintBottom_toBottomOf="@id/addPersonEnableOrganizationText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/addPersonVerticalGuideline50"
         android:gravity="center"
@@ -133,18 +175,29 @@
         android:id="@+id/addPersonOrganizationSelector"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/addPersonOccupationSelector"
-        app:layout_constraintBottom_toTopOf="@id/addPersonMortalitySelector"
+        app:layout_constraintTop_toTopOf="@id/addPersonEnableOrganizationText"
+        app:layout_constraintBottom_toBottomOf="@id/addPersonEnableOrganizationText"
         app:layout_constraintStart_toStartOf="@id/addPersonVerticalGuideline50"
         app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center" />
 
     <TextView
-        android:id="@+id/addPersonDeceasedTextField"
+        android:id="@+id/addPersonEnableMortalityText"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/addPersonOrganizationTextField"
-        app:layout_constraintBottom_toTopOf="@id/addPersonDescriptionTextField"
+        app:layout_constraintTop_toBottomOf="@id/addPersonEnableOrganizationText"
+        app:layout_constraintBottom_toTopOf="@id/addPersonEnableDescriptionText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        android:text="Add Mortality" />
+
+    <TextView
+        android:id="@+id/addPersonMortalityTextField"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="@id/addPersonEnableMortalityText"
+        app:layout_constraintBottom_toBottomOf="@id/addPersonEnableMortalityText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/addPersonVerticalGuideline50"
         android:gravity="center"
@@ -161,13 +214,24 @@
         android:gravity="center" />
 
     <TextView
+        android:id="@+id/addPersonEnableDescriptionText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/addPersonEnableMortalityText"
+        app:layout_constraintBottom_toTopOf="@id/addPersonHorizontalGuideline80"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        android:text="Add Description" />
+
+    <TextView
         android:id="@+id/addPersonDescriptionTextField"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/addPersonDeceasedTextField"
-        app:layout_constraintBottom_toTopOf="@id/addPersonDescriptionTextInput"
+        app:layout_constraintTop_toTopOf="@id/addPersonEnableDescriptionText"
+        app:layout_constraintBottom_toBottomOf="@id/addPersonEnableDescriptionText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/addPersonVerticalGuideline50"
         android:gravity="center"
         android:text="Description" />
 
@@ -175,9 +239,9 @@
         android:id="@+id/addPersonDescriptionTextInput"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/addPersonDescriptionTextField"
-        app:layout_constraintBottom_toTopOf="@id/addPersonHorizontalGuideline80"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/addPersonEnableDescriptionText"
+        app:layout_constraintBottom_toBottomOf="@id/addPersonEnableDescriptionText"
+        app:layout_constraintStart_toStartOf="@id/addPersonVerticalGuideline50"
         app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center"
         android:hint="Description"
@@ -211,11 +275,11 @@
         app:layout_constraintGuide_percent="0.5" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/addPersonHorizontalGuideline10"
+        android:id="@+id/addPersonHorizontalGuideline20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintGuide_percent="0.2" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/addPersonHorizontalGuideline80"

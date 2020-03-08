@@ -11,4 +11,5 @@
     <color name="colorCardBackground">#F0F0F0</color>
     <color name="colorTransparent">#00000000</color>
     <color name="black_overlay">#66000000</color>
+    <color name="textGrey">#20000000</color>
 </resources>

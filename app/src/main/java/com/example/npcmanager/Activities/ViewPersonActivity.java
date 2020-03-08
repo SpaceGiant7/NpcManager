@@ -13,7 +13,7 @@ import com.example.npcmanager.Activities.FindBy.FindByOccupationActivity;
 import com.example.npcmanager.Activities.FindBy.FindByOrganizationActivity;
 import com.example.npcmanager.Activities.FindBy.FindByRaceActivity;
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
-import com.example.npcmanager.Activities.Utilities.ViewItemRecyclerAdapter;
+import com.example.npcmanager.Activities.Utilities.RecyclerAdapters.ViewItemRecyclerAdapter;
 import com.example.npcmanager.DataStructures.BaseItem;
 import com.example.npcmanager.DataStructures.Person;
 import com.example.npcmanager.DataStructures.ViewItem;

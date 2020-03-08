@@ -15,7 +15,7 @@ import com.example.npcmanager.Activities.AddPersonActivity;
 import com.example.npcmanager.Activities.AddQuestActivity;
 import com.example.npcmanager.Activities.FindBy.FindByNameActivity;
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
-import com.example.npcmanager.Activities.Utilities.BaseItemRecyclerAdapter;
+import com.example.npcmanager.Activities.Utilities.RecyclerAdapters.BaseItemRecyclerAdapter;
 import com.example.npcmanager.Activities.ViewQuestActivity;
 import com.example.npcmanager.Models.ApplicationModelUpdater;
 import com.example.npcmanager.Models.ApplicationModels;
