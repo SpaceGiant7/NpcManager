@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.npcmanager.Activities.HomeButtonActivity;
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
-import com.example.npcmanager.Activities.Utilities.RecyclerAdapter;
+import com.example.npcmanager.Activities.Utilities.BaseItemRecyclerAdapter;
 import com.example.npcmanager.Models.BaseModel;
 
 import java.io.Serializable;
@@ -18,7 +18,7 @@ public abstract class ViewItemActivity extends HomeButtonActivity {
 
     protected Optional<String> selectedItem = Optional.empty();
     private RecyclerView recyclerView;
-    RecyclerAdapter adapter;
+    BaseItemRecyclerAdapter adapter;
     private Button saveButton;
     private Button findByButton;
 
@@ -39,7 +39,7 @@ public abstract class ViewItemActivity extends HomeButtonActivity {
     private void setupRecyclerView() {
         recyclerView.setHasFixedSize(true); // Maybe not needed
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new RecyclerAdapter(
+        adapter = new BaseItemRecyclerAdapter(
                 () -> getModel().getAllItems(),
                 item -> selectItem(item.getIdentifier()),
                 item -> deleteItem(item.getIdentifier()),

@@ -64,4 +64,8 @@ public class Organization implements BaseItem, Serializable {
         return name.equals( otherOrganization.name);
     }
 
+    @Override
+    public boolean isNone() {
+        return this.equals(Organization.None());
+    }
 }

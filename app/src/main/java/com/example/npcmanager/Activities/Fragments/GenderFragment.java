@@ -80,6 +80,11 @@ public class GenderFragment extends ViewItemFragment {
     }
 
     @Override
+    protected int getNewButtonId() {
+        return R.id.viewGenderNewButton;
+    }
+
+    @Override
     protected int getSaveButtonId() {
         return R.id.viewGenderSaveButton;
     }

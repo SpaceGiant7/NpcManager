@@ -50,16 +50,26 @@
         android:inputType="textMultiLine"/>
 
     <ImageButton
-        android:id="@+id/viewOccupationSaveButton"
+        android:id="@+id/viewOccupationNewButton"
         style="@style/ImageButtonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/viewOccupationDescription"
         app:layout_constraintStart_toStartOf="@id/viewOccupationVerticalGuideline50"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/viewOccupationSaveButton"
+        app:srcCompat="@android:drawable/ic_menu_add" />
+
+    <ImageButton
+        android:id="@+id/viewOccupationSaveButton"
+        style="@style/ImageButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/viewOccupationNewButton"
+        app:layout_constraintStart_toStartOf="@id/viewOccupationVerticalGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/viewOccupationFindByButton"
-        app:srcCompat="@android:drawable/ic_menu_save"
-        android:text="Save" />
+        app:srcCompat="@android:drawable/ic_menu_save" />
 
     <ImageButton
         android:id="@+id/viewOccupationFindByButton"

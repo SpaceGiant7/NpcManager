@@ -16,4 +16,9 @@ public class Campaign implements BaseItem, Serializable {
     public String getIdentifier() {
         return name;
     }
+
+    @Override
+    public boolean isNone() {
+        return false;
+    }
 }

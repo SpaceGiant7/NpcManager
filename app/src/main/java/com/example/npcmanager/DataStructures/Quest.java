@@ -93,4 +93,8 @@ public class Quest implements BaseItem, Serializable {
     public String getIdentifier() {
         return questName;
     }
+
+    public boolean isNone() {
+        return this.equals(Quest.None());
+    }
 }

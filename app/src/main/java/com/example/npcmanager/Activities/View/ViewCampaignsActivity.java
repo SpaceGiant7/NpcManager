@@ -1,7 +1,7 @@
 package com.example.npcmanager.Activities.View;
 
 import android.os.Bundle;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
-import com.example.npcmanager.Activities.Utilities.RecyclerAdapter;
+import com.example.npcmanager.Activities.Utilities.BaseItemRecyclerAdapter;
 import com.example.npcmanager.DataStorage.CampaignReaderWriter;
 import com.example.npcmanager.Models.ApplicationModels;
 import com.example.npcmanager.R;
@@ -19,11 +19,12 @@ import java.util.Optional;
 public class ViewCampaignsActivity extends AppCompatActivity {
 
     protected Optional<String> selectedCampaign = Optional.empty();
-    RecyclerAdapter adapter;
+    BaseItemRecyclerAdapter adapter;
     private TextView name;
     private RecyclerView recyclerView;
-    private Button saveButton;
-    private Button loadButton;
+    private ImageButton newButton;
+    private ImageButton saveButton;
+    private ImageButton loadButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +32,13 @@ public class ViewCampaignsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_campaigns);
         name = findViewById(R.id.viewCampaignName);
         recyclerView = findViewById(R.id.viewCampaignList);
+        newButton = findViewById(R.id.viewCampaignNewButton);
         saveButton = findViewById(R.id.viewCampaignSaveButton);
         loadButton = findViewById(R.id.viewCampaignLoadButton);
 
         setupRecyclerView();
 
+        newButton.setOnClickListener(v -> clickNew());
         saveButton.setOnClickListener(v -> clickSave());
         loadButton.setOnClickListener(v -> clickLoad());
     }
@@ -43,7 +46,7 @@ public class ViewCampaignsActivity extends AppCompatActivity {
     private void setupRecyclerView() {
         recyclerView.setHasFixedSize(true); // Maybe not needed
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new RecyclerAdapter(
+        adapter = new BaseItemRecyclerAdapter(
                 () -> CampaignReaderWriter.getExistingCampaigns(this),
                 item -> selectCampaign(item.getIdentifier()),
                 item -> deleteCampaign(item.getIdentifier()),
@@ -73,7 +76,6 @@ public class ViewCampaignsActivity extends AppCompatActivity {
 
     void clickSave() {
         saveCampaign();
-        clearSelectedCampaign();
     }
 
     private void saveCampaign() {
@@ -94,5 +96,9 @@ public class ViewCampaignsActivity extends AppCompatActivity {
         CampaignReaderWriter.load(name, this);
         ApplicationModels.setCampaignName(name);
         ActivityUtilities.loadMainActivity(this);
+    }
+
+    void clickNew() {
+        clearSelectedCampaign();
     }
 }

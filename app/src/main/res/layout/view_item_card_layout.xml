@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/cardMargin"
+    android:layout_marginBottom="@dimen/cardMargin"
+    android:layout_marginStart="@dimen/cardMargin"
+    android:layout_marginEnd="@dimen/cardMargin"
+    android:background="@color/colorTransparent"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cardRelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/viewItemCardLabel"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/viewItmCardVerticalGuideline50"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text=""
+            android:textSize="@dimen/cardTextSize" />
+
+        <TextView
+            android:id="@+id/viewItemCardContents"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="@id/viewItmCardVerticalGuideline50"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text=""
+            android:textSize="@dimen/cardTextSize" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/viewItmCardVerticalGuideline50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

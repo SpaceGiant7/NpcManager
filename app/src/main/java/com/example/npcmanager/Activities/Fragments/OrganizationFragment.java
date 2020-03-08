@@ -106,6 +106,11 @@ public class OrganizationFragment extends ViewItemFragment {
     }
 
     @Override
+    protected int getNewButtonId() {
+        return R.id.viewOrganizationNewButton;
+    }
+
+    @Override
     protected int getSaveButtonId() {
         return R.id.viewOrganizationSaveButton;
     }

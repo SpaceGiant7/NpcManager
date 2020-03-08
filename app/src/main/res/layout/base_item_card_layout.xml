@@ -19,7 +19,7 @@
         android:padding="5dp">
 
         <TextView
-            android:id="@+id/cardText"
+            android:id="@+id/baseItemCardText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text=""
@@ -30,7 +30,7 @@
             android:textSize="@dimen/cardTextSize"/>
 
         <ImageButton
-            android:id="@+id/cardDeleteButton"
+            android:id="@+id/baseItemCardDeleteButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"

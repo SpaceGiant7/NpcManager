@@ -50,11 +50,22 @@
         android:inputType="textMultiLine"/>
 
     <ImageButton
-        android:id="@+id/viewLocationSaveButton"
+        android:id="@+id/viewLocationNewButton"
         style="@style/ImageButtonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/viewLocationDescription"
+        app:layout_constraintStart_toStartOf="@id/viewLocationVerticalGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/viewLocationSaveButton"
+        app:srcCompat="@android:drawable/ic_menu_add" />
+
+    <ImageButton
+        android:id="@+id/viewLocationSaveButton"
+        style="@style/ImageButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/viewLocationNewButton"
         app:layout_constraintStart_toStartOf="@id/viewLocationVerticalGuideline50"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/viewLocationFindByButton"

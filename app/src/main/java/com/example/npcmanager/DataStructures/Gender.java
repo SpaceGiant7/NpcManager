@@ -51,5 +51,9 @@ public class Gender implements BaseItem, Serializable {
         return name;
     }
 
+    @Override
+    public boolean isNone() {
+        return this.equals(Gender.None());
+    }
 }
 

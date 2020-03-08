@@ -19,14 +19,14 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.RecyclerViewHolder> {
+public class BaseItemRecyclerAdapter extends RecyclerView.Adapter<BaseItemRecyclerAdapter.BaseItemRecyclerViewHolder> {
     private List<? extends BaseItem> cardItems;
     private Supplier<List<? extends BaseItem>> listSupplier;
     private Consumer<BaseItem> selectItemConsumer;
     private Consumer<BaseItem> deleteItemConsumer;
     private RecyclerViewHolderModel viewHolderModel;
 
-    public RecyclerAdapter(
+    public BaseItemRecyclerAdapter(
             Supplier<List<? extends BaseItem>> listSupplier,
             Consumer<BaseItem> selectItemConsumer,
             Consumer<BaseItem> deleteItemConsumer,
@@ -39,16 +39,16 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
     }
 
     @Override
-    public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int i) {
-        RecyclerViewHolder viewHolder =  new RecyclerViewHolder(
+    public BaseItemRecyclerViewHolder onCreateViewHolder(ViewGroup parent, int i) {
+        BaseItemRecyclerViewHolder viewHolder =  new BaseItemRecyclerViewHolder(
                 LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.card_layout, parent, false), viewHolderModel);
+                        .inflate(R.layout.base_item_card_layout, parent, false), viewHolderModel);
         viewHolderModel.addItem(viewHolder);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BaseItemRecyclerViewHolder holder, int position) {
         holder.textView.setText(cardItems.get(position).getIdentifier());
         holder.bindOnClick(cardItems.get(position), selectItemConsumer);
         holder.bindOnLongClick(cardItems.get(position), deleteItemConsumer);
@@ -66,17 +66,17 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
         notifyDataSetChanged();
     }
 
-    public static class RecyclerViewHolder extends RecyclerView.ViewHolder {
+    static class BaseItemRecyclerViewHolder extends RecyclerView.ViewHolder {
 
         TextView textView;
         ImageButton deleteButton;
         RecyclerViewHolderModel model;
         Activity a;
 
-        RecyclerViewHolder(@NonNull View itemView, RecyclerViewHolderModel model) {
+        BaseItemRecyclerViewHolder(@NonNull View itemView, RecyclerViewHolderModel model) {
             super(itemView);
-            textView = itemView.findViewById(R.id.cardText);
-            deleteButton = itemView.findViewById(R.id.cardDeleteButton);
+            textView = itemView.findViewById(R.id.baseItemCardText);
+            deleteButton = itemView.findViewById(R.id.baseItemCardDeleteButton);
             this.model = model;
             this.itemView.setBackgroundColor(model.getColor(R.color.colorCard));
         }
@@ -112,19 +112,19 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
     }
 
     private static class RecyclerViewHolderModel {
-        List<RecyclerViewHolder> viewHolders = new ArrayList<>();
+        List<BaseItemRecyclerViewHolder> viewHolders = new ArrayList<>();
         Activity activity;
 
         public RecyclerViewHolderModel(Activity activity) {
             this.activity = activity;
         }
 
-        public void addItem(RecyclerViewHolder v) {
+        public void addItem(BaseItemRecyclerViewHolder v) {
             viewHolders.add(v);
         }
 
         public void clearSelection() {
-            for (RecyclerViewHolder v : viewHolders) {
+            for (BaseItemRecyclerViewHolder v : viewHolders) {
                 v.resetItem();
             }
         }

@@ -12,7 +12,7 @@ public class Person implements BaseItem, Serializable {
     private Location home;
     private Occupation occupation;
     private Organization organization;
-    private boolean isDeceased;
+    private Mortality mortality;
     private String description;
 
     public Person(
@@ -22,7 +22,7 @@ public class Person implements BaseItem, Serializable {
             Location home,
             Occupation occupation,
             Organization organization,
-            boolean isDeceased,
+            Mortality isDeceased,
             String description) {
         this.name = name;
         this.race = race;
@@ -30,7 +30,7 @@ public class Person implements BaseItem, Serializable {
         this.gender = gender;
         this.occupation = occupation;
         this.organization = organization;
-        this.isDeceased = isDeceased;
+        this.mortality = isDeceased;
         this.description = description;
     }
 
@@ -42,7 +42,7 @@ public class Person implements BaseItem, Serializable {
                 Location.None(),
                 Occupation.None(),
                 Organization.None(),
-                false,
+                Mortality.NONE,
                 "");
     }
 
@@ -70,8 +70,8 @@ public class Person implements BaseItem, Serializable {
         return organization;
     }
 
-    public boolean getIsDeceased() {
-        return isDeceased;
+    public Mortality getMortality() {
+        return mortality;
     }
 
     public String getDescription() {
@@ -102,44 +102,12 @@ public class Person implements BaseItem, Serializable {
         organization = newOrganization;
     }
 
-    public void setIsDeceased(boolean newIsDeceased) {
-        isDeceased = newIsDeceased;
+    public void setMortality(Mortality newMortality) {
+        mortality = newMortality;
     }
 
     public void setDescription(String newDescription) {
         description = newDescription;
-    }
-
-    public String getNamePropperty() {
-        return name;
-    }
-
-    public Race getRacePropperty() {
-        return race;
-    }
-
-    public Gender getGenderPropperty() {
-        return gender;
-    }
-
-    public Location getHomePropperty() {
-        return home;
-    }
-
-    public Occupation getOccpationPropperty() {
-        return occupation;
-    }
-
-    public Organization getOrganizationPropperty() {
-        return organization;
-    }
-
-    public boolean getIsDeceasedPropperty() {
-        return isDeceased;
-    }
-
-    public String getDescriptionPropperty() {
-        return description;
     }
 
     @Override
@@ -158,5 +126,10 @@ public class Person implements BaseItem, Serializable {
 
     public String getIdentifier() {
         return name;
+    }
+
+    @Override
+    public boolean isNone() {
+        return this.equals(Person.None());
     }
 }

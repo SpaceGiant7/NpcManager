@@ -15,7 +15,7 @@ import com.example.npcmanager.Activities.AddPersonActivity;
 import com.example.npcmanager.Activities.AddQuestActivity;
 import com.example.npcmanager.Activities.FindBy.FindByNameActivity;
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
-import com.example.npcmanager.Activities.Utilities.RecyclerAdapter;
+import com.example.npcmanager.Activities.Utilities.BaseItemRecyclerAdapter;
 import com.example.npcmanager.Activities.ViewQuestActivity;
 import com.example.npcmanager.Models.ApplicationModelUpdater;
 import com.example.npcmanager.Models.ApplicationModels;
@@ -24,7 +24,7 @@ import com.example.npcmanager.R;
 public class MainFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private RecyclerAdapter adapter;
+    private BaseItemRecyclerAdapter adapter;
     private TextView campaignName;
     private ImageButton backButton;
     private ImageButton searchButton;
@@ -52,7 +52,7 @@ public class MainFragment extends Fragment {
     private void setupRecyclerView() {
         recyclerView.setHasFixedSize(true); // Maybe not needed
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new RecyclerAdapter(
+        adapter = new BaseItemRecyclerAdapter(
                 () -> ApplicationModels.getQuestModel().getAllItems(),
                 item -> selectQuest(item.getIdentifier()),
                 item -> deleteQuest(item.getIdentifier()),

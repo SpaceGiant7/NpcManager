@@ -7,223 +7,28 @@
     android:background="@color/colorBackground"
     tools:context=".Activities.ViewPersonActivity">
 
-
-    <TextView
-        android:id="@+id/viewPersonNameTextLabel"
-        android:ems="10"
-        android:gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/viewPersonGuideline50"
-        app:layout_constraintTop_toBottomOf="@id/viewPersonGuideline25"
-        app:layout_constraintBottom_toTopOf="@id/viewPersonRaceTextLabel"
-        android:text="Name" />
-
     <TextView
         android:id="@+id/viewPersonNameText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/viewPersonGuideline50"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewPersonGuideline25"
-        app:layout_constraintBottom_toTopOf="@id/viewPersonRaceText"
-        android:ems="10"
-        android:text="Name" />
-
-    <TextView
-        android:id="@+id/viewPersonRaceTextLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/viewPersonGuideline50"
-        app:layout_constraintTop_toBottomOf="@id/viewPersonNameTextLabel"
-        app:layout_constraintBottom_toTopOf="@id/viewPersonGenderTextLabel"
-        android:ems="10"
-        android:gravity="center"
-        android:text="Race" />
-
-    <TextView
-        android:id="@+id/viewPersonRaceText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/viewPersonGuideline50"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewPersonNameText"
-        app:layout_constraintBottom_toTopOf="@id/viewPersonGenderText"
-        android:ems="10"
-        android:text="Name" />
-
-    <TextView
-        android:id="@+id/viewPersonGenderTextLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/viewPersonGuideline50"
-        app:layout_constraintTop_toBottomOf="@id/viewPersonRaceTextLabel"
-        app:layout_constraintBottom_toTopOf="@id/viewPersonLocationTextLabel"
-        android:ems="10"
-        android:gravity="center"
-        android:text="Gender" />
-
-    <TextView
-        android:id="@+id/viewPersonGenderText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/viewPersonGuideline50"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewPersonRaceText"
-        app:layout_constraintBottom_toTopOf="@id/viewPersonLocationText"
-        android:ems="10"
-        android:text="Name" />
-
-    <TextView
-        android:id="@+id/viewPersonLocationTextLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/viewPersonGuideline50"
-        app:layout_constraintTop_toBottomOf="@id/viewPersonGenderTextLabel"
-        app:layout_constraintBottom_toTopOf="@id/viewPersonOccupationTextLabel"
-        android:ems="10"
-        android:gravity="center"
-        android:text="Location" />
-
-    <TextView
-        android:id="@+id/viewPersonLocationText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/viewPersonGuideline50"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewPersonGenderText"
-        app:layout_constraintBottom_toTopOf="@id/viewPersonOccupationText"
-        android:ems="10"
-        android:text="Name" />
-
-    <TextView
-        android:id="@+id/viewPersonOccupationTextLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/viewPersonGuideline50"
-        app:layout_constraintTop_toBottomOf="@id/viewPersonLocationTextLabel"
-        app:layout_constraintBottom_toTopOf="@id/viewPersonOrganizationTextLabel"
-        android:ems="10"
-        android:gravity="center"
-        android:text="Occupation" />
-
-    <TextView
-        android:id="@+id/viewPersonOccupationText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/viewPersonGuideline50"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewPersonLocationText"
-        app:layout_constraintBottom_toTopOf="@id/viewPersonOrganizationText"
-        android:ems="10"
-        android:text="Name" />
-
-    <TextView
-        android:id="@+id/viewPersonOrganizationTextLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/viewPersonGuideline50"
-        app:layout_constraintTop_toBottomOf="@id/viewPersonOccupationTextLabel"
-        app:layout_constraintBottom_toTopOf="@id/viewPersonDeceasedTextLabel"
-        android:ems="10"
-        android:gravity="center"
-        android:text="Organization" />
-
-    <TextView
-        android:id="@+id/viewPersonOrganizationText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/viewPersonGuideline50"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewPersonOccupationText"
-        app:layout_constraintBottom_toTopOf="@id/viewPersonDeceasedCheckbox"
-        android:ems="10"
-        android:text="Name" />
-
-    <TextView
-        android:id="@+id/viewPersonDeceasedTextLabel"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/viewPersonGuideline50"
-        app:layout_constraintTop_toBottomOf="@id/viewPersonOrganizationTextLabel"
-        app:layout_constraintBottom_toTopOf="@id/viewPersonDescriptionTextLabel"
-        android:ems="10"
+        android:layout_height="0dp"
         android:gravity="center"
-        android:text="Deceased" />
-
-    <CheckBox
-        android:id="@+id/viewPersonDeceasedCheckbox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:clickable="false"
-        app:layout_constraintBottom_toTopOf="@id/viewPersonDescriptionText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/viewPersonGuideline50"
-        app:layout_constraintTop_toBottomOf="@id/viewPersonOrganizationText" />
-
-
-    <TextView
-        android:id="@+id/viewPersonDescriptionTextLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/viewPersonGuideline50"
-        app:layout_constraintTop_toBottomOf="@id/viewPersonDeceasedTextLabel"
-        app:layout_constraintBottom_toTopOf="@id/viewPersonGuideline75"
-        android:ems="10"
-        android:gravity="center"
-        android:text="Description" />
-
-    <TextView
-        android:id="@+id/viewPersonDescriptionText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/viewPersonGuideline50"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewPersonDeceasedCheckbox"
-        app:layout_constraintBottom_toTopOf="@id/viewPersonGuideline75"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/viewPersonHorizontalGuideline20"
         android:ems="10"
+        android:textSize="@dimen/titleSize"
         android:text="Name" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/viewPersonGuideline75"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/viewPersonGuideline50"
-        app:layout_constraintTop_toBottomOf="@id/viewPersonGuideline25"
-        app:layout_constraintBottom_toTopOf="@id/viewPersonRaceText"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.75" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/viewPersonGuideline25"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/viewPersonRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/viewPersonGuideline50"
-        app:layout_constraintTop_toBottomOf="@id/viewPersonGuideline25"
-        app:layout_constraintBottom_toTopOf="@id/viewPersonRaceText"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25171" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/viewPersonGuideline50"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/viewPersonGuideline50"
-        app:layout_constraintTop_toBottomOf="@id/viewPersonGuideline25"
-        app:layout_constraintBottom_toTopOf="@id/viewPersonRaceText"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/viewPersonHorizontalGuideline20"
+        app:layout_constraintBottom_toTopOf="@id/viewPersonHorizontalGuideline80" />
 
     <Button
         android:id="@+id/viewPersonEditButton"
@@ -233,8 +38,22 @@
         android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewPersonGuideline75"
+        app:layout_constraintTop_toBottomOf="@id/viewPersonHorizontalGuideline80"
         app:layout_constraintBottom_toBottomOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/viewPersonHorizontalGuideline80"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.80" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/viewPersonHorizontalGuideline20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.20" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -78,6 +78,11 @@ public class LocationFragment extends ViewItemFragment {
     }
 
     @Override
+    protected int getNewButtonId() {
+        return R.id.viewLocationNewButton;
+    }
+
+    @Override
     protected int getSaveButtonId() {
         return R.id.viewLocationSaveButton;
     }

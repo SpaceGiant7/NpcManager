@@ -3,7 +3,6 @@ package com.example.npcmanager.Activities;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -11,6 +10,7 @@ import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.DataStructures.BaseItem;
 import com.example.npcmanager.DataStructures.Gender;
 import com.example.npcmanager.DataStructures.Location;
+import com.example.npcmanager.DataStructures.Mortality;
 import com.example.npcmanager.DataStructures.Occupation;
 import com.example.npcmanager.DataStructures.Organization;
 import com.example.npcmanager.DataStructures.Person;
@@ -32,7 +32,7 @@ public class AddPersonActivity extends HomeButtonActivity {
     private Spinner homeSelector;
     private Spinner occupationSelector;
     private Spinner organizationSelector;
-    private CheckBox deceasedCheckBox;
+    private Spinner mortalitySelector;
     private TextView descriptionTextInput;
 
     @Override
@@ -45,7 +45,7 @@ public class AddPersonActivity extends HomeButtonActivity {
         homeSelector = findViewById(R.id.addPersonHomeSelector);
         occupationSelector = findViewById(R.id.addPersonOccupationSelector);
         organizationSelector = findViewById(R.id.addPersonOrganizationSelector);
-        deceasedCheckBox = findViewById(R.id.addPersonDeceasedCheckBox);
+        mortalitySelector = findViewById(R.id.addPersonMortalitySelector);
         descriptionTextInput = findViewById(R.id.addPersonDescriptionTextInput);
         Button saveButton = findViewById(R.id.addPersonSaveButton);
         Button deleteButton = findViewById(R.id.addPersonDeleteButton);
@@ -67,7 +67,7 @@ public class AddPersonActivity extends HomeButtonActivity {
                     person.getHome(),
                     person.getOccpation(),
                     person.getOrganization(),
-                    person.getIsDeceased(),
+                    person.getMortality(),
                     person.getDescription());
         } else {
             populateInputs(
@@ -77,7 +77,7 @@ public class AddPersonActivity extends HomeButtonActivity {
                     Location.None(),
                     Occupation.None(),
                     Organization.None(),
-                    false,
+                    Mortality.None(),
                     "");
         }
     }
@@ -89,7 +89,7 @@ public class AddPersonActivity extends HomeButtonActivity {
             Location location,
             Occupation occupation,
             Organization organization,
-            boolean deceased,
+            Mortality mortality,
             String description) {
         nameTextInput.setText(name);
         setupSelector(raceSelector,
@@ -102,7 +102,7 @@ public class AddPersonActivity extends HomeButtonActivity {
                 ApplicationModels.getOccupationModel().getListWithNone(), occupation);
         setupSelector(organizationSelector,
                 ApplicationModels.getOrganizationModel().getListWithNone(), organization);
-        deceasedCheckBox.setChecked(deceased);
+        setupSelector(mortalitySelector, Mortality.getList(), mortality);
         descriptionTextInput.setText(description);
     }
 
@@ -121,7 +121,7 @@ public class AddPersonActivity extends HomeButtonActivity {
                 (Location)homeSelector.getSelectedItem(),
                 (Occupation)occupationSelector.getSelectedItem(),
                 (Organization)organizationSelector.getSelectedItem(),
-                deceasedCheckBox.isChecked(),
+                (Mortality)mortalitySelector.getSelectedItem(),
                 descriptionTextInput.getText().toString());
 
         if( existingPerson.isPresent()) {

@@ -55,4 +55,9 @@ public class Occupation implements BaseItem, Serializable {
     public String getIdentifier() {
         return name;
     }
+
+    @Override
+    public boolean isNone() {
+        return this.equals(Occupation.None());
+    }
 }

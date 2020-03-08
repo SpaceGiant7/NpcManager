@@ -78,6 +78,11 @@ public class OccupationFragment extends ViewItemFragment{
     }
 
     @Override
+    protected int getNewButtonId() {
+        return R.id.viewOccupationNewButton;
+    }
+
+    @Override
     protected int getSaveButtonId() {
         return R.id.viewOccupationSaveButton;
     }

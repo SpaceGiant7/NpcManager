@@ -55,4 +55,8 @@ public class Race implements BaseItem, Serializable {
     public String getIdentifier() {
         return name;
     }
+
+    public boolean isNone() {
+        return this.equals(Race.None());
+    }
 }

@@ -8,96 +8,26 @@
     tools:context=".Activities.ViewQuestActivity">
 
     <TextView
-        android:id="@+id/viewQuestNameTextLabel"
-        android:ems="10"
-        android:gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/viewQuestVerticalGuideline50"
-        app:layout_constraintTop_toBottomOf="@id/viewQuestHorizontalGuideline25"
-        app:layout_constraintBottom_toTopOf="@id/viewQuestPersonTextLabel"
-        android:text="Name" />
-
-    <TextView
         android:id="@+id/viewQuestNameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/viewQuestVerticalGuideline50"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewQuestHorizontalGuideline25"
-        app:layout_constraintBottom_toTopOf="@id/viewQuestPersonText"
-        android:ems="10"
-        android:text="Name" />
-
-    <TextView
-        android:id="@+id/viewQuestPersonTextLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/viewQuestVerticalGuideline50"
-        app:layout_constraintTop_toBottomOf="@id/viewQuestNameTextLabel"
-        app:layout_constraintBottom_toTopOf="@id/viewQuestLocationTextLabel"
-        android:ems="10"
         android:gravity="center"
-        android:text="Quest Giver" />
-
-    <TextView
-        android:id="@+id/viewQuestPersonText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/viewQuestVerticalGuideline50"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewQuestNameText"
-        app:layout_constraintBottom_toTopOf="@id/viewQuestLocationText"
-        android:ems="10"
-        android:text="Name" />
-
-    <TextView
-        android:id="@+id/viewQuestLocationTextLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/viewQuestVerticalGuideline50"
-        app:layout_constraintTop_toBottomOf="@id/viewQuestPersonTextLabel"
-        app:layout_constraintBottom_toTopOf="@id/viewQuestDetailsTextLabel"
-        android:ems="10"
-        android:gravity="center"
-        android:text="Return Location" />
-
-    <TextView
-        android:id="@+id/viewQuestLocationText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/viewQuestVerticalGuideline50"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewQuestPersonText"
-        app:layout_constraintBottom_toTopOf="@id/viewQuestDetailsTextLabel"
-        android:ems="10"
-        android:text="Name" />
-
-    <TextView
-        android:id="@+id/viewQuestDetailsTextLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewQuestLocationTextLabel"
-        app:layout_constraintBottom_toTopOf="@id/viewQuestDetailsText"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/viewQuestHorizontalGuideline25"
         android:ems="10"
-        android:gravity="center"
-        android:text="Details" />
+        android:textSize="@dimen/titleSize"
+        android:text="Name" />
 
-    <TextView
-        android:id="@+id/viewQuestDetailsText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/viewQuestRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewQuestDetailsTextLabel"
-        app:layout_constraintBottom_toTopOf="@id/viewQuestHorizontalGuideline75"
-        android:ems="10"
-        android:text="Name" />
+        app:layout_constraintTop_toTopOf="@id/viewQuestHorizontalGuideline25"
+        app:layout_constraintBottom_toTopOf="@id/viewQuestHorizontalGuideline75" />
 
     <Button
         android:id="@+id/viewQuestEditButton"
@@ -113,33 +43,30 @@
         android:id="@+id/viewQuestHorizontalGuideline75"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/viewQuestVerticalGuideline50"
-        app:layout_constraintTop_toBottomOf="@id/viewQuestHorizontalGuideline25"
-        app:layout_constraintBottom_toTopOf="@id/viewQuestPersonText"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.75" />
+        app:layout_constraintEnd_toEndOf="@id/viewQuestVerticalGuideline50"
+        app:layout_constraintGuide_percent="0.75"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewQuestHorizontalGuideline25" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/viewQuestHorizontalGuideline25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/viewQuestVerticalGuideline50"
-        app:layout_constraintTop_toBottomOf="@id/viewQuestHorizontalGuideline25"
-        app:layout_constraintBottom_toTopOf="@id/viewQuestPersonText"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25171" />
+        app:layout_constraintEnd_toEndOf="@id/viewQuestVerticalGuideline50"
+        app:layout_constraintGuide_percent="0.25171"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewQuestHorizontalGuideline25" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/viewQuestVerticalGuideline50"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/viewQuestVerticalGuideline50"
-        app:layout_constraintTop_toBottomOf="@id/viewQuestHorizontalGuideline25"
-        app:layout_constraintBottom_toTopOf="@id/viewQuestPersonText"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintEnd_toEndOf="@id/viewQuestVerticalGuideline50"
+        app:layout_constraintGuide_percent="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewQuestHorizontalGuideline25" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

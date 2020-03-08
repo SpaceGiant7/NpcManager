@@ -76,6 +76,11 @@ public class RaceFragment extends ViewItemFragment {
     }
 
     @Override
+    protected int getNewButtonId() {
+        return R.id.viewRaceNewButton;
+    }
+
+    @Override
     protected int getSaveButtonId() {
         return R.id.viewRaceSaveButton;
     }
