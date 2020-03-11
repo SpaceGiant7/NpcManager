@@ -2,12 +2,12 @@ package com.example.npcmanager.Activities;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
+import com.example.npcmanager.Activities.Utilities.UserInterfaceUtilities;
 import com.example.npcmanager.DataStructures.BaseItem;
 import com.example.npcmanager.DataStructures.Gender;
 import com.example.npcmanager.DataStructures.Location;
@@ -20,7 +20,6 @@ import com.example.npcmanager.Models.ApplicationModelUpdater;
 import com.example.npcmanager.Models.ApplicationModels;
 import com.example.npcmanager.R;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
 
@@ -114,13 +113,17 @@ public class AddPersonActivity extends HomeButtonActivity {
             nameTextInput.setText(person.getName());
             enableDescription();
         }
+        setupSelectors(person);
+        descriptionTextInput.setText(person.getDescription());
+    }
+
+    private void setupSelectors(Person person) {
         setupRaceSelector(person.getRace());
         setupGenderSelector(person.getGender());
         setupHomeSelector(person.getHome());
         setupOccupationSelector(person.getOccpation());
         setupOrganizationSelector(person.getOrganization());
         setupMortalitySelector(person.getMortality());
-        descriptionTextInput.setText(person.getDescription());
     }
 
     private void determineEnabledState(BaseItem item, Runnable disable, Runnable enable) {
@@ -132,38 +135,33 @@ public class AddPersonActivity extends HomeButtonActivity {
     }
 
     private void setupHomeSelector(Location home) {
-        setupSelector(homeSelector, ApplicationModels.getLocationModel().getList(), home);
+        UserInterfaceUtilities.setupSelector(
+                homeSelector, ApplicationModels.getLocationModel().getList(), home, this);
     }
 
     private void setupOccupationSelector(Occupation occupation) {
-        setupSelector(occupationSelector,
-                ApplicationModels.getOccupationModel().getList(), occupation);
+        UserInterfaceUtilities.setupSelector(occupationSelector,
+                ApplicationModels.getOccupationModel().getList(), occupation, this);
     }
 
     private void setupOrganizationSelector(Organization organization) {
-        setupSelector(organizationSelector,
-                ApplicationModels.getOrganizationModel().getList(), organization);
+        UserInterfaceUtilities.setupSelector(organizationSelector,
+                ApplicationModels.getOrganizationModel().getList(), organization, this);
     }
 
     private void setupMortalitySelector(Mortality mortality) {
-        setupSelector(mortalitySelector, Mortality.getList(), mortality);
+        UserInterfaceUtilities.setupSelector(
+                mortalitySelector, Mortality.getList(), mortality, this);
     }
 
     private void setupGenderSelector(Gender gender) {
-        setupSelector(genderSelector,
-                ApplicationModels.getGenderModel().getList(), gender);
+        UserInterfaceUtilities.setupSelector(
+                genderSelector, ApplicationModels.getGenderModel().getList(), gender, this);
     }
 
     private void setupRaceSelector(Race race) {
-        setupSelector(raceSelector, ApplicationModels.getRaceModel().getList(), race);
-    }
-
-
-    private void setupSelector(Spinner selector, List<BaseItem> items, BaseItem item) {
-        ArrayAdapter<BaseItem> adapter = new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_item, items);
-        selector.setAdapter(adapter);
-        selector.setSelection(adapter.getPosition(item));
+        UserInterfaceUtilities.setupSelector(
+                raceSelector, ApplicationModels.getRaceModel().getList(), race, this);
     }
 
     private void setupEnablers() {
@@ -197,7 +195,6 @@ public class AddPersonActivity extends HomeButtonActivity {
 
         descriptionLabel.setOnLongClickListener(v -> disableDescription());
         descriptionTextInput.setOnLongClickListener(v -> disableDescription());
-
     }
 
     private void createPerson() {
@@ -247,12 +244,12 @@ public class AddPersonActivity extends HomeButtonActivity {
     private BaseItem getSelectedItem(
             View enableText, Spinner selector, Supplier<BaseItem> noneSupplier) {
         if (enableText.getVisibility() == View.INVISIBLE) {
-            return (BaseItem) selector.getSelectedItem();
+            return UserInterfaceUtilities.getDeselectableSelection(selector, noneSupplier);
         } else {
             return noneSupplier.get();
         }
     }
-
+    
     private void saveButtonClicked() {
         createPerson();
         ActivityUtilities.loadMainActivity(this);

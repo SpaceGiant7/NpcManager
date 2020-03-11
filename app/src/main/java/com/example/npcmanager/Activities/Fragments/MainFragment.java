@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.npcmanager.Activities.AddPersonActivity;
 import com.example.npcmanager.Activities.AddQuestActivity;
-import com.example.npcmanager.Activities.FindBy.FindByNameActivity;
+import com.example.npcmanager.Activities.FindBy.FindByTraitActivity;
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.Activities.Utilities.RecyclerAdapters.BaseItemRecyclerAdapter;
 import com.example.npcmanager.Activities.ViewQuestActivity;
@@ -77,7 +77,7 @@ public class MainFragment extends Fragment {
         backButton.setOnClickListener(
                 v -> ActivityUtilities.loadCampaignSelectorActivity(getActivity()));
         searchButton.setOnClickListener(
-                v -> ActivityUtilities.loadActivity(getActivity(), FindByNameActivity.class));
+                v -> ActivityUtilities.loadActivity(getActivity(), FindByTraitActivity.class));
         questButton.setOnClickListener(
                 v -> ActivityUtilities.loadActivity(getActivity(), AddQuestActivity.class));
         addButton.setOnClickListener(

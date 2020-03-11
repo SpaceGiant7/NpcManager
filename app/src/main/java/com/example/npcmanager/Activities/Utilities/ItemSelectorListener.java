@@ -1,27 +1,30 @@
 package com.example.npcmanager.Activities.Utilities;
 
-import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.npcmanager.DataStructures.BaseItem;
 
-public class ItemSelectorListener implements AdapterView.OnItemClickListener{
-    private AppCompatActivity currentActivity;
-    private Class<?> activityClassToOpen;
+import java.util.function.Consumer;
 
-    public ItemSelectorListener(AppCompatActivity currentActivity, Class<?> activityClassToOpen) {
-        this.currentActivity = currentActivity;
-        this.activityClassToOpen = activityClassToOpen;
+public class ItemSelectorListener<T extends BaseItem> implements AdapterView.OnItemSelectedListener{
+
+    private Consumer<T> itemConsumer;
+    private Runnable noItemSelectedRunnable;
+
+    public ItemSelectorListener(Consumer<T> itemConsumer, Runnable noItemSelectedRunnable) {
+        this.itemConsumer = itemConsumer;
+        this.noItemSelectedRunnable = noItemSelectedRunnable;
     }
 
     @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        BaseItem item = (BaseItem) adapterView.getAdapter().getItem(i);
-        Intent intent = new Intent( currentActivity, activityClassToOpen);
-        intent.putExtra("name", item.getIdentifier());
-        currentActivity.startActivity(intent);
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        T item = (T) adapterView.getAdapter().getItem(i);
+        itemConsumer.accept(item);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+        noItemSelectedRunnable.run();
     }
 }

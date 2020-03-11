@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.FindBy.FindByTraitActivity">
+
+    <TextView
+        android:id="@+id/findByTraitTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Find Person"
+        android:textSize="@dimen/titleSize"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/findByTraitHorizontalGuideline20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/findByTraitRaceLabel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="@id/findByTraitHorizontalGuideline20"
+        app:layout_constraintBottom_toTopOf="@id/findByTraitGenderLabel"
+        app:layout_constraintStart_toStartOf="@id/findByTraitVerticalGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Add Race" />
+
+    <Spinner
+        android:id="@+id/findByTraitRaceSelector"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="@id/findByTraitRaceLabel"
+        app:layout_constraintBottom_toBottomOf="@id/findByTraitRaceLabel"
+        app:layout_constraintStart_toStartOf="@id/findByTraitVerticalGuideline50"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/findByTraitGenderLabel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/findByTraitRaceLabel"
+        app:layout_constraintBottom_toTopOf="@id/findByTraitLocationLabel"
+        app:layout_constraintStart_toStartOf="@id/findByTraitVerticalGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Add Gender" />
+
+    <Spinner
+        android:id="@+id/findByTraitGenderSelector"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="@id/findByTraitGenderLabel"
+        app:layout_constraintBottom_toBottomOf="@id/findByTraitGenderLabel"
+        app:layout_constraintStart_toStartOf="@id/findByTraitVerticalGuideline50"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/findByTraitLocationLabel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/findByTraitGenderLabel"
+        app:layout_constraintBottom_toTopOf="@id/findByTraitOccupationLabel"
+        app:layout_constraintStart_toStartOf="@id/findByTraitVerticalGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Add Location" />
+
+    <Spinner
+        android:id="@+id/findByTraitLocationSelector"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="@id/findByTraitLocationLabel"
+        app:layout_constraintBottom_toBottomOf="@id/findByTraitLocationLabel"
+        app:layout_constraintStart_toStartOf="@id/findByTraitVerticalGuideline50"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/findByTraitOccupationLabel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/findByTraitLocationLabel"
+        app:layout_constraintBottom_toTopOf="@id/findByTraitOrganizationLabel"
+        app:layout_constraintStart_toStartOf="@id/findByTraitVerticalGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Add Occupation" />
+
+    <Spinner
+        android:id="@+id/findByTraitOccupationSelector"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="@id/findByTraitOccupationLabel"
+        app:layout_constraintBottom_toBottomOf="@id/findByTraitOccupationLabel"
+        app:layout_constraintStart_toStartOf="@id/findByTraitVerticalGuideline50"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/findByTraitOrganizationLabel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/findByTraitOccupationLabel"
+        app:layout_constraintBottom_toTopOf="@id/findByTraitMortalityLabel"
+        app:layout_constraintStart_toStartOf="@id/findByTraitVerticalGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Add Organization" />
+
+    <Spinner
+        android:id="@+id/findByTraitOrganizationSelector"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="@id/findByTraitOrganizationLabel"
+        app:layout_constraintBottom_toBottomOf="@id/findByTraitOrganizationLabel"
+        app:layout_constraintStart_toStartOf="@id/findByTraitVerticalGuideline50"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/findByTraitMortalityLabel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/findByTraitOrganizationLabel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/findByTraitVerticalGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Add Mortality" />
+
+    <Spinner
+        android:id="@+id/findByTraitMortalitySelector"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="@id/findByTraitMortalityLabel"
+        app:layout_constraintBottom_toBottomOf="@id/findByTraitMortalityLabel"
+        app:layout_constraintStart_toStartOf="@id/findByTraitVerticalGuideline50"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/findByTraitRecyclerVier"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="@id/findByTraitHorizontalGuideline20"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/findByTraitVerticalGuideline50" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/findByTraitHorizontalGuideline20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/findByTraitVerticalGuideline50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+</androidx.constraintlayout.widget.ConstraintLayout>
