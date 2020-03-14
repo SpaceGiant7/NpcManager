@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.npcmanager.Activities.NewMainActivity;
 import com.example.npcmanager.Activities.ViewCampaignsActivity;
 import com.example.npcmanager.DataStructures.BaseItem;
+import com.example.npcmanager.DataStructures.Mortality;
 import com.example.npcmanager.DataStructures.Person;
 import com.example.npcmanager.DataStructures.PersonTrait;
 import com.example.npcmanager.DataStructures.Quest;
@@ -24,6 +25,7 @@ public class ActivityUtilities {
     public static final String raceKey = "race";
     public static final String occupationKey = "occupation";
     public static final String genderKey = "gender";
+    public static final String mortalityKey = "mortality";
     private static final String nameKey = "name";
     private static final String traitKey = "trait";
 
@@ -99,6 +101,11 @@ public class ActivityUtilities {
                 genderKey);
     }
 
+    public static void loadActivityWithMortalityExtra(
+            Activity fromActivity, Class cls, Mortality mortality) {
+        loadActivityWithExtra(fromActivity, cls, mortality, mortalityKey);
+    }
+
     public static void loadActivityWithExtra(
             Activity fromActivity, Class cls, Serializable val, String key) {
         Intent intent = new Intent(fromActivity, cls);
@@ -151,6 +158,11 @@ public class ActivityUtilities {
 
     public static Optional<BaseItem> getGenderExtraMaybe(Intent intent) {
         return getSerializableExtraMaybe(intent, genderKey)
+                .map(s -> (BaseItem) s);
+    }
+
+    public static Optional<BaseItem> getMortalityExtraMaybe(Intent intent) {
+        return getSerializableExtraMaybe(intent, mortalityKey)
                 .map(s -> (BaseItem) s);
     }
 

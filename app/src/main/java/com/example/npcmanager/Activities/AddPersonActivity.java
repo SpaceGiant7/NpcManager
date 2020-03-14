@@ -2,7 +2,7 @@ package com.example.npcmanager.Activities;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
@@ -70,14 +70,12 @@ public class AddPersonActivity extends HomeButtonActivity {
         mortalityLabel = findViewById(R.id.addPersonMortalityTextField);
         descriptionLabel = findViewById(R.id.addPersonDescriptionTextField);
 
-        Button saveButton = findViewById(R.id.addPersonSaveButton);
-        Button deleteButton = findViewById(R.id.addPersonDeleteButton);
+        ImageButton saveButton = findViewById(R.id.addPersonSaveButton);
 
         existingPerson = ActivityUtilities.getPersonExtraMaybe(getIntent());
         populateInputs();
 
         saveButton.setOnClickListener(v -> saveButtonClicked());
-        deleteButton.setOnClickListener(v -> deleteButtonClicked());
 
         setupEnablers();
         setupDisablers();
@@ -258,12 +256,6 @@ public class AddPersonActivity extends HomeButtonActivity {
 
     private void saveButtonClicked() {
         createPerson();
-        ActivityUtilities.loadMainActivity(this);
-    }
-
-    private void deleteButtonClicked() {
-        existingPerson.ifPresent(
-                person -> ApplicationModelUpdater.removePerson(person.getName(), this));
         ActivityUtilities.loadMainActivity(this);
     }
 

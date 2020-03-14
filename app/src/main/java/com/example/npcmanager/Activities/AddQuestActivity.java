@@ -2,13 +2,12 @@ package com.example.npcmanager.Activities;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
+import com.example.npcmanager.Activities.Utilities.DeselectableSpinnerAdapter;
 import com.example.npcmanager.DataStructures.BaseItem;
 import com.example.npcmanager.DataStructures.Location;
 import com.example.npcmanager.DataStructures.Person;
@@ -17,17 +16,15 @@ import com.example.npcmanager.Models.ApplicationModelUpdater;
 import com.example.npcmanager.Models.ApplicationModels;
 import com.example.npcmanager.R;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.function.Supplier;
 
 public class AddQuestActivity extends HomeButtonActivity {
 
     private Optional<Quest> existingQuest;
 
     EditText nameTextInput;
-    Spinner personSpinner;
-    Spinner locationSpinner;
+    DeselectableSpinnerAdapter personSelector;
+    DeselectableSpinnerAdapter locationSelector;
     EditText detailsTextInput;
 
     TextView enableLocationText;
@@ -43,8 +40,6 @@ public class AddQuestActivity extends HomeButtonActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_quest);
         nameTextInput = findViewById(R.id.addQuestNameInput);
-        personSpinner = findViewById(R.id.addQuestPersonSelector);
-        locationSpinner = findViewById(R.id.addQuestLocationSelector);
         detailsTextInput = findViewById(R.id.addQuestDetailsInput);
 
         enableLocationText = findViewById(R.id.addQuestEnableLocationText);
@@ -55,14 +50,12 @@ public class AddQuestActivity extends HomeButtonActivity {
         personLabel = findViewById(R.id.addQuestPersonText);
         detailsLabel = findViewById(R.id.addQuestDetailsText);
 
-        Button saveButton = findViewById(R.id.addQuestSaveButton);
-        Button deleteButton = findViewById(R.id.addQuestDeleteButton);
+        ImageButton saveButton = findViewById(R.id.addQuestSaveButton);
 
         existingQuest = ActivityUtilities.getQuestExtraMaybe(getIntent());
         populateInputs();
 
         saveButton.setOnClickListener(v -> saveButtonClicked());
-        deleteButton.setOnClickListener(v -> deleteButtonClicked());
         setupEnablers();
         setupDisablers();
     }
@@ -76,25 +69,22 @@ public class AddQuestActivity extends HomeButtonActivity {
     }
 
     private void populateInputs(Quest quest) {
-        determineEnabledState(quest.getReturnLocation(), this::disableLocation, this::enableLocation);
-        determineEnabledState(quest.getQuestGiver(), this::disablePerson, this::enablePerson);
-
         if (quest.getDetails().equals("")) {
             disableDetails();
         } else {
             enableDetails();
         }
-
         if (quest.isNone()) {
             nameTextInput.setText("");
-            disableDetails();
         } else {
             nameTextInput.setText(quest.getQuestName());
-            enableDetails();
         }
         setupLocationSelector(quest.getReturnLocation());
         setupPersonSelector(quest.getQuestGiver());
         detailsTextInput.setText(quest.getDetails());
+
+        determineEnabledState(quest.getReturnLocation(), this::disableLocation, this::enableLocation);
+        determineEnabledState(quest.getQuestGiver(), this::disablePerson, this::enablePerson);
     }
 
     private void determineEnabledState(BaseItem item, Runnable disable, Runnable enable) {
@@ -106,18 +96,21 @@ public class AddQuestActivity extends HomeButtonActivity {
     }
 
     private void setupLocationSelector(Location location) {
-        setupSelector(locationSpinner, ApplicationModels.getLocationModel().getList(), location);
+        locationSelector = DeselectableSpinnerAdapter.create(
+                this,
+                R.id.addQuestLocationSelector,
+                ApplicationModels.getLocationModel().getList(),
+                location,
+                Location::None);
     }
 
     private void setupPersonSelector(Person person) {
-        setupSelector(personSpinner, ApplicationModels.getPersonModel().getList(), person);
-    }
-
-    private void setupSelector(Spinner selector, List<BaseItem> items, BaseItem item) {
-        ArrayAdapter<BaseItem> adapter = new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_item, items);
-        selector.setAdapter(adapter);
-        selector.setSelection(adapter.getPosition(item));
+        personSelector = DeselectableSpinnerAdapter.create(
+                this,
+                R.id.addQuestPersonSelector,
+                ApplicationModels.getPersonModel().getList(),
+                person,
+                Person::None);
     }
     
     private void setupEnablers() {
@@ -128,10 +121,10 @@ public class AddQuestActivity extends HomeButtonActivity {
 
     private void setupDisablers() {
         locationLabel.setOnLongClickListener(v -> disableLocation());
-        locationSpinner.setOnLongClickListener(v -> disableLocation());
+        locationSelector.setOnLongClickListener(v -> disableLocation());
 
         personLabel.setOnLongClickListener(v -> disablePerson());
-        personSpinner.setOnLongClickListener(v -> disablePerson());
+        personSelector.setOnLongClickListener(v -> disablePerson());
 
         detailsLabel.setOnLongClickListener(v -> disableDetails());
         detailsTextInput.setOnLongClickListener(v -> disableDetails());
@@ -140,8 +133,8 @@ public class AddQuestActivity extends HomeButtonActivity {
     private void createQuest() {
         Quest newQuest = new Quest(
                 nameTextInput.getText().toString(),
-                getSelectedPerson(),
-                getSelectedLocation(),
+                (Person) personSelector.getSelectedItem(),
+                (Location) locationSelector.getSelectedItem(),
                 detailsTextInput.getText().toString());
 
         if(existingQuest.isPresent()) {
@@ -151,40 +144,17 @@ public class AddQuestActivity extends HomeButtonActivity {
         }
     }
 
-    private Person getSelectedPerson() {
-        return (Person) getSelectedItem(enablePersonText, personSpinner, Person::None);
-    }
-
-    private Location getSelectedLocation() {
-        return (Location) getSelectedItem(enableLocationText, locationSpinner, Location::None);
-    }
-
-    private BaseItem getSelectedItem(
-            View enableText, Spinner selector, Supplier<BaseItem> noneSupplier) {
-        if (enableText.getVisibility() == View.INVISIBLE) {
-            return (BaseItem) selector.getSelectedItem();
-        } else {
-            return noneSupplier.get();
-        }
-    }
-
     private void saveButtonClicked() {
         createQuest();
         ActivityUtilities.loadMainActivity(this);
     }
 
-    private void deleteButtonClicked() {
-        existingQuest.ifPresent(
-                quest -> ApplicationModelUpdater.removeQuest(quest.getQuestName(), this));
-        ActivityUtilities.loadMainActivity(this);
-    }
-
     private void enableLocation() {
-        enableItem(enableLocationText, locationLabel, locationSpinner);
+        enableItem(enableLocationText, locationLabel, locationSelector);
     }
 
     private void enablePerson() {
-        enableItem(enablePersonText, personLabel, personSpinner);
+        enableItem(enablePersonText, personLabel, personSelector);
     }
 
     private void enableDetails() {
@@ -192,13 +162,11 @@ public class AddQuestActivity extends HomeButtonActivity {
     }
 
     private boolean disableLocation() {
-        return disableItem(enableLocationText, locationLabel, locationSpinner,
-                () -> setupLocationSelector(Location.None()));
+        return disableItem(enableLocationText, locationLabel, locationSelector);
     }
 
     private boolean disablePerson() {
-        return disableItem(enablePersonText, personLabel, personSpinner,
-                () -> setupPersonSelector(Person.None()));
+        return disableItem(enablePersonText, personLabel, personSelector);
     }
 
     private boolean disableDetails() {
@@ -212,11 +180,25 @@ public class AddQuestActivity extends HomeButtonActivity {
         itemSelector.setVisibility(View.VISIBLE);
     }
 
+    private void enableItem(View enableText, View itemLabel, DeselectableSpinnerAdapter itemSelector) {
+        enableText.setVisibility(View.INVISIBLE);
+        itemLabel.setVisibility(View.VISIBLE);
+        itemSelector.setVisibility(View.VISIBLE);
+    }
+
     private boolean disableItem(View enableText, View itemLabel, View itemSelector, Runnable runnable) {
         enableText.setVisibility(View.VISIBLE);
         itemLabel.setVisibility(View.INVISIBLE);
         itemSelector.setVisibility(View.INVISIBLE);
         runnable.run();
+        return true;
+    }
+
+    private boolean disableItem(View enableText, View itemLabel, DeselectableSpinnerAdapter itemSelector) {
+        enableText.setVisibility(View.VISIBLE);
+        itemLabel.setVisibility(View.INVISIBLE);
+        itemSelector.setVisibility(View.INVISIBLE);
+        itemSelector.setSelection(0);
         return true;
     }
 }

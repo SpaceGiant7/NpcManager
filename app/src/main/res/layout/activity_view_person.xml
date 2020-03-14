@@ -30,11 +30,12 @@
         app:layout_constraintTop_toTopOf="@id/viewPersonHorizontalGuideline20"
         app:layout_constraintBottom_toTopOf="@id/viewPersonHorizontalGuideline80" />
 
-    <Button
+    <ImageButton
         android:id="@+id/viewPersonEditButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Edit"
+        style="@style/ImageButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:srcCompat="@android:drawable/ic_menu_edit"
         android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

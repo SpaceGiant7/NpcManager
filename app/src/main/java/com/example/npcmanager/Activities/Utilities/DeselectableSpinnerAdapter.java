@@ -49,7 +49,7 @@ public class DeselectableSpinnerAdapter {
         this.noneSupplier = noneSupplier;
         DeselectableArrayAdapter adapter = new DeselectableArrayAdapter(activity, items);
         spinner.setAdapter(adapter);
-        spinner.setSelection(adapter.getPosition(item));
+        setSelection(item);
         spinner.setOnItemSelectedListener(new DeselectableSelectorListener(itemConsumer, onNoSelection));
     }
 

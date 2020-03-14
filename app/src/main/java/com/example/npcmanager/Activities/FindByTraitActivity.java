@@ -219,6 +219,11 @@ public class FindByTraitActivity extends AppCompatActivity {
                     organizationSelector.setSelection(organization);
                     enableOrganization();
                 });
+        ActivityUtilities.getMortalityExtraMaybe(getIntent())
+                .ifPresent(mortality -> {
+                    mortalitySelector.setSelection(mortality);
+                    enableMortality();
+                });
 
     }
 

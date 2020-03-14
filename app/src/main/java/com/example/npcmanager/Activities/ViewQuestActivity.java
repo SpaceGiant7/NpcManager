@@ -1,7 +1,7 @@
 package com.example.npcmanager.Activities;
 
 import android.os.Bundle;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,7 +24,7 @@ public class ViewQuestActivity extends HomeButtonActivity {
     ViewItemRecyclerAdapter adapter;
     List<ViewItem> viewItems = new ArrayList<>();
     private TextView nameTextView;
-    private Button editButton;
+    private ImageButton editButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

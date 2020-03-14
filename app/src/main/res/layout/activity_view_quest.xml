@@ -29,15 +29,16 @@
         app:layout_constraintTop_toTopOf="@id/viewQuestHorizontalGuideline25"
         app:layout_constraintBottom_toTopOf="@id/viewQuestHorizontalGuideline75" />
 
-    <Button
+    <ImageButton
         android:id="@+id/viewQuestEditButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/ImageButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/viewQuestHorizontalGuideline75"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="Edit" />
+        app:srcCompat="@android:drawable/ic_menu_edit" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/viewQuestHorizontalGuideline75"
