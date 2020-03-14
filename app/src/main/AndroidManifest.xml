@@ -31,8 +31,6 @@
         <activity android:name=".Activities.FindBy.FindByRaceActivity" />
         <activity android:name=".Activities.FindBy.FindByLocationActivity" />
         <activity android:name=".Activities.FindBy.FindByOrganizationActivity" />
-        <activity android:name=".Activities.AddOrganizationActivity" />
-        <activity android:name=".Activities.AddLocationActivity" />
         <activity android:name=".Activities.FindBy.FindByOccupationActivity" />
         <activity
             android:name=".Activities.AddPersonActivity"
@@ -40,7 +38,6 @@
         <activity
             android:name=".Activities.AddQuestActivity"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".Activities.MainActivity" />
         <activity android:name=".Activities.View.ViewOrganizationsActivity" />
         <activity android:name=".Activities.FindBy.FindByGenderActivity" />
     </application>
