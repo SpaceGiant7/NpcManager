@@ -9,7 +9,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.npcmanager.Activities.FindBy.FindByLocationActivity;
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.DataStructures.Location;
 import com.example.npcmanager.Models.ApplicationModelUpdater;
@@ -100,11 +99,6 @@ public class LocationFragment extends ViewItemFragment {
     @Override
     protected int getRecyclerViewId() {
         return R.id.viewLocationList;
-    }
-
-    @Override
-    protected Class getFindByActivityClass() {
-        return FindByLocationActivity.class;
     }
 
     @Override

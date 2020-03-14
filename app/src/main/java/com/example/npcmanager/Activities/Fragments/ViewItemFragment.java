@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.npcmanager.Activities.FindBy.FindByTraitActivity;
+import com.example.npcmanager.Activities.FindByTraitActivity;
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.Activities.Utilities.RecyclerAdapters.BaseItemRecyclerAdapter;
 import com.example.npcmanager.Models.BaseModel;
@@ -109,8 +109,6 @@ public abstract class ViewItemFragment extends Fragment {
     protected abstract void replaceItem(String oldItem);
 
     protected abstract void removeItem(String item);
-
-    protected abstract Class getFindByActivityClass();
 
     protected abstract int getNewButtonId();
     protected abstract int getSaveButtonId();

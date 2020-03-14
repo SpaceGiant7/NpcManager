@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.npcmanager.Activities.FindBy.FindByGenderActivity;
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.DataStructures.Gender;
 import com.example.npcmanager.Models.ApplicationModelUpdater;
@@ -102,11 +101,6 @@ public class GenderFragment extends ViewItemFragment {
     @Override
     protected int getRecyclerViewId() {
         return R.id.viewGenderList;
-    }
-
-    @Override
-    protected Class getFindByActivityClass() {
-        return FindByGenderActivity.class;
     }
 
     @Override

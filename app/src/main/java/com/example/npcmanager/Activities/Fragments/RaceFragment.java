@@ -9,7 +9,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.npcmanager.Activities.FindBy.FindByRaceActivity;
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.DataStructures.Race;
 import com.example.npcmanager.Models.ApplicationModelUpdater;
@@ -98,11 +97,6 @@ public class RaceFragment extends ViewItemFragment {
     @Override
     protected int getRecyclerViewId() {
         return R.id.viewRaceList;
-    }
-
-    @Override
-    protected Class getFindByActivityClass() {
-        return FindByRaceActivity.class;
     }
 
     @Override

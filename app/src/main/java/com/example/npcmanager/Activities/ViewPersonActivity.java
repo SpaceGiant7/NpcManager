@@ -7,11 +7,6 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.npcmanager.Activities.FindBy.FindByGenderActivity;
-import com.example.npcmanager.Activities.FindBy.FindByLocationActivity;
-import com.example.npcmanager.Activities.FindBy.FindByOccupationActivity;
-import com.example.npcmanager.Activities.FindBy.FindByOrganizationActivity;
-import com.example.npcmanager.Activities.FindBy.FindByRaceActivity;
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.Activities.Utilities.RecyclerAdapters.ViewItemRecyclerAdapter;
 import com.example.npcmanager.DataStructures.BaseItem;
@@ -62,35 +57,35 @@ public class ViewPersonActivity extends HomeButtonActivity {
                 "Race",
                 () -> ActivityUtilities.loadActivityWithRaceExtra(
                         this,
-                        FindByRaceActivity.class,
+                        FindByTraitActivity.class,
                         person.getRace().getIdentifier()));
         maybeAddViewItem(
                 person.getGender(),
                 "Gender",
                 () -> ActivityUtilities.loadActivityWithGenderExtra(
                         this,
-                        FindByGenderActivity.class,
+                        FindByTraitActivity.class,
                         person.getGender().getIdentifier()));
         maybeAddViewItem(
                 person.getHome(),
                 "Location",
                 () -> ActivityUtilities.loadActivityWithLocationExtra(
                         this,
-                        FindByLocationActivity.class,
+                        FindByTraitActivity.class,
                         person.getHome().getIdentifier()));
         maybeAddViewItem(
                 person.getOccpation(),
                 "Occupation",
                 () -> ActivityUtilities.loadActivityWithOccupationExtra(
                         this,
-                        FindByOccupationActivity.class,
+                        FindByTraitActivity.class,
                         person.getOccpation().getIdentifier()));
         maybeAddViewItem(
                 person.getOrganization(),
                 "Organization",
                 () -> ActivityUtilities.loadActivityWithOrganizationExtra(
                         this,
-                        FindByOrganizationActivity.class,
+                        FindByTraitActivity.class,
                         person.getOrganization().getIdentifier()));
 
         if(!person.getMortality().isNone()) {

@@ -11,7 +11,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.npcmanager.Activities.FindBy.FindByOrganizationActivity;
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.DataStructures.BaseItem;
 import com.example.npcmanager.DataStructures.Location;
@@ -128,11 +127,6 @@ public class OrganizationFragment extends ViewItemFragment {
     @Override
     protected int getRecyclerViewId() {
         return R.id.viewOrganizationList;
-    }
-
-    @Override
-    protected Class getFindByActivityClass() {
-        return FindByOrganizationActivity.class;
     }
 
     @Override

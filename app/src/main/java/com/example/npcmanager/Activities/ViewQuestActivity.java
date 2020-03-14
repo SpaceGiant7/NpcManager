@@ -7,7 +7,6 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.npcmanager.Activities.FindBy.FindByLocationActivity;
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.Activities.Utilities.RecyclerAdapters.ViewItemRecyclerAdapter;
 import com.example.npcmanager.DataStructures.BaseItem;
@@ -69,7 +68,7 @@ public class ViewQuestActivity extends HomeButtonActivity {
                 "Return Location",
                 () -> ActivityUtilities.loadActivityWithLocationExtra(
                         this,
-                        FindByLocationActivity.class,
+                        FindByTraitActivity.class,
                         quest.getReturnLocation().getIdentifier()));
 
         if (!quest.getDetails().equals("")) {

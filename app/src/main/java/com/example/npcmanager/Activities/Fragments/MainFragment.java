@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.npcmanager.Activities.AddPersonActivity;
 import com.example.npcmanager.Activities.AddQuestActivity;
-import com.example.npcmanager.Activities.FindBy.FindByTraitActivity;
+import com.example.npcmanager.Activities.FindByTraitActivity;
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.Activities.Utilities.RecyclerAdapters.BaseItemRecyclerAdapter;
 import com.example.npcmanager.Activities.ViewQuestActivity;

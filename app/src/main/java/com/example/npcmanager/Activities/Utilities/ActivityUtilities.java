@@ -6,7 +6,7 @@ import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.npcmanager.Activities.NewMainActivity;
-import com.example.npcmanager.Activities.View.ViewCampaignsActivity;
+import com.example.npcmanager.Activities.ViewCampaignsActivity;
 import com.example.npcmanager.DataStructures.BaseItem;
 import com.example.npcmanager.DataStructures.Person;
 import com.example.npcmanager.DataStructures.PersonTrait;

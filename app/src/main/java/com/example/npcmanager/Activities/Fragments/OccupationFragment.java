@@ -9,7 +9,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.npcmanager.Activities.FindBy.FindByOccupationActivity;
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.DataStructures.Occupation;
 import com.example.npcmanager.Models.ApplicationModelUpdater;
@@ -100,11 +99,6 @@ public class OccupationFragment extends ViewItemFragment{
     @Override
     protected int getRecyclerViewId() {
         return R.id.viewOccupationList;
-    }
-
-    @Override
-    protected Class getFindByActivityClass() {
-        return FindByOccupationActivity.class;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.example.npcmanager.Activities.FindBy;
+package com.example.npcmanager.Activities;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.Activities.Utilities.DeselectableSpinnerAdapter;
 import com.example.npcmanager.Activities.Utilities.RecyclerAdapters.BaseItemRecyclerAdapter;
-import com.example.npcmanager.Activities.ViewPersonActivity;
 import com.example.npcmanager.DataStructures.Gender;
 import com.example.npcmanager.DataStructures.Location;
 import com.example.npcmanager.DataStructures.Mortality;

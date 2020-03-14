@@ -1,4 +1,4 @@
-package com.example.npcmanager.Activities.View;
+package com.example.npcmanager.Activities;
 
 import android.os.Bundle;
 import android.widget.ImageButton;
