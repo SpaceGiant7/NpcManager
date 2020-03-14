@@ -3,11 +3,10 @@ package com.example.npcmanager.Activities;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
-import com.example.npcmanager.Activities.Utilities.UserInterfaceUtilities;
+import com.example.npcmanager.Activities.Utilities.DeselectableSpinnerAdapter;
 import com.example.npcmanager.DataStructures.BaseItem;
 import com.example.npcmanager.DataStructures.Gender;
 import com.example.npcmanager.DataStructures.Location;
@@ -21,7 +20,6 @@ import com.example.npcmanager.Models.ApplicationModels;
 import com.example.npcmanager.R;
 
 import java.util.Optional;
-import java.util.function.Supplier;
 
 public class AddPersonActivity extends HomeButtonActivity {
 
@@ -41,12 +39,12 @@ public class AddPersonActivity extends HomeButtonActivity {
     TextView descriptionLabel;
     private Optional<Person> existingPerson;
     private TextView nameTextInput;
-    private Spinner raceSelector;
-    private Spinner genderSelector;
-    private Spinner homeSelector;
-    private Spinner occupationSelector;
-    private Spinner organizationSelector;
-    private Spinner mortalitySelector;
+    private DeselectableSpinnerAdapter raceSelector;
+    private DeselectableSpinnerAdapter genderSelector;
+    private DeselectableSpinnerAdapter homeSelector;
+    private DeselectableSpinnerAdapter occupationSelector;
+    private DeselectableSpinnerAdapter organizationSelector;
+    private DeselectableSpinnerAdapter mortalitySelector;
     private TextView descriptionTextInput;
 
     @Override
@@ -54,12 +52,6 @@ public class AddPersonActivity extends HomeButtonActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_person);
         nameTextInput = findViewById(R.id.addPersonNameTextInput);
-        raceSelector = findViewById(R.id.addPersonRaceSelector);
-        genderSelector = findViewById(R.id.addPersonGenderSelector);
-        homeSelector = findViewById(R.id.addPersonHomeSelector);
-        occupationSelector = findViewById(R.id.addPersonOccupationSelector);
-        organizationSelector = findViewById(R.id.addPersonOrganizationSelector);
-        mortalitySelector = findViewById(R.id.addPersonMortalitySelector);
         descriptionTextInput = findViewById(R.id.addPersonDescriptionTextInput);
 
         enableRaceText = findViewById(R.id.addPersonEnableRaceText);
@@ -100,12 +92,6 @@ public class AddPersonActivity extends HomeButtonActivity {
     }
 
     private void populateInputs(Person person) {
-        determineEnabledState(person.getRace(), this::disableRace, this::enableRace);
-        determineEnabledState(person.getGender(), this::disableGender, this::enableGender);
-        determineEnabledState(person.getHome(), this::disableHome, this::enableHome);
-        determineEnabledState(person.getOccpation(), this::disableOccupation, this::enableOccupation);
-        determineEnabledState(person.getOrganization(), this::disableOrganization, this::enableOrganization);
-        determineEnabledState(person.getMortality(), this::disableMortality, this::enableMortality);
         if (person.isNone()) {
             nameTextInput.setText("");
             disableDescription();
@@ -115,6 +101,13 @@ public class AddPersonActivity extends HomeButtonActivity {
         }
         setupSelectors(person);
         descriptionTextInput.setText(person.getDescription());
+        determineEnabledState(person.getRace(), this::disableRace, this::enableRace);
+        determineEnabledState(person.getGender(), this::disableGender, this::enableGender);
+        determineEnabledState(person.getHome(), this::disableHome, this::enableHome);
+        determineEnabledState(person.getOccpation(), this::disableOccupation, this::enableOccupation);
+        determineEnabledState(person.getOrganization(), this::disableOrganization, this::enableOrganization);
+        determineEnabledState(person.getMortality(), this::disableMortality, this::enableMortality);
+
     }
 
     private void setupSelectors(Person person) {
@@ -135,33 +128,57 @@ public class AddPersonActivity extends HomeButtonActivity {
     }
 
     private void setupHomeSelector(Location home) {
-        UserInterfaceUtilities.setupSelector(
-                homeSelector, ApplicationModels.getLocationModel().getList(), home, this);
+        homeSelector = DeselectableSpinnerAdapter.create(
+                this,
+                R.id.addPersonHomeSelector,
+                ApplicationModels.getLocationModel().getList(),
+                home,
+                Location::None);
     }
 
     private void setupOccupationSelector(Occupation occupation) {
-        UserInterfaceUtilities.setupSelector(occupationSelector,
-                ApplicationModels.getOccupationModel().getList(), occupation, this);
+        occupationSelector = DeselectableSpinnerAdapter.create(
+                this,
+                R.id.addPersonOccupationSelector,
+                ApplicationModels.getOccupationModel().getList(),
+                occupation,
+                Occupation::None);
     }
 
     private void setupOrganizationSelector(Organization organization) {
-        UserInterfaceUtilities.setupSelector(organizationSelector,
-                ApplicationModels.getOrganizationModel().getList(), organization, this);
+        organizationSelector = DeselectableSpinnerAdapter.create(
+                this,
+                R.id.addPersonOrganizationSelector,
+                ApplicationModels.getOrganizationModel().getList(),
+                organization,
+                Organization::None);
     }
 
     private void setupMortalitySelector(Mortality mortality) {
-        UserInterfaceUtilities.setupSelector(
-                mortalitySelector, Mortality.getList(), mortality, this);
+        mortalitySelector = DeselectableSpinnerAdapter.create(
+                this,
+                R.id.addPersonMortalitySelector,
+                Mortality.getList(),
+                mortality,
+                Mortality::None);
     }
 
     private void setupGenderSelector(Gender gender) {
-        UserInterfaceUtilities.setupSelector(
-                genderSelector, ApplicationModels.getGenderModel().getList(), gender, this);
+        genderSelector = DeselectableSpinnerAdapter.create(
+                this,
+                R.id.addPersonGenderSelector,
+                ApplicationModels.getGenderModel().getList(),
+                gender,
+                Gender::None);
     }
 
     private void setupRaceSelector(Race race) {
-        UserInterfaceUtilities.setupSelector(
-                raceSelector, ApplicationModels.getRaceModel().getList(), race, this);
+        raceSelector = DeselectableSpinnerAdapter.create(
+                this,
+                R.id.addPersonRaceSelector,
+                ApplicationModels.getRaceModel().getList(),
+                race,
+                Race::None);
     }
 
     private void setupEnablers() {
@@ -216,40 +233,29 @@ public class AddPersonActivity extends HomeButtonActivity {
     }
 
     private Race getSelectedRace() {
-        return (Race) getSelectedItem(enableRaceText, raceSelector, Race::None);
+        return (Race) raceSelector.getSelectedItem();
     }
 
     private Gender getSelectedGender() {
-        return (Gender) getSelectedItem(enableGenderText, genderSelector, Gender::None);
+        return (Gender) genderSelector.getSelectedItem();
     }
 
     private Location getSelectedLocation() {
-        return (Location) getSelectedItem(enableHomeText, homeSelector, Location::None);
+        return (Location) homeSelector.getSelectedItem();
     }
 
     private Occupation getSelectedOccupation() {
-        return (Occupation) getSelectedItem(
-                enableOccupationText, occupationSelector, Occupation::None);
+        return (Occupation) occupationSelector.getSelectedItem();
     }
 
     private Organization getSelectedOrganization() {
-        return (Organization) getSelectedItem(
-                enableOrganizationText, organizationSelector, Organization::None);
+        return (Organization) organizationSelector.getSelectedItem();
     }
 
     private Mortality getSelectedMortality() {
-        return (Mortality) getSelectedItem(enableMortalityText, mortalitySelector, Mortality::None);
+        return (Mortality) mortalitySelector.getSelectedItem();
     }
 
-    private BaseItem getSelectedItem(
-            View enableText, Spinner selector, Supplier<BaseItem> noneSupplier) {
-        if (enableText.getVisibility() == View.INVISIBLE) {
-            return UserInterfaceUtilities.getDeselectableSelection(selector, noneSupplier);
-        } else {
-            return noneSupplier.get();
-        }
-    }
-    
     private void saveButtonClicked() {
         createPerson();
         ActivityUtilities.loadMainActivity(this);
@@ -290,33 +296,27 @@ public class AddPersonActivity extends HomeButtonActivity {
     }
 
     private boolean disableRace() {
-        return disableItem(enableRaceText, raceLabel, raceSelector,
-                () -> setupRaceSelector(Race.None()));
+        return disableItem(enableRaceText, raceLabel, raceSelector);
     }
 
     private boolean disableGender() {
-        return disableItem(enableGenderText, genderLabel, genderSelector,
-                () -> setupGenderSelector(Gender.None()));
+        return disableItem(enableGenderText, genderLabel, genderSelector);
     }
 
     private boolean disableHome() {
-        return disableItem(enableHomeText, homeLabel, homeSelector,
-                () -> setupHomeSelector(Location.None()));
+        return disableItem(enableHomeText, homeLabel, homeSelector);
     }
 
     private boolean disableOccupation() {
-        return disableItem(enableOccupationText, occupationLabel, occupationSelector,
-                () -> setupOccupationSelector(Occupation.None()));
+        return disableItem(enableOccupationText, occupationLabel, occupationSelector);
     }
 
     private boolean disableOrganization() {
-        return disableItem(enableOrganizationText, organizationLabel, organizationSelector,
-                () -> setupOrganizationSelector(Organization.None()));
+        return disableItem(enableOrganizationText, organizationLabel, organizationSelector);
     }
 
     private boolean disableMortality() {
-        return disableItem(enableMortalityText, mortalityLabel, mortalitySelector,
-                () -> setupMortalitySelector(Mortality.None()));
+        return disableItem(enableMortalityText, mortalityLabel, mortalitySelector);
     }
 
     private boolean disableDescription() {
@@ -324,17 +324,31 @@ public class AddPersonActivity extends HomeButtonActivity {
                 () -> descriptionTextInput.setText(""));
     }
 
-    private void enableItem(View enableText, View itemLabel, View itemSelector) {
+    private void enableItem(View enableText, View itemLabel, View inputText) {
+        enableText.setVisibility(View.INVISIBLE);
+        itemLabel.setVisibility(View.VISIBLE);
+        inputText.setVisibility(View.VISIBLE);
+    }
+
+    private void enableItem(View enableText, View itemLabel, DeselectableSpinnerAdapter itemSelector) {
         enableText.setVisibility(View.INVISIBLE);
         itemLabel.setVisibility(View.VISIBLE);
         itemSelector.setVisibility(View.VISIBLE);
     }
 
-    private boolean disableItem(View enableText, View itemLabel, View itemSelector, Runnable runnable) {
+    private boolean disableItem(View enableText, View itemLabel, View inputText, Runnable runnable) {
+        enableText.setVisibility(View.VISIBLE);
+        itemLabel.setVisibility(View.INVISIBLE);
+        inputText.setVisibility(View.INVISIBLE);
+        runnable.run();
+        return true;
+    }
+
+    private boolean disableItem(View enableText, View itemLabel, DeselectableSpinnerAdapter itemSelector) {
         enableText.setVisibility(View.VISIBLE);
         itemLabel.setVisibility(View.INVISIBLE);
         itemSelector.setVisibility(View.INVISIBLE);
-        runnable.run();
+        itemSelector.setSelection(0);
         return true;
     }
 }

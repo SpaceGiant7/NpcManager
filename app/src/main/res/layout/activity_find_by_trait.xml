@@ -18,11 +18,33 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/findByTraitRaceLabel"
+        android:id="@+id/findByTraitNameLabel"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
         app:layout_constraintTop_toTopOf="@id/findByTraitHorizontalGuideline20"
+        app:layout_constraintBottom_toTopOf="@id/findByTraitRaceLabel"
+        app:layout_constraintStart_toStartOf="@id/findByTraitVerticalGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Add Name" />
+
+    <EditText
+        android:id="@+id/findByTraitNameText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="@id/findByTraitNameLabel"
+        app:layout_constraintBottom_toBottomOf="@id/findByTraitNameLabel"
+        app:layout_constraintStart_toStartOf="@id/findByTraitVerticalGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text=""/>
+
+    <TextView
+        android:id="@+id/findByTraitRaceLabel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/findByTraitNameLabel"
         app:layout_constraintBottom_toTopOf="@id/findByTraitGenderLabel"
         app:layout_constraintStart_toStartOf="@id/findByTraitVerticalGuideline50"
         app:layout_constraintEnd_toEndOf="parent"

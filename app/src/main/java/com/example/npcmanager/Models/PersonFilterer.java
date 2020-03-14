@@ -14,6 +14,9 @@ public class PersonFilterer {
 
     private Map<PersonTrait, Predicate<Person>> filters = new HashMap<>();
 
+    public void addNameFilter(String name) {
+        filters.put(PersonTrait.NAME, p -> p.getName().toLowerCase().contains(name.toLowerCase()));
+    }
 
     public void addRaceFilter(BaseItem race) {
         filters.put(PersonTrait.RACE, p -> p.getRace().equals(race));

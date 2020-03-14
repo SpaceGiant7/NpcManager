@@ -1,7 +1,10 @@
 package com.example.npcmanager.Activities.FindBy;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -10,8 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
+import com.example.npcmanager.Activities.Utilities.DeselectableSpinnerAdapter;
 import com.example.npcmanager.Activities.Utilities.RecyclerAdapters.BaseItemRecyclerAdapter;
-import com.example.npcmanager.Activities.Utilities.UserInterfaceUtilities;
 import com.example.npcmanager.Activities.ViewPersonActivity;
 import com.example.npcmanager.DataStructures.Gender;
 import com.example.npcmanager.DataStructures.Location;
@@ -31,6 +34,7 @@ public class FindByTraitActivity extends AppCompatActivity {
     BaseItemRecyclerAdapter adapter;
     private PersonFilterer personFilterer = new PersonFilterer();
 
+    private TextView enableNameText;
     private TextView enableRaceText;
     private TextView enableGenderText;
     private TextView enableLocationText;
@@ -38,12 +42,13 @@ public class FindByTraitActivity extends AppCompatActivity {
     private TextView enableOrganizationText;
     private TextView enableMortalityText;
 
-    private Spinner raceSelector;
-    private Spinner genderSelector;
-    private Spinner locationSelector;
-    private Spinner occupationSelector;
-    private Spinner organizationSelector;
-    private Spinner mortalitySelector;
+    private EditText nameText;
+    private DeselectableSpinnerAdapter raceSelector;
+    private DeselectableSpinnerAdapter genderSelector;
+    private DeselectableSpinnerAdapter locationSelector;
+    private DeselectableSpinnerAdapter occupationSelector;
+    private DeselectableSpinnerAdapter organizationSelector;
+    private DeselectableSpinnerAdapter mortalitySelector;
 
 
     @Override
@@ -52,6 +57,7 @@ public class FindByTraitActivity extends AppCompatActivity {
         setContentView(R.layout.activity_find_by_trait);
         recyclerView = findViewById(R.id.findByTraitRecyclerVier);
 
+        enableNameText = findViewById(R.id.findByTraitNameLabel);
         enableRaceText = findViewById(R.id.findByTraitRaceLabel);
         enableGenderText = findViewById(R.id.findByTraitGenderLabel);
         enableLocationText = findViewById(R.id.findByTraitLocationLabel);
@@ -59,15 +65,10 @@ public class FindByTraitActivity extends AppCompatActivity {
         enableOrganizationText = findViewById(R.id.findByTraitOrganizationLabel);
         enableMortalityText = findViewById(R.id.findByTraitMortalityLabel);
 
-        raceSelector = findViewById(R.id.findByTraitRaceSelector);
-        genderSelector = findViewById(R.id.findByTraitGenderSelector);
-        locationSelector = findViewById(R.id.findByTraitLocationSelector);
-        occupationSelector = findViewById(R.id.findByTraitOccupationSelector);
-        organizationSelector = findViewById(R.id.findByTraitOrganizationSelector);
-        mortalitySelector = findViewById(R.id.findByTraitMortalitySelector);
+        nameText = findViewById(R.id.findByTraitNameText);
 
         setupRecyclerView();
-        setupSelectors();
+        setupInputs();
         setupEnablers();
         setupDisablers();
         disableAll();
@@ -84,7 +85,8 @@ public class FindByTraitActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
-    private void setupSelectors() {
+    private void setupInputs() {
+        setupNameInput();
         setupRaceSelector();
         setupGenderSelector();
         setupLocationSelector();
@@ -93,58 +95,68 @@ public class FindByTraitActivity extends AppCompatActivity {
         setupMortalitySelector();
     }
 
+    private void setupNameInput() {
+        nameText.addTextChangedListener(new TextChangeWatcher());
+    }
+
     private void setupRaceSelector() {
-        UserInterfaceUtilities.setupSelector(
-                raceSelector,
-                ApplicationModels.getRaceModel().getList(),
+        raceSelector = DeselectableSpinnerAdapter.create(
                 this,
+                R.id.findByTraitRaceSelector,
+                ApplicationModels.getRaceModel().getList(),
                 race -> updateAndReload(() -> personFilterer.addRaceFilter(race)),
-                () -> updateAndReload(() -> personFilterer.removeFilter(PersonTrait.RACE)));
+                () -> updateAndReload(() -> personFilterer.removeFilter(PersonTrait.RACE)),
+                Race::None);
     }
 
     private void setupGenderSelector() {
-        UserInterfaceUtilities.setupSelector(
-                genderSelector,
-                ApplicationModels.getGenderModel().getList(),
+        genderSelector = DeselectableSpinnerAdapter.create(
                 this,
+                R.id.findByTraitGenderSelector,
+                ApplicationModels.getGenderModel().getList(),
                 gender -> updateAndReload(() -> personFilterer.addGenderFilter(gender)),
-                () -> updateAndReload(() -> personFilterer.removeFilter(PersonTrait.GENDER)));
+                () -> updateAndReload(() -> personFilterer.removeFilter(PersonTrait.GENDER)),
+                Gender::None);
     }
 
     private void setupLocationSelector() {
-        UserInterfaceUtilities.setupSelector(
-                locationSelector,
-                ApplicationModels.getLocationModel().getList(),
+        locationSelector = DeselectableSpinnerAdapter.create(
                 this,
+                R.id.findByTraitLocationSelector,
+                ApplicationModels.getLocationModel().getList(),
                 location -> updateAndReload(() -> personFilterer.addLocationFilter(location)),
-                () -> updateAndReload(() -> personFilterer.removeFilter(PersonTrait.LOCATION)));
+                () -> updateAndReload(() -> personFilterer.removeFilter(PersonTrait.LOCATION)),
+                Location::None);
     }
 
     private void setupOccupationSelector() {
-        UserInterfaceUtilities.setupSelector(
-                occupationSelector,
-                ApplicationModels.getOccupationModel().getList(),
+        occupationSelector = DeselectableSpinnerAdapter.create(
                 this,
+                R.id.findByTraitOccupationSelector,
+                ApplicationModels.getOccupationModel().getList(),
                 occupation -> updateAndReload(() -> personFilterer.addOccupationFilter(occupation)),
-                () -> updateAndReload(() -> personFilterer.removeFilter(PersonTrait.OCCUPATION)));
+                () -> updateAndReload(() -> personFilterer.removeFilter(PersonTrait.OCCUPATION)),
+                Occupation::None);
     }
 
     private void setupOrganizationSelector() {
-        UserInterfaceUtilities.setupSelector(
-                organizationSelector,
-                ApplicationModels.getOrganizationModel().getList(),
+        organizationSelector = DeselectableSpinnerAdapter.create(
                 this,
+                R.id.findByTraitOrganizationSelector,
+                ApplicationModels.getOrganizationModel().getList(),
                 organization -> updateAndReload(() -> personFilterer.addOrganizationFilter(organization)),
-                () -> updateAndReload(() -> personFilterer.removeFilter(PersonTrait.ORGANIZATION)));
+                () -> updateAndReload(() -> personFilterer.removeFilter(PersonTrait.ORGANIZATION)),
+                Organization::None);
     }
 
     private void setupMortalitySelector() {
-        UserInterfaceUtilities.setupSelector(
-                mortalitySelector,
-                Mortality.getList(),
+        mortalitySelector = DeselectableSpinnerAdapter.create(
                 this,
+                R.id.findByTraitMortalitySelector,
+                Mortality.getList(),
                 mortality -> updateAndReload(() -> personFilterer.addMortalityFilter(mortality)),
-                () -> updateAndReload(() -> personFilterer.removeFilter(PersonTrait.MORTALITY)));
+                () -> updateAndReload(() -> personFilterer.removeFilter(PersonTrait.MORTALITY)),
+                Mortality::None);
     }
 
     void updateAndReload(Runnable runnable) {
@@ -153,6 +165,7 @@ public class FindByTraitActivity extends AppCompatActivity {
     }
 
     private void setupEnablers() {
+        enableNameText.setOnClickListener(v -> enableName());
         enableRaceText.setOnClickListener(v -> enableRace());
         enableGenderText.setOnClickListener(v -> enableGender());
         enableLocationText.setOnClickListener(v -> enableLocation());
@@ -162,6 +175,7 @@ public class FindByTraitActivity extends AppCompatActivity {
     }
 
     private void setupDisablers() {
+        nameText.setOnLongClickListener(v -> disableName());
         raceSelector.setOnLongClickListener(v -> disableRace());
         genderSelector.setOnLongClickListener(v -> disableGender());
         locationSelector.setOnLongClickListener(v -> disableLocation());
@@ -171,6 +185,7 @@ public class FindByTraitActivity extends AppCompatActivity {
     }
 
     private void disableAll() {
+        disableName();
         disableRace();
         disableGender();
         disableLocation();
@@ -179,65 +194,62 @@ public class FindByTraitActivity extends AppCompatActivity {
         disableMortality();
     }
 
+    private void enableName() {
+        enableItem(enableNameText, nameText);
+    }
+
     private void enableRace() {
-        enableItem(enableRaceText, raceSelector,
-                () -> personFilterer.addRaceFilter(
-                        (Race) raceSelector.getSelectedItem()));
+        enableItem(enableRaceText, raceSelector);
     }
 
     private void enableGender() {
-        enableItem(enableGenderText, genderSelector,
-                () -> personFilterer.addGenderFilter(
-                        (Gender) genderSelector.getSelectedItem()));
+        enableItem(enableGenderText, genderSelector);
     }
 
     private void enableLocation() {
-        enableItem(enableLocationText, locationSelector,
-                () -> personFilterer.addLocationFilter(
-                        (Location) locationSelector.getSelectedItem()));
+        enableItem(enableLocationText, locationSelector);
     }
 
     private void enableOccupation() {
-        enableItem(enableOccupationText, occupationSelector,
-                () -> personFilterer.addOccupationFilter(
-                        (Occupation) occupationSelector.getSelectedItem()));
+        enableItem(enableOccupationText, occupationSelector);
 
     }
 
     private void enableOrganization() {
-        enableItem(enableOrganizationText, organizationSelector,
-                () -> personFilterer.addOrganizationFilter(
-                        (Organization) organizationSelector.getSelectedItem()));
+        enableItem(enableOrganizationText, organizationSelector);
     }
 
     private void enableMortality() {
-        enableItem(enableMortalityText, mortalitySelector,
-                () -> personFilterer.addMortalityFilter(
-                        (Mortality) mortalitySelector.getSelectedItem()));
+        enableItem(enableMortalityText, mortalitySelector);
+    }
+
+    private boolean disableName() {
+        nameText.setText("");
+        return disableItem(enableNameText, nameText, PersonTrait.NAME);
     }
 
     private boolean disableRace() {
-        return disableItem(enableRaceText, raceSelector, PersonTrait.RACE);
+        return disableSpinner(enableRaceText, raceSelector, PersonTrait.RACE);
     }
 
     private boolean disableGender() {
-        return disableItem(enableGenderText, genderSelector, PersonTrait.GENDER);
+        return disableSpinner(enableGenderText, genderSelector, PersonTrait.GENDER);
     }
 
     private boolean disableLocation() {
-        return disableItem(enableLocationText, locationSelector, PersonTrait.LOCATION);
+        return disableSpinner(enableLocationText, locationSelector, PersonTrait.LOCATION);
     }
 
     private boolean disableOccupation() {
-        return disableItem(enableOccupationText, occupationSelector, PersonTrait.OCCUPATION);
+        return disableSpinner(enableOccupationText, occupationSelector, PersonTrait.OCCUPATION);
     }
 
     private boolean disableOrganization() {
-        return disableItem(enableOrganizationText, organizationSelector, PersonTrait.ORGANIZATION);
+        return disableSpinner(enableOrganizationText, organizationSelector, PersonTrait.ORGANIZATION);
     }
 
     private boolean disableMortality() {
-        return disableItem(enableMortalityText, mortalitySelector, PersonTrait.MORTALITY);
+        return disableSpinner(enableMortalityText, mortalitySelector, PersonTrait.MORTALITY);
     }
 
     private void selectPerson(String name) {
@@ -250,17 +262,54 @@ public class FindByTraitActivity extends AppCompatActivity {
         adapter.reloadItems();
     }
 
-    private void enableItem(View enableText, View itemSelector, Runnable runnable) {
+    private void enableItem(View enableText, View itemSelector) {
         enableText.setVisibility(View.INVISIBLE);
         itemSelector.setVisibility(View.VISIBLE);
     }
 
-    private boolean disableItem(View enableText, Spinner itemSelector, PersonTrait trait) {
-        enableText.setVisibility(View.VISIBLE);
-        itemSelector.setVisibility(View.INVISIBLE);
+    private void enableItem(View enableText, DeselectableSpinnerAdapter itemSelector) {
+        enableText.setVisibility(View.INVISIBLE);
+        itemSelector.setVisibility(View.VISIBLE);
+    }
+
+    private boolean disableSpinner(View enableText, Spinner itemSelector, PersonTrait trait) {
         itemSelector.setSelection(0);
+        return disableItem(enableText, itemSelector, trait);
+    }
+
+    private boolean disableSpinner(View enableText, DeselectableSpinnerAdapter itemSelector, PersonTrait trait) {
+        itemSelector.setSelection(0);
+        return disableItem(enableText, itemSelector, trait);
+    }
+
+    private boolean disableItem(View enableText, View input, PersonTrait trait) {
+        enableText.setVisibility(View.VISIBLE);
+        input.setVisibility(View.INVISIBLE);
         personFilterer.removeFilter(trait);
         adapter.reloadItems();
         return true;
+    }
+
+    private boolean disableItem(View enableText, DeselectableSpinnerAdapter input, PersonTrait trait) {
+        enableText.setVisibility(View.VISIBLE);
+        input.setVisibility(View.INVISIBLE);
+        personFilterer.removeFilter(trait);
+        adapter.reloadItems();
+        return true;
+    }
+
+    private class TextChangeWatcher implements TextWatcher {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            personFilterer.addNameFilter(s.toString());
+            adapter.reloadItems();
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {}
     }
 }

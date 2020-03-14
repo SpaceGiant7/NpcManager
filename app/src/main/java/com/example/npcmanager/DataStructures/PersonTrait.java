@@ -4,6 +4,7 @@ public enum PersonTrait {
     GENDER("Gender"),
     LOCATION("Location"),
     MORTALITY("Mortality"),
+    NAME("Name"),
     OCCUPATION("Occupation"),
     ORGANIZATION("Organization"),
     RACE("Race");
