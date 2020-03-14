@@ -12,7 +12,7 @@ public class FindByOccupationActivity extends FindByActivity {
     Occupation occupation;
 
     protected String deserializeInputs() {
-        occupation = ActivityUtilities.getOccupationExtraMaybe(getIntent()).get();
+        occupation = (Occupation) ActivityUtilities.getOccupationExtraMaybe(getIntent()).get();
         return occupation.getName();
     }
 

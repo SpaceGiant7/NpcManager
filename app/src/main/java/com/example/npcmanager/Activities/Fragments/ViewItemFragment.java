@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.npcmanager.Activities.FindBy.FindByTraitActivity;
 import com.example.npcmanager.Activities.Utilities.ActivityUtilities;
 import com.example.npcmanager.Activities.Utilities.RecyclerAdapters.BaseItemRecyclerAdapter;
 import com.example.npcmanager.Models.BaseModel;
@@ -90,7 +91,7 @@ public abstract class ViewItemFragment extends Fragment {
     private void clickFindBy() {
         selectedItem.ifPresent(item ->
                 ActivityUtilities.loadActivityWithExtra(
-                        getActivity(), getFindByActivityClass(), getSelectedItem(item), getSerializationKey()));
+                        getActivity(), FindByTraitActivity.class, getSelectedItem(item), getSerializationKey()));
     }
 
     private void clickNew() {

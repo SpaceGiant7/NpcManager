@@ -12,7 +12,7 @@ public class FindByRaceActivity extends FindByActivity {
     Race race;
 
    protected String deserializeInputs() {
-        race = ActivityUtilities.getRaceExtraMaybe(getIntent()).get();
+        race = (Race) ActivityUtilities.getRaceExtraMaybe(getIntent()).get();
         return race.getName();
    }
 

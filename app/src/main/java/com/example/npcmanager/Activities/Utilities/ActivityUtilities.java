@@ -7,13 +7,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.npcmanager.Activities.NewMainActivity;
 import com.example.npcmanager.Activities.View.ViewCampaignsActivity;
-import com.example.npcmanager.DataStructures.Gender;
-import com.example.npcmanager.DataStructures.Location;
-import com.example.npcmanager.DataStructures.Occupation;
-import com.example.npcmanager.DataStructures.Organization;
+import com.example.npcmanager.DataStructures.BaseItem;
 import com.example.npcmanager.DataStructures.Person;
+import com.example.npcmanager.DataStructures.PersonTrait;
 import com.example.npcmanager.DataStructures.Quest;
-import com.example.npcmanager.DataStructures.Race;
 import com.example.npcmanager.Models.ApplicationModels;
 
 import java.io.Serializable;
@@ -28,6 +25,7 @@ public class ActivityUtilities {
     public static final String occupationKey = "occupation";
     public static final String genderKey = "gender";
     private static final String nameKey = "name";
+    private static final String traitKey = "trait";
 
     public static void loadActivity(Activity fromActivity, Class cls) {
         fromActivity.startActivity(new Intent(fromActivity, cls));
@@ -108,6 +106,14 @@ public class ActivityUtilities {
         fromActivity.startActivity(intent);
     }
 
+    public static void loadActivityWithExtraAndTrait(
+            Activity fromActivity, Class cls, Serializable val, String key, PersonTrait trait) {
+        Intent intent = new Intent(fromActivity, cls);
+        intent.putExtra(key, val);
+        intent.putExtra(traitKey, trait);
+        fromActivity.startActivity(intent);
+    }
+
     private static Optional<Serializable> getSerializableExtraMaybe(Intent intent, String key) {
         return Optional.ofNullable(intent.getExtras())
                 .flatMap(extras -> Optional.ofNullable(extras.getSerializable(key)));
@@ -123,29 +129,29 @@ public class ActivityUtilities {
                 .map(s -> (Quest) s);
     }
 
-    public static Optional<Location> getLocationExtraMaybe(Intent intent) {
+    public static Optional<BaseItem> getLocationExtraMaybe(Intent intent) {
         return getSerializableExtraMaybe(intent, locationKey)
-                .map(s -> (Location) s);
+                .map(s -> (BaseItem) s);
     }
 
-    public static Optional<Organization> getOrganizationExtraMaybe(Intent intent) {
+    public static Optional<BaseItem> getOrganizationExtraMaybe(Intent intent) {
         return getSerializableExtraMaybe(intent, organizationKey)
-                .map(s -> (Organization) s);
+                .map(s -> (BaseItem) s);
     }
 
-    public static Optional<Race> getRaceExtraMaybe(Intent intent) {
+    public static Optional<BaseItem> getRaceExtraMaybe(Intent intent) {
         return getSerializableExtraMaybe(intent, raceKey)
-                .map(s -> (Race) s);
+                .map(s -> (BaseItem) s);
     }
 
-    public static Optional<Occupation> getOccupationExtraMaybe(Intent intent) {
+    public static Optional<BaseItem> getOccupationExtraMaybe(Intent intent) {
         return getSerializableExtraMaybe(intent, occupationKey)
-                .map(s -> (Occupation) s);
+                .map(s -> (BaseItem) s);
     }
 
-    public static Optional<Gender> getGenderExtraMaybe(Intent intent) {
+    public static Optional<BaseItem> getGenderExtraMaybe(Intent intent) {
         return getSerializableExtraMaybe(intent, genderKey)
-                .map(s -> (Gender) s);
+                .map(s -> (BaseItem) s);
     }
 
     public static Optional<String> getNameExtraMaybe(Intent intent) {

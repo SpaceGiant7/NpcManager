@@ -15,6 +15,7 @@ import com.example.npcmanager.DataStructures.BaseItem;
 import com.example.npcmanager.R;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
@@ -66,6 +67,22 @@ public class DeselectableSpinnerAdapter {
             Activity activity,
             int id,
             List<BaseItem> items,
+            Optional<BaseItem> selectedItemMaybe,
+            Consumer<BaseItem> itemConsumer,
+            Runnable onNoSelection,
+            Supplier<BaseItem> noneSupplier) {
+        return selectedItemMaybe.map(
+                baseItem -> new DeselectableSpinnerAdapter(
+                        activity, id, items, baseItem, itemConsumer, onNoSelection, noneSupplier))
+                .orElseGet(
+                        () -> new DeselectableSpinnerAdapter(
+                                activity, id, items, itemConsumer, onNoSelection, noneSupplier));
+    }
+
+    public static DeselectableSpinnerAdapter create(
+            Activity activity,
+            int id,
+            List<BaseItem> items,
             BaseItem selectedItem,
             Consumer<BaseItem> itemConsumer,
             Runnable onNoSelection,
@@ -86,6 +103,14 @@ public class DeselectableSpinnerAdapter {
 
     public void setSelection(int i) {
         spinner.setSelection(i);
+    }
+
+    public void setSelection(BaseItem item) {
+        spinner.setSelection(getAdapter().getPosition(item) + 1);
+    }
+
+    private DeselectableArrayAdapter getAdapter() {
+        return (DeselectableArrayAdapter) spinner.getAdapter();
     }
 
     public void setOnClickListener(View.OnClickListener listener) {

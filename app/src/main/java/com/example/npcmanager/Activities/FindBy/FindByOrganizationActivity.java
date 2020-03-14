@@ -12,7 +12,7 @@ public class FindByOrganizationActivity extends FindByActivity {
     Organization organization;
 
     protected String deserializeInputs() {
-        organization = ActivityUtilities.getOrganizationExtraMaybe(getIntent()).get();
+        organization = (Organization) ActivityUtilities.getOrganizationExtraMaybe(getIntent()).get();
         return organization.getName();
     }
 

@@ -12,7 +12,7 @@ public class FindByLocationActivity extends FindByActivity {
     Location location;
 
     protected String deserializeInputs() {
-        location = ActivityUtilities.getLocationExtraMaybe(getIntent()).get();
+        location = (Location) ActivityUtilities.getLocationExtraMaybe(getIntent()).get();
         return location.getName();
     }
 

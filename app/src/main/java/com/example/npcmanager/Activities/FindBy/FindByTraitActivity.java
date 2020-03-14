@@ -5,7 +5,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -72,6 +71,7 @@ public class FindByTraitActivity extends AppCompatActivity {
         setupEnablers();
         setupDisablers();
         disableAll();
+        checkForExtras();
     }
 
     private void setupRecyclerView() {
@@ -194,6 +194,35 @@ public class FindByTraitActivity extends AppCompatActivity {
         disableMortality();
     }
 
+    private void checkForExtras() {
+        ActivityUtilities.getRaceExtraMaybe(getIntent())
+                .ifPresent(race -> {
+                    raceSelector.setSelection(race);
+                    enableRace();
+                });
+        ActivityUtilities.getGenderExtraMaybe(getIntent())
+                .ifPresent(gender -> {
+                    genderSelector.setSelection(gender);
+                    enableGender();
+                });
+        ActivityUtilities.getLocationExtraMaybe(getIntent())
+                .ifPresent(location -> {
+                    locationSelector.setSelection(location);
+                    enableLocation();
+                });
+        ActivityUtilities.getOccupationExtraMaybe(getIntent())
+                .ifPresent(occupation -> {
+                    occupationSelector.setSelection(occupation);
+                    enableOccupation();
+                });
+        ActivityUtilities.getOrganizationExtraMaybe(getIntent())
+                .ifPresent(organization -> {
+                    organizationSelector.setSelection(organization);
+                    enableOrganization();
+                });
+
+    }
+
     private void enableName() {
         enableItem(enableNameText, nameText);
     }
@@ -270,11 +299,6 @@ public class FindByTraitActivity extends AppCompatActivity {
     private void enableItem(View enableText, DeselectableSpinnerAdapter itemSelector) {
         enableText.setVisibility(View.INVISIBLE);
         itemSelector.setVisibility(View.VISIBLE);
-    }
-
-    private boolean disableSpinner(View enableText, Spinner itemSelector, PersonTrait trait) {
-        itemSelector.setSelection(0);
-        return disableItem(enableText, itemSelector, trait);
     }
 
     private boolean disableSpinner(View enableText, DeselectableSpinnerAdapter itemSelector, PersonTrait trait) {
